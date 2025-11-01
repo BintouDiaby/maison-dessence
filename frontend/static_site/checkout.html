@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paiement — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/about.html">À propos</a>
+      <button id="open-cart" class="cart-btn">Panier <span id="cart-count" class="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container section" id="checkout-page">
+    <h1>Panier & paiement</h1>
+    <div style="display:flex;gap:28px;flex-wrap:wrap">
+      <section style="flex:1 1 420px;min-width:300px">
+        <h3>Récapitulatif</h3>
+        <div id="checkout-items" style="margin-bottom:12px"></div>
+        <div style="font-weight:700;margin-bottom:8px">Total: <span id="checkout-total">€0.00</span></div>
+      </section>
+
+      <aside style="flex:0 0 360px;min-width:260px;background:#fff;padding:18px;border-radius:10px;box-shadow:0 8px 24px rgba(16,24,40,0.06)">
+        <h3>Informations</h3>
+        <label style="display:block;margin-bottom:8px">Nom
+          <input id="buyer-name" type="text" placeholder="Votre nom" style="width:100%;margin-top:6px;padding:8px" />
+        </label>
+        <label style="display:block;margin-bottom:8px">Email
+          <input id="buyer-email" type="email" placeholder="email@exemple.com" style="width:100%;margin-top:6px;padding:8px" />
+        </label>
+        <div style="margin-top:12px">
+          <label style="display:block;margin-bottom:8px">Moyen de paiement</label>
+          <div style="margin-bottom:10px">
+            <label style="display:inline-block;margin-right:12px"><input type="radio" name="payment_method" value="card" checked /> Carte (Stripe)</label>
+            <label style="display:inline-block;margin-right:12px"><input type="radio" name="payment_method" value="cinetpay" /> CinetPay</label>
+            <label style="display:inline-block;margin-right:12px"><input type="radio" name="payment_method" value="mock" /> Mode démo</label>
+          </div>
+          <label style="display:block;margin-bottom:8px">Détails de paiement</label>
+          <div id="card-element" style="padding:12px;border:1px solid #e6e6e6;border-radius:6px;background:#fbfbfb"></div>
+          <div id="card-errors" role="alert" style="color:#b00020;margin-top:8px"></div>
+          <!-- Manual fallback for card details when Stripe is not available -->
+          <div id="card-manual" style="margin-top:10px">
+            <label>Nom sur la carte
+              <input id="manual-card-name" type="text" placeholder="NOM COMPLET" style="width:100%;margin-top:6px;padding:8px" />
+            </label>
+            <label>Numéro de carte
+              <input id="manual-card-number" type="text" placeholder="4242 4242 4242 4242" style="width:100%;margin-top:6px;padding:8px" />
+            </label>
+            <div style="display:flex;gap:8px">
+              <label style="flex:1">MM/AA
+                <input id="manual-card-exp" type="text" placeholder="04/26" style="width:100%;margin-top:6px;padding:8px" />
+              </label>
+              <label style="width:120px">CVC
+                <input id="manual-card-cvc" type="text" placeholder="123" style="width:100%;margin-top:6px;padding:8px" />
+              </label>
+            </div>
+            <div class="small muted" style="margin-top:6px">Exemple de carte de test Stripe : 4242 4242 4242 4242 — utilisez une date future et CVC 123.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <button id="pay-btn" class="btn btn-primary" style="width:100%">Payer</button>
+        </div>
+        <div style="margin-top:8px" class="small muted">Mode test possible — utilisez des cartes de test Stripe pour simuler un paiement.</div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

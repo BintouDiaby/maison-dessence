@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Détails produit — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/about.html">À propos</a>
+      <button id="open-cart" class="cart-btn">Panier <span id="cart-count" class="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container section" id="product-detail">
+    <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1 1 420px;min-width:280px">
+        <div style="border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(16,24,40,0.06)">
+          <img id="p-img" src="https://via.placeholder.com/900x600" style="width:100%;height:480px;object-fit:cover;display:block" />
+        </div>
+      </div>
+      <div style="flex:1 1 360px;min-width:260px">
+        <div style="margin-bottom:8px" class="small muted" id="p-family">&nbsp;</div>
+        <h1 id="p-name" style="margin-top:6px">Nom du parfum</h1>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:10px">
+          <div id="p-price" style="font-weight:800;font-size:22px;color:var(--brand)">€0.00</div>
+          <div id="p-stock" class="small muted">Stock: —</div>
+        </div>
+        <div style="margin-top:14px" id="p-concentration" class="small muted">&nbsp;</div>
+        <p id="p-desc" style="margin-top:18px;color:#334155">Description complète du parfum.</p>
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <button id="add-single" class="btn btn-primary">Ajouter au panier</button>
+          <a id="see-more" class="btn" href="/products.html">Voir la collection</a>
+        </div>
+      </div>
+    </div>
+
+    <section style="margin-top:28px">
+      <h3>Produits similaires</h3>
+      <div id="similar-list" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inscription — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/login.html">Se connecter</a>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Créer un compte</h1>
+    <form id="signup-form" style="max-width:520px">
+      <label>Nom d'utilisateur
+        <input name="username" type="text" required style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px" />
+      </label>
+      <label>Prénom
+        <input name="first_name" type="text" style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px" />
+      </label>
+      <label>Nom
+        <input name="last_name" type="text" style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px" />
+      </label>
+      <label>Adresse email
+        <input name="email" type="email" required style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px" />
+      </label>
+      <label>Mot de passe
+        <input name="password" type="password" required minlength="8" style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px" />
+      </label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+        <a href="/login.html" class="muted">J'ai déjà un compte</a>
+      </div>
+    </form>
+    <div id="signup-feedback" style="margin-top:12px;color:#0f5132"></div>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

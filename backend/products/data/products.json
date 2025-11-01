@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Nuit d'ambre",
+    "description": "Ambre, vanille et notes florales.",
+    "price": 79.0,
+    "stock": 12,
+    "family": "Oriental",
+    "concentration": "Eau de Parfum",
+  "image_url": "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop",
+    "tags": ["ambre", "vanille"]
+  },
+  {
+    "id": 2,
+    "name": "Ambre doux",
+    "description": "Douceur d'ambre et musc.",
+    "price": 69.0,
+    "stock": 8,
+    "family": "Oriental",
+    "concentration": "Eau de Parfum",
+  "image_url": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop",
+    "tags": ["ambre"]
+  },
+  {
+    "id": 3,
+    "name": "Vanille noire",
+    "description": "Vanille profonde et boisée.",
+    "price": 85.0,
+    "stock": 5,
+    "family": "Gourmand",
+    "concentration": "Parfum",
+  "image_url": "https://images.unsplash.com/photo-1514995669114-4f2f22ec8d7b?q=80&w=1200&auto=format&fit=crop",
+    "tags": ["vanille"]
+  },
+  {
+    "id": 4,
+    "name": "Fleur d'oranger",
+    "description": "Notes blanches, fraîcheur florale.",
+    "price": 60.0,
+    "stock": 20,
+    "family": "Floral",
+    "concentration": "Eau de Toilette",
+  "image_url": "https://images.unsplash.com/photo-1508747703725-7197e55ce1d8?q=80&w=1200&auto=format&fit=crop",
+    "tags": ["fleur"]
+  }
+]

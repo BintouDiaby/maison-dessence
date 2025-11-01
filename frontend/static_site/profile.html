@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mon compte — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/products.html">Produits</a>
+      <a href="/about.html">À propos</a>
+      <a href="/login.html">Se connecter</a>
+      <button id="open-cart" class="cart-btn">Panier <span id="cart-count" class="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Mon compte</h1>
+
+    <section id="profile-root">
+      <div id="profile-loading">Chargement...</div>
+
+      <form id="profile-form" style="display:none;max-width:640px">
+        <div style="margin-bottom:8px">
+          <label>Nom d'utilisateur</label>
+          <div id="profile-username" style="font-weight:700"></div>
+        </div>
+        <div style="margin-bottom:8px">
+          <label>Email</label>
+          <div id="profile-email" style="color:#666"></div>
+        </div>
+        <div style="margin-bottom:8px">
+          <label for="first_name">Prénom</label>
+          <input id="first_name" name="first_name" type="text" />
+        </div>
+        <div style="margin-bottom:8px">
+          <label for="last_name">Nom</label>
+          <input id="last_name" name="last_name" type="text" />
+        </div>
+        <div style="margin-bottom:8px">
+          <label for="preferences">Préférences (JSON)</label>
+          <textarea id="preferences" name="preferences" rows="6" style="width:100%"></textarea>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button id="save-profile" class="btn btn-primary">Enregistrer</button>
+          <button id="change-password" class="btn">Changer le mot de passe</button>
+        </div>
+        <div id="profile-feedback" style="margin-top:12px;color:#900"></div>
+      </form>
+
+      <div id="password-section" style="display:none;max-width:640px;margin-top:12px">
+        <h3>Changer le mot de passe</h3>
+        <div style="margin-bottom:8px"><label>Nouveau mot de passe</label><input id="new-password" type="password" /></div>
+        <div style="margin-bottom:8px"><label>Confirmer</label><input id="new-password-confirm" type="password" /></div>
+        <div style="display:flex;gap:8px"><button id="apply-password" class="btn btn-primary">Appliquer</button><button id="cancel-password" class="btn">Annuler</button></div>
+        <div id="pw-feedback" style="margin-top:8px;color:#900"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="container footer">© Maison d'essence — 2025</footer>
+
+  <script src="/static/app.js"></script>
+  <script>
+    (function(){
+      const token = localStorage.getItem('md_access_token');
+      const feedback = document.getElementById('profile-feedback');
+      const loading = document.getElementById('profile-loading');
+      const form = document.getElementById('profile-form');
+      const pwSection = document.getElementById('password-section');
+
+      function showMsg(el, msg){ if(el) el.textContent = msg }
+
+      if(!token){
+        showMsg(feedback, 'Vous devez être connecté pour voir cette page.');
+        setTimeout(()=> window.location.href = '/login.html', 800);
+        return;
+      }
+
+      async function loadProfile(){
+        try{
+          const res = await fetch('/api/auth/profile/', { headers: { 'Authorization': 'Bearer ' + token } });
+          if(!res.ok){ showMsg(feedback, 'Erreur de session — reconnectez-vous'); setTimeout(()=>window.location.href='/login.html',800); return }
+          const j = await res.json();
+          loading.style.display = 'none';
+          form.style.display = '';
+          document.getElementById('profile-username').textContent = j.username || '';
+          document.getElementById('profile-email').textContent = j.email || '';
+          document.getElementById('first_name').value = j.first_name || '';
+          document.getElementById('last_name').value = j.last_name || '';
+          document.getElementById('preferences').value = JSON.stringify(j.preferences || {}, null, 2);
+        }catch(err){ console.error(err); showMsg(feedback,'Erreur réseau') }
+      }
+
+      loadProfile();
+
+      document.getElementById('save-profile').addEventListener('click', async function(e){
+        e.preventDefault();
+        const body = {
+          first_name: document.getElementById('first_name').value,
+          last_name: document.getElementById('last_name').value,
+        };
+        const prefsText = document.getElementById('preferences').value.trim();
+        if(prefsText){ try{ body.preferences = JSON.parse(prefsText) }catch(err){ showMsg(feedback,'Préférences: JSON invalide'); return } }
+        try{
+          const res = await fetch('/api/auth/profile/', { method: 'PUT', headers: { 'Authorization':'Bearer '+token, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+          if(!res.ok){ const t = await res.text(); showMsg(feedback, 'Erreur mise à jour: '+t); return }
+          showMsg(feedback, 'Profil mis à jour');
+          setTimeout(()=> showMsg(feedback,''), 2500);
+          // refresh header
+          if(window.updateAuthLink) window.updateAuthLink();
+        }catch(err){ console.error(err); showMsg(feedback,'Erreur réseau') }
+      });
+
+      document.getElementById('change-password').addEventListener('click', function(e){ e.preventDefault(); pwSection.style.display = ''; window.scrollTo(0, pwSection.offsetTop-20); });
+      document.getElementById('cancel-password').addEventListener('click', function(e){ e.preventDefault(); pwSection.style.display = 'none'; });
+
+      document.getElementById('apply-password').addEventListener('click', async function(e){
+        e.preventDefault();
+        const np = document.getElementById('new-password').value;
+        const cp = document.getElementById('new-password-confirm').value;
+        const pwfb = document.getElementById('pw-feedback');
+        if(!np || np.length < 8){ pwfb.textContent = 'Mot de passe trop court (min 8 caractères)'; return }
+        if(np !== cp){ pwfb.textContent = 'Les mots de passe ne correspondent pas'; return }
+        try{
+          const token = localStorage.getItem('md_access_token');
+          if(!token){ pwfb.textContent = 'Session expirée — reconnectez-vous'; setTimeout(()=>window.location.href='/login.html',800); return }
+          const res = await fetch('/api/auth/change-password/', { method: 'POST', headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+token }, body: JSON.stringify({ old_password: prompt('Confirmez votre ancien mot de passe pour validation :'), new_password: np }) });
+          if(res.ok){ pwfb.style.color = '#080'; pwfb.textContent = 'Mot de passe changé'; pwSection.style.display = 'none'; } else { const j = await res.json().catch(()=>null); pwfb.style.color = '#900'; pwfb.textContent = j && j.detail ? j.detail : 'Impossible de changer le mot de passe'; }
+        }catch(err){ console.error(err); pwfb.textContent = 'Erreur réseau' }
+      });
+
+    })();
+  </script>
+</body>
+</html>

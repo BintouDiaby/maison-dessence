@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Panier — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/login.html">Se connecter</a>
+      <button id="open-cart" class="cart-btn">Panier <span id="cart-count" class="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container section" id="cart-page">
+    <h1>Votre panier</h1>
+    <div id="cart-items" style="margin-bottom:18px"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="font-weight:700">Total: <span id="cart-total">€0.00</span></div>
+      <div style="display:flex;gap:8px">
+        <a class="btn" href="/products.html">Continuer vos achats</a>
+        <a id="go-checkout" class="btn btn-primary" href="/checkout.html">Passer au paiement</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

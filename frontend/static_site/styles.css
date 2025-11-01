@@ -1,0 +1,137 @@
+/* Improved UI styles for Maison d'essence */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@400;700&display=swap');
+
+:root{
+	--brand:#2B2A4A; /* deep indigo */
+	--accent:#E5A4A4; /* gentle rose */
+	--muted:#6b7280;
+	--bg:#fff;
+	--card-shadow: 0 12px 30px rgba(16,24,40,0.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:0; color:#0f172a; background:var(--bg); -webkit-font-smoothing:antialiased}
+.container{max-width:1200px;margin:0 auto;padding:28px}
+
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{font-family:'Playfair Display', serif; font-weight:700;color:var(--brand);font-size:26px}
+.nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
+.nav a:hover{color:var(--brand)}
+
+.hero{height:64vh;background-image:linear-gradient(rgba(11,12,17,0.34), rgba(11,12,17,0.18)), url('https://images.unsplash.com/photo-1519741490371-66a3fb4f3f4b?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(0,0,0,0.03)}
+.hero-inner{position:relative;color:#fff;text-align:center;padding:40px}
+.hero h1{font-family:'Playfair Display',serif;font-size:48px;margin:0 0 8px;letter-spacing:0.2px}
+.hero p{font-size:18px;color:rgba(255,255,255,0.95);margin:0 0 18px}
+
+.btn{display:inline-block;padding:10px 18px;border-radius:12px;text-decoration:none;border:0;cursor:pointer}
+.btn-primary{background:#fff;color:var(--brand);font-weight:700;box-shadow:0 6px 18px rgba(16,24,40,0.08)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff}
+
+.section{padding:44px 0}
+.section h2{font-family:'Playfair Display',serif;margin-bottom:18px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfbfc);box-shadow:var(--card-shadow);transition:transform .28s ease,box-shadow .28s ease;border:1px solid rgba(8,9,11,0.03)}
+.card:hover{transform:translateY(-8px)}
+.card img{width:100%;height:240px;object-fit:cover}
+.card .body{padding:16px}
+.card .title{font-weight:700;font-size:16px;margin-bottom:6px}
+.card .meta{color:var(--muted);font-size:13px}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.price{font-weight:800;color:var(--brand);font-size:16px}
+
+.footer{padding:32px 0;color:var(--muted);text-align:center;border-top:1px solid #f3f3f4;margin-top:40px}
+
+.cart-count{background:#e11d48;color:#fff;border-radius:16px;padding:4px 8px;font-size:12px;margin-left:8px}
+.drawer{position:fixed;right:0;top:0;height:100vh;width:360px;background:#fff;box-shadow:-12px 0 40px rgba(11,12,17,0.12);transform:translateX(110%);transition:transform 260ms ease-in-out;z-index:60}
+.drawer.open{transform:translateX(0)}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(10px);animation:fadeInUp .6s ease forwards}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Page transition: fade out on navigation, fade in on load */
+body{transition:opacity .32s ease,transform .32s ease}
+body.page-enter{opacity:0}
+body.page-loaded{opacity:1}
+
+/* search input small tweaks */
+#product-search-input{min-width:160px}
+#product-search-input:focus{outline:2px solid rgba(229,164,164,0.2);box-shadow:0 4px 14px rgba(43,42,74,0.06)}
+
+/* responsive */
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:40px}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.hero{height:50vh}.brand{font-size:20px}}
+
+/* small helpers */
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+
+/* ensure static assets path works when served under /static/ */
+.hidden{display:none !important}
+
+/* Forms and inputs - consistent look across pages */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, select {
+	width:100%;
+	padding:10px 12px;
+	border:1px solid #e6e7eb;
+	border-radius:10px;
+	background:#fff;
+	font-size:15px;
+	color:#0f172a;
+	transition:box-shadow .18s ease, border-color .18s ease;
+}
+input:focus, textarea:focus, select:focus{outline:none;border-color:var(--accent);box-shadow:0 6px 18px rgba(229,164,164,0.08)}
+label{display:block;margin-bottom:6px;font-weight:600;color:var(--muted);font-size:13px}
+
+/* Buttons variants */
+.btn{border-radius:10px;padding:10px 16px}
+.btn-secondary{background:transparent;border:1px solid #e6e7eb;color:var(--brand)}
+.btn-danger{background:#ef4444;color:#fff}
+
+/* Product detail page */
+.product-detail{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+.product-gallery{background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow)}
+.product-gallery img{width:100%;height:420px;object-fit:cover}
+.product-info{background:transparent}
+.product-info h1{font-family:'Playfair Display',serif;font-size:28px;margin:0 0 6px}
+.product-info .price{font-size:20px}
+.product-meta{margin:12px 0;color:var(--muted)}
+.quantity{display:flex;align-items:center;gap:8px}
+.quantity input{width:84px;text-align:center}
+.add-to-cart-row{display:flex;gap:12px;align-items:center;margin-top:14px}
+
+/* Cart page */
+.cart-list{background:#fff;border-radius:12px;padding:14px;box-shadow:var(--card-shadow)}
+.cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed #f0f0f2}
+.cart-item img{width:84px;height:84px;object-fit:cover;border-radius:8px}
+.cart-item .title{font-weight:700}
+.cart-summary{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--card-shadow)}
+
+/* Checkout form layout */
+.checkout-grid{display:grid;grid-template-columns:1fr 360px;gap:24px}
+.checkout-form{background:#fff;padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
+
+/* Responsive adjustments for smaller screens */
+@media(max-width:980px){
+	.product-detail{grid-template-columns:1fr}
+	.product-gallery img{height:320px}
+	.checkout-grid{grid-template-columns:1fr}
+}
+
+/* Small visual polish for links and lists */
+a{color:var(--brand)}
+ul{padding-left:18px}
+
+/* Accessibility small helpers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Personalization chat styles */
+#messages .msg{padding:10px 12px;border-radius:10px;margin-bottom:8px;max-width:78%}
+#messages .msg.user{background:linear-gradient(180deg,#fff,#fbf7f7);margin-left:auto;border:1px solid #f0e6e6}
+#messages .msg.assistant{background:#f8fafc;border:1px solid #eef2f7}
+#messages .msg .meta{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+#personalize-input{flex:1;padding:12px;border-radius:10px}
+#personalize-send{min-width:110px}
+#suggested-recipe pre{white-space:pre-wrap;font-family:monospace;font-size:13px}

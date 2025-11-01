@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Connexion — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/signup.html">S'inscrire</a>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h1>Se connecter</h1>
+    <form id="login-form" style="max-width:420px">
+      <label>Adresse email<input name="email" type="email" required style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px"/></label>
+      <label>Mot de passe<input name="password" type="password" required style="width:100%;padding:8px;margin-top:6px;margin-bottom:10px"/></label>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
+    </form>
+    <p style="margin-top:12px">Vous n'avez pas de compte ? <a href="/signup.html">S'inscrire</a></p>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

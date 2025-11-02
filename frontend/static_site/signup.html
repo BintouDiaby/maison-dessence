@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inscription — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#4F46E5", soft: "#EEF2FF" },
+          keyframes: {
+            fadeInUp: { "0%": { opacity: 0, transform: "translateY(12px)" },
+                        "100%": { opacity: 1, transform: "translateY(0)" } },
+            pop: { "0%": { transform: "scale(1)" },
+                   "50%": { transform: "scale(1.03)" },
+                   "100%": { transform: "scale(1)" } }
+          },
+          animation: {
+            fadeInUp: "fadeInUp .6s ease-out both",
+            pop: "pop .25s ease-out both"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-b from-white to-soft min-h-screen flex flex-col text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="text-2xl font-semibold text-brand">Maison d'essence</div>
+      <nav class="flex items-center gap-5 text-gray-700 font-medium">
+        <a href="/" class="hover:text-brand transition">Accueil</a>
+        <a href="/products.html" class="hover:text-brand transition">Produits</a>
+        <a href="/login.html" class="hover:text-brand transition">Se connecter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-6 py-10 flex-1">
+    <h1 class="text-2xl font-semibold mb-6">Créer un compte</h1>
+
+    <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-md p-6 animate-fadeInUp">
+      <form id="signup-form" class="space-y-5">
+        <!-- Rôle -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Type de compte</label>
+          <div class="flex items-center gap-6">
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="role" value="client" checked>
+              <span>Client</span>
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="role" value="vendor">
+              <span>Vendeur</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Infos vendeur -->
+        <div id="vendor-fields" class="hidden space-y-4 bg-soft rounded-xl p-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Nom de la boutique</label>
+            <input name="shop_name" type="text"
+                   class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Téléphone (optionnel)</label>
+            <input name="phone" type="text"
+                   class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+          </div>
+        </div>
+
+        <!-- Identité -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Prénom</label>
+            <input name="first_name" type="text"
+                   class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Nom</label>
+            <input name="last_name" type="text"
+                   class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Adresse email</label>
+          <input name="email" type="email" required
+                 class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Mot de passe</label>
+          <input name="password" type="password" required minlength="8"
+                 class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"/>
+          <p class="text-xs text-gray-500 mt-1">Au moins 8 caractères.</p>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button type="submit"
+                  class="bg-brand text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition active:scale-[.98]">
+            S'inscrire
+          </button>
+          <a href="/login.html" class="text-sm text-gray-600 hover:text-brand transition">J'ai déjà un compte</a>
+        </div>
+
+        <p id="signup-feedback" class="text-sm mt-2"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-gray-500 border-t mt-10">
+    © Maison d'essence
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed top-4 right-4 z-50 hidden"></div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('signup-form');
+      const fb = document.getElementById('signup-feedback');
+      const toast = document.getElementById('toast');
+      const vendorFields = document.getElementById('vendor-fields');
+
+      // toggle vendeurs
+      document.querySelectorAll('input[name="role"]').forEach(r=>{
+        r.addEventListener('change', ()=>{
+          const isVendor = document.querySelector('input[name="role"]:checked')?.value === 'vendor';
+          vendorFields.classList.toggle('hidden', !isVendor);
+        });
+      });
+
+      function showToast(text, ok=true) {
+        toast.innerHTML = `
+          <div class="animate-fadeInUp rounded-lg shadow-lg px-4 py-3 ${ok ? 'bg-emerald-600' : 'bg-rose-600'} text-white">
+            ${text}
+          </div>`;
+        toast.classList.remove('hidden');
+        setTimeout(()=> toast.classList.add('hidden'), 2200);
+      }
+      function setMsg(text, ok=false) {
+        fb.textContent = text;
+        fb.className = 'text-sm mt-2 ' + (ok ? 'text-emerald-700' : 'text-rose-700');
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fd = new FormData(form);
+        const email = (fd.get('email') || '').toString().trim().toLowerCase();
+        const password = (fd.get('password') || '').toString();
+        const first_name = (fd.get('first_name') || '').toString().trim();
+        const last_name = (fd.get('last_name') || '').toString().trim();
+        const role = (fd.get('role') || 'client').toString();
+        const shop_name = (fd.get('shop_name') || '').toString().trim();
+        const phone = (fd.get('phone') || '').toString().trim();
+
+        if (!email || !password) { setMsg("Email et mot de passe requis."); return; }
+        if (password.length < 8) { setMsg("Mot de passe trop court (min 8 caractères)."); return; }
+
+        // IMPORTANT : on force username=email pour rester cohérent
+        const payload = { email, password, first_name, last_name, username: email };
+
+        setMsg("Création du compte…", true);
+
+        try {
+          const res = await fetch('/api/auth/register/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json().catch(()=> ({}));
+
+          if (!res.ok) {
+            const detail = data.detail || data.error || (typeof data === 'string' ? data : 'Inscription impossible');
+            setMsg(detail, false);
+            showToast("Erreur : " + detail, false);
+            return;
+          }
+
+          // Stocker l'intention vendeur pour finaliser après activation+login
+          if (role === 'vendor') {
+            try {
+              sessionStorage.setItem('pending_vendor', JSON.stringify({
+                email, shop_name, phone
+              }));
+            } catch(_) {}
+          }
+
+          setMsg("Compte créé. Vérifie ton e-mail pour activer le compte ✔", true);
+          showToast("Compte créé ! Vérifie ton e-mail ✉️", true);
+          form.classList.add('animate-pop');
+
+          setTimeout(() => { window.location.href = '/login.html?just_signed=1'; }, 1200);
+
+        } catch (err) {
+          console.error(err);
+          setMsg("Erreur réseau. Vérifie que le serveur tourne.", false);
+          showToast("Erreur réseau", false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "python.pythonPath": "C:\\Users\\moije\\Desktop\\Maison d'essence\\venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": [
+    "./backend"
+  ]
+  ,
+  "css.lint.unknownAtRules": "ignore",
+  
+}

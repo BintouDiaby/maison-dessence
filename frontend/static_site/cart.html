@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Panier — Maison d'essence</title>
+
+  <!-- ton style existant -->
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#4F46E5", soft: "#EEF2FF" },
+          keyframes: {
+            fadeInUp: { "0%":{opacity:0,transform:"translateY(8px)"},
+                        "100%":{opacity:1,transform:"translateY(0)"} },
+            pop: { "0%":{transform:"scale(1)"}, "50%":{transform:"scale(1.03)"},
+                   "100%":{transform:"scale(1)"} }
+          },
+          animation: {
+            fadeInUp: "fadeInUp .5s ease-out both",
+            pop: "pop .18s ease-out both"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-b from-white to-soft min-h-screen flex flex-col text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="text-2xl font-semibold text-brand">Maison d'essence</div>
+      <nav class="flex items-center gap-5 text-gray-700 font-medium">
+        <a href="/" class="hover:text-brand transition">Accueil</a>
+        <a href="/products.html" class="hover:text-brand transition">Produits</a>
+        <a href="/login.html" class="hover:text-brand transition">Se connecter</a>
+        <button id="open-cart" class="relative hover:scale-105 transition">
+          🛒
+          <span id="cart-count" class="absolute -top-2 -right-2 text-xs bg-brand text-white rounded-full px-2">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-6 py-10 flex-1" id="cart-page">
+    <h1 class="text-2xl font-semibold mb-6">Votre panier</h1>
+
+    <!-- zone items -->
+    <div id="cart-items" class="space-y-4 mb-6"></div>
+
+    <!-- footer panier -->
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="text-lg font-bold">
+        Total : <span id="cart-total">€0.00</span>
+      </div>
+      <div class="flex gap-3">
+        <button id="empty-cart" class="px-4 py-2 rounded-lg border hover:bg-gray-50 transition">
+          Vider le panier
+        </button>
+        <a id="go-checkout"
+           href="/checkout.html"
+           class="px-5 py-2 rounded-lg text-white bg-brand hover:bg-indigo-700 transition inline-flex items-center disabled:opacity-50 disabled:pointer-events-none">
+          Passer au paiement
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-gray-500 border-t mt-10">© Maison d'essence</footer>
+
+  <!-- ton JS global -->
+  <script src="/static/app.js"></script>
+
+  <!-- gestion du panier -->
+  <script>
+    (function(){
+      const KEY = "md_cart"; // [{id, name, price, image, qty}]
+      const itemsEl = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      const countBadge = document.getElementById('cart-count');
+      const btnEmpty = document.getElementById('empty-cart');
+      const btnCheckout = document.getElementById('go-checkout');
+
+      function fmt(n){ return "€" + (Number(n||0)).toFixed(2); }
+
+      function readCart(){
+        try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+        catch{ return []; }
+      }
+      function writeCart(arr){
+        localStorage.setItem(KEY, JSON.stringify(arr));
+        updateBadge(arr);
+      }
+      function updateBadge(arr){
+        const n = arr.reduce((s,it)=> s + (Number(it.qty)||0), 0);
+        countBadge.textContent = String(n);
+        countBadge.classList.add('animate-pop');
+        setTimeout(()=> countBadge.classList.remove('animate-pop'), 200);
+      }
+
+      function computeTotal(arr){
+        return arr.reduce((s, it) => s + (Number(it.price||0) * (Number(it.qty)||0)), 0);
+      }
+
+      function emptyState(){
+        itemsEl.innerHTML = `
+          <div class="rounded-2xl bg-white p-8 shadow-sm text-center animate-fadeInUp">
+            <p class="text-gray-600 mb-3">Votre panier est vide.</p>
+            <a href="/products.html" class="text-brand hover:underline">Découvrir nos produits</a>
+          </div>`;
+      }
+
+      function render(){
+        const cart = readCart();
+        if(cart.length === 0){
+          emptyState();
+          totalEl.textContent = fmt(0);
+          btnCheckout.setAttribute('aria-disabled','true');
+          btnCheckout.classList.add('disabled');
+          return;
+        }
+        btnCheckout.removeAttribute('aria-disabled');
+        btnCheckout.classList.remove('disabled');
+
+        itemsEl.innerHTML = "";
+        cart.forEach((it, idx) => {
+          const row = document.createElement('div');
+          row.className = "bg-white rounded-2xl shadow-sm p-4 flex gap-4 items-center animate-fadeInUp";
+
+          row.innerHTML = `
+            <img src="${it.image || '/static/img/placeholder.jpg'}" alt="${it.name || ''}"
+                 class="w-20 h-20 object-cover rounded-lg border" onerror="this.src='/static/img/placeholder.jpg'"/>
+            <div class="flex-1 min-w-0">
+              <a href="/product.html?id=${it.id}" class="font-semibold hover:text-brand transition line-clamp-1">${it.name || 'Produit'}</a>
+              <div class="text-sm text-gray-500">Prix unitaire : ${fmt(it.price || 0)}</div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button data-act="dec" data-i="${idx}" class="w-8 h-8 rounded-md border hover:bg-gray-50">−</button>
+              <input data-i="${idx}" type="number" min="1"
+                     class="w-14 text-center rounded-md border"
+                     value="${Number(it.qty)||1}">
+              <button data-act="inc" data-i="${idx}" class="w-8 h-8 rounded-md border hover:bg-gray-50">+</button>
+            </div>
+
+            <div class="w-28 text-right font-semibold">${fmt((it.price||0) * (it.qty||1))}</div>
+
+            <button data-act="rm" data-i="${idx}"
+                    class="px-3 py-1 rounded-md border text-gray-600 hover:bg-gray-50">
+              Supprimer
+            </button>
+          `;
+          itemsEl.appendChild(row);
+        });
+
+        totalEl.textContent = fmt(computeTotal(cart));
+        updateBadge(cart);
+      }
+
+      // events délégués
+      itemsEl.addEventListener('click', (e)=>{
+        const btn = e.target.closest('button');
+        if(!btn) return;
+        const act = btn.getAttribute('data-act');
+        const i = Number(btn.getAttribute('data-i'));
+        let cart = readCart();
+        if(Number.isNaN(i) || !cart[i]) return;
+
+        if(act === 'inc'){ cart[i].qty = (Number(cart[i].qty)||1) + 1; }
+        if(act === 'dec'){ cart[i].qty = Math.max(1, (Number(cart[i].qty)||1) - 1); }
+        if(act === 'rm'){ cart.splice(i, 1); }
+
+        writeCart(cart);
+        render();
+      });
+
+      itemsEl.addEventListener('change', (e)=>{
+        const inp = e.target.closest('input[type="number"]');
+        if(!inp) return;
+        const i = Number(inp.getAttribute('data-i'));
+        const val = Math.max(1, Number(inp.value)||1);
+        let cart = readCart();
+        if(cart[i]) cart[i].qty = val;
+        writeCart(cart);
+        render();
+      });
+
+      btnEmpty.addEventListener('click', ()=>{
+        if(!confirm("Vider le panier ?")) return;
+        writeCart([]);
+        render();
+      });
+
+      // init
+      render();
+    })();
+  </script>
+</body>
+</html>

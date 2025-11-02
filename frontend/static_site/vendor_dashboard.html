@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <title>Dashboard Vendeur – Maison d’essence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <link rel="stylesheet" href="/static/style.css">
+    <script defer src="/static/app.js"></script>
+
+  <style>
+    /* Styles rapides pour une page claire et propre */
+    .container{max-width:1100px;margin:40px auto;padding:0 16px}
+    .page-title{font-size:28px;font-weight:800;margin-bottom:8px}
+    .page-sub{color:#64748b;margin-bottom:24px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 6px 24px rgba(2,6,23,.05)}
+    .card .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #eef2f7}
+    .card .bd{padding:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;background:#f8fafc;cursor:pointer}
+    .btn:hover{background:#f1f5f9}
+    .btn-primary{background:#111827;color:#fff;border-color:#111827}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-danger{background:#fee2e2;border-color:#fecaca;color:#991b1b}
+    .btn-ghost{background:transparent}
+    .grid{display:grid;gap:16px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-weight:600;color:#0f172a}
+    .field input,.field textarea{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px}
+    .muted{color:#6b7280}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px 12px;border-bottom:1px solid #eef2f7;text-align:left;vertical-align:top}
+    th{font-size:12px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+    .thumb{width:64px;height:64px;object-fit:cover;border-radius:10px;border:1px solid #e5e7eb;background:#f8fafc}
+    .row-actions{display:flex;gap:8px}
+    @media (max-width:900px){ .grid-2,.grid-3{grid-template-columns:1fr} table{display:block;overflow:auto} }
+  </style>
+  <script>
+    // Pointe bien sur ton backend si différent
+    window.BACKEND_URL = 'http://127.0.0.1:8000';
+  </script>
+  <script defer src="/js/app.js"></script>
+</head>
+<body>
+  <header class="card" style="margin:0;padding:10px 16px;">
+    <nav style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/cart.html">Panier <span id="cart-count">0</span></a>
+      <!-- Lien repère pour auth -->
+      <a id="auth-link" href="/login.html" style="margin-left:auto">Se connecter</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Dashboard Vendeur</h1>
+    <div class="page-sub">Gérez vos produits et votre boutique.</div>
+
+    <!-- petit marqueur pour le guard -->
+    <div id="vendor-guard" hidden></div>
+
+    <!-- Cartouche vendeur -->
+    <section class="card" style="margin-bottom:20px">
+      <div class="hd">
+        <div>
+          <div style="font-weight:700">Mon compte vendeur</div>
+          <div class="muted" id="me_line">@username — Boutique</div>
+        </div>
+        <div class="muted">JWT actif côté navigateur</div>
+      </div>
+      <div class="bd grid grid-3">
+        <div class="field">
+          <label>Boutique</label>
+          <input id="shop_name" placeholder="Nom boutique" />
+        </div>
+        <div class="field">
+          <label>Statut</label>
+          <input id="vendor_status" disabled />
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button class="btn" id="refresh-me">Rafraîchir infos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Création produit -->
+    <section class="card" style="margin-bottom:20px">
+  <div class="hd">
+    <div style="font-weight:700">Créer un produit</div>
+    <div class="muted">Image : URL ou fichier local</div>
+  </div>
+  <div class="bd grid grid-3">
+    <div class="field"><label>Nom</label><input id="new_name" placeholder="Ex: Parfum Coco"/></div>
+    <div class="field"><label>Prix (€)</label><input id="new_price" type="number" step="0.01" placeholder="35.50"/></div>
+    <div class="field"><label>Stock</label><input id="new_stock" type="number" placeholder="10"/></div>
+
+    <div class="field"><label>Famille</label><input id="new_family" placeholder="Oriental / Fleurie ..."/></div>
+    <div class="field"><label>Concentration</label><input id="new_concentration" placeholder="Eau de Parfum, ..."/></div>
+
+    <!-- NOUVEAU : upload fichier -->
+    <div class="field"><label>Image (fichier)</label><input id="new_image_file" type="file" accept="image/*"/></div>
+
+    <div class="field" style="grid-column:1/-1"><label>Tags (virgules)</label><input id="new_tags" placeholder="vanille,coco,ambre"/></div>
+    <div class="field" style="grid-column:1/-1"><label>Description</label><textarea id="new_description" rows="3" placeholder="Courte description…"></textarea></div>
+    <div class="field"><label>&nbsp;</label><button class="btn btn-primary" id="btn_create">Créer</button></div>
+  </div>
+</section>
+
+
+    <!-- Liste produits -->
+    <section class="card">
+      <div class="hd">
+        <div style="font-weight:700">Mes produits</div>
+        <div class="row-actions">
+          <button class="btn" id="btn_reload">Recharger</button>
+        </div>
+      </div>
+      <div class="bd">
+        <table id="prod_table">
+          <thead>
+            <tr>
+              <th>Img</th>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Stock</th>
+              <th>Famille</th>
+              <th>Concentration</th>
+              <th>Tags</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="prod_tbody">
+            <tr><td colspan="8" class="muted">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale édition -->
+  <div id="edit_modal" style="position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:9999;">
+    <div class="card" style="width:min(680px,92vw);">
+      <div class="hd">
+        <div style="font-weight:700">Modifier le produit</div>
+        <button class="btn btn-ghost" id="edit_close">Fermer</button>
+      </div>
+      <div class="bd grid grid-2">
+        <input type="hidden" id="edit_id"/>
+        <div class="field"><label>Nom</label><input id="edit_name"/></div>
+        <div class="field"><label>Prix (€)</label><input id="edit_price" type="number" step="0.01"/></div>
+        <div class="field"><label>Stock</label><input id="edit_stock" type="number"/></div>
+        <div class="field"><label>Image URL</label><input id="edit_image_url"/></div>
+        <div class="field"><label>Famille</label><input id="edit_family"/></div>
+        <div class="field"><label>Concentration</label><input id="edit_concentration"/></div>
+        <div class="field" style="grid-column:1/-1"><label>Tags (virgules)</label><input id="edit_tags"/></div>
+        <div class="field" style="grid-column:1/-1"><label>Description</label><textarea id="edit_description" rows="3"></textarea></div>
+        <div class="field"><label>&nbsp;</label><button class="btn btn-primary" id="edit_save">Enregistrer</button></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // --- helpers locaux ---
+  function token(){ return localStorage.getItem('md_access_token') || '' }
+  function authHeaders(json=true){
+    const h = { Authorization: 'Bearer ' + token() }
+    if(json) h['Content-Type'] = 'application/json';
+    return h;
+  }
+
+  // --- guard + chargement infos vendeur ---
+  async function loadMe(){
+    try{
+      const r = await fetch(API.meVendor, { headers: authHeaders(false) });
+      if(!r.ok) return null;
+      const me = await r.json();
+      const line = document.getElementById('me_line');
+      const shop = document.getElementById('shop_name');
+      const st   = document.getElementById('vendor_status');
+      if(line) line.textContent = `@${me.username} — ${me.shop_name || 'Sans boutique'}`;
+      if(shop) shop.value = me.shop_name || '';
+      if(st)   st.value   = me.is_vendor ? 'Vendeur activé' : 'Non vendeur';
+      return me;
+    }catch(e){ return null; }
+  }
+
+  // --- CRUD Produits (vendor) ---
+  async function fetchMine(){
+    const r = await fetch(API.myProducts, { headers: authHeaders(false) });
+    if(!r.ok) throw new Error('fetch mine');
+    const j = await r.json();
+    return j.results || j || [];
+  }
+
+  function renderRows(rows){
+    const tb = document.getElementById('prod_tbody');
+    tb.innerHTML = '';
+    if(!rows.length){
+      tb.innerHTML = '<tr><td colspan="8" class="muted">Aucun produit.</td></tr>';
+      return;
+    }
+    rows.forEach(p=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><img class="thumb" src="${p.image_url || 'https://via.placeholder.com/64'}" alt=""></td>
+        <td>${escapeHtml(p.name||'')}</td>
+        <td>€${Number(p.price||0).toFixed(2)}</td>
+        <td>${p.stock ?? 0}</td>
+        <td>${escapeHtml(p.family||'')}</td>
+        <td>${escapeHtml(p.concentration||'')}</td>
+        <td>${(p.tags||[]).join(', ')}</td>
+        <td class="row-actions">
+          <button class="btn" data-ed="${p.id}">Éditer</button>
+          <button class="btn btn-danger" data-del="${p.id}">Suppr.</button>
+        </td>
+      `;
+      tb.appendChild(tr);
+    });
+
+    // bind edit/delete
+    document.querySelectorAll('[data-ed]').forEach(b => b.addEventListener('click', () => openEdit(Number(b.dataset.ed))));
+    document.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => delProd(Number(b.dataset.del))));
+  }
+
+  async function reload(){
+    try{
+      const rows = await fetchMine();
+      renderRows(rows);
+    }catch(e){
+      const tb = document.getElementById('prod_tbody');
+      tb.innerHTML = '<tr><td colspan="8" class="muted">Erreur de chargement.</td></tr>';
+    }
+  }
+
+  async function createProd(){
+    const payload = {
+      name:         document.getElementById('new_name').value.trim(),
+      price:        parseFloat(document.getElementById('new_price').value || '0'),
+      stock:        parseInt(document.getElementById('new_stock').value || '0', 10),
+      family:       document.getElementById('new_family').value.trim(),
+      concentration:document.getElementById('new_concentration').value.trim(),
+      image_url:    document.getElementById('new_image_url').value.trim(),
+      description:  document.getElementById('new_description').value.trim(),
+      tags:         (document.getElementById('new_tags').value || '').split(',').map(s=>s.trim()).filter(Boolean),
+    };
+    if(!payload.name){ showToast('Nom requis'); return }
+    const r = await fetch(API.create, { method:'POST', headers: authHeaders(true), body: JSON.stringify(payload) });
+    if(!r.ok){ const t = await r.text(); showToast('Création échouée'); console.warn(t); return }
+    showToast('Produit créé');
+    // clear champs
+    ['new_name','new_price','new_stock','new_family','new_concentration','new_image_url','new_description','new_tags'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+    reload();
+  }
+
+  async function openEdit(id){
+    try{
+      const r = await fetch(API.pDetail(id));
+      if(!r.ok) throw new Error('detail');
+      const p = await r.json();
+      document.getElementById('edit_id').value = p.id;
+      document.getElementById('edit_name').value = p.name || '';
+      document.getElementById('edit_price').value = p.price ?? '';
+      document.getElementById('edit_stock').value = p.stock ?? '';
+      document.getElementById('edit_image_url').value = p.image_url || '';
+      document.getElementById('edit_family').value = p.family || '';
+      document.getElementById('edit_concentration').value = p.concentration || '';
+      document.getElementById('edit_tags').value = (p.tags||[]).join(', ');
+      document.getElementById('edit_description').value = p.description || '';
+      document.getElementById('edit_modal').style.display = 'flex';
+    }catch(e){ showToast('Ouverture édition échouée'); }
+  }
+
+  async function saveEdit(){
+    const id = Number(document.getElementById('edit_id').value);
+    const payload = {
+      name: document.getElementById('edit_name').value.trim(),
+      price: parseFloat(document.getElementById('edit_price').value || '0'),
+      stock: parseInt(document.getElementById('edit_stock').value || '0',10),
+      image_url: document.getElementById('edit_image_url').value.trim(),
+      family: document.getElementById('edit_family').value.trim(),
+      concentration: document.getElementById('edit_concentration').value.trim(),
+      tags: (document.getElementById('edit_tags').value || '').split(',').map(s=>s.trim()).filter(Boolean),
+      description: document.getElementById('edit_description').value.trim(),
+    };
+    const r = await fetch(API.update(id), { method:'PATCH', headers: authHeaders(true), body: JSON.stringify(payload) });
+    if(!r.ok){ const t = await r.text(); showToast('Sauvegarde échouée'); console.warn(t); return }
+    document.getElementById('edit_modal').style.display='none';
+    showToast('Modifications enregistrées');
+    reload();
+  }
+
+  async function delProd(id){
+    if(!confirm('Supprimer ce produit ?')) return;
+    // Utiliser DELETE (backend attend DELETE pour product_delete)
+    const r = await fetch(API.del(id), { method:'DELETE', headers: authHeaders(false) });
+    if(!r.ok){ const t = await r.text(); showToast('Suppression échouée'); console.warn(t); return }
+    showToast('Produit supprimé');
+    reload();
+  }
+
+  // --- bootstrap page ---
+  document.addEventListener('DOMContentLoaded', async () => {
+    // exige un vendeur
+    const ok = await guardVendorPage();
+    if(!ok) return;
+
+    // actions UI
+    document.getElementById('btn_reload').addEventListener('click', reload);
+    document.getElementById('btn_create').addEventListener('click', createProd);
+    document.getElementById('refresh-me').addEventListener('click', loadMe);
+    document.getElementById('edit_close').addEventListener('click', ()=>{ document.getElementById('edit_modal').style.display='none' });
+    document.getElementById('edit_save').addEventListener('click', saveEdit);
+
+    await loadMe();
+    await reload();
+  });
+  </script>
+</body>
+</html>

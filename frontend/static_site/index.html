@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maison d'essence — Accueil</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#4F46E5", soft: "#EEF2FF" },
+          keyframes: {
+            fadeInUp: { "0%":{opacity:0,transform:"translateY(16px)"}, "100%":{opacity:1,transform:"translateY(0)"} },
+            float: { "0%":{transform:"translateY(0)"}, "50%":{transform:"translateY(-6px)"}, "100%":{transform:"translateY(0)"} },
+            marquee: { "0%":{transform:"translateX(0)"}, "100%":{transform:"translateX(-50%)"} },
+            shimmer: { "0%":{backgroundPosition:"-200px 0"}, "100%":{backgroundPosition:"200px 0"} },
+            spinSlow: { "0%":{transform:"rotate(0deg)"}, "100%":{transform:"rotate(360deg)"} }
+          },
+          animation: {
+            fadeInUp: "fadeInUp .7s ease-out both",
+            float: "float 4s ease-in-out infinite",
+            marquee: "marquee 20s linear infinite",
+            shimmer: "shimmer 1.2s linear infinite",
+            spinSlow: "spinSlow 18s linear infinite"
+          },
+          backgroundImage: {
+            shimmer: "linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 37%,#f3f4f6 63%)"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-xl font-semibold text-brand">Maison d'essence</div>
+      <nav class="flex items-center gap-4">
+        <a class="hover:text-brand transition" href="/products.html">Produits</a>
+        <a class="hover:text-brand transition" href="/about.html">À propos</a>
+        <!-- Dans <header><nav> ... -->
+        <a id="auth-link" href="/login.html">Se connecter</a>
+
+
+        <form id="product-search-form" class="hidden md:block ml-2">
+          <input id="product-search-input" type="search" placeholder="Recherche…"
+                 class="px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring focus:ring-brand/30">
+        </form>
+
+        <button id="open-cart" class="relative hover:scale-105 transition flex items-center gap-1">
+          🛒
+          <span id="cart-count" class="absolute -top-2 -right-2 text-xs bg-brand text-white rounded-full px-2">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-indigo-50 to-white">
+    <div class="container mx-auto px-6 py-20 md:py-28 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 animate-fadeInUp">
+        Parfums d'exception
+      </h1>
+      <p class="text-gray-600 text-lg md:text-xl mb-6 max-w-2xl mx-auto animate-fadeInUp" style="animation-delay:.08s">
+        Découvrez une collection raffinée, sélectionnée avec soin pour éveiller les sens.
+      </p>
+      <div class="space-x-3 animate-fadeInUp" style="animation-delay:.12s">
+        <a class="inline-block bg-brand text-white px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition shadow-sm hover:shadow-md"
+           href="/products.html">Voir la collection</a>
+        <a class="inline-block px-5 py-2.5 rounded-lg border hover:bg-gray-50 transition"
+           href="/about.html">En savoir plus</a>
+      </div>
+    </div>
+    <!-- bulles décor -->
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-6 -right-6 w-36 h-36 bg-indigo-200/50 rounded-full blur-2xl animate-float"></div>
+      <div class="absolute bottom-10 -left-10 w-40 h-40 bg-indigo-100 rounded-full blur-xl animate-float" style="animation-delay:1s"></div>
+    </div>
+  </section>
+
+  <!-- Marquee marques -->
+  <section aria-label="Nos marques" class="py-8 border-y">
+    <div class="overflow-hidden">
+      <div class="flex gap-10 whitespace-nowrap animate-marquee">
+        <span class="font-semibold text-gray-500">Dior</span>
+        <span class="font-semibold text-gray-500">Chanel</span>
+        <span class="font-semibold text-gray-500">YSL</span>
+        <span class="font-semibold text-gray-500">Zara</span>
+        <span class="font-semibold text-gray-500">MFK</span>
+        <span class="font-semibold text-gray-500">Tom Ford</span>
+        <span class="font-semibold text-gray-500">Jo Malone</span>
+        <!-- duplicate -->
+        <span class="font-semibold text-gray-500">Dior</span>
+        <span class="font-semibold text-gray-500">Chanel</span>
+        <span class="font-semibold text-gray-500">YSL</span>
+        <span class="font-semibold text-gray-500">Zara</span>
+        <span class="font-semibold text-gray-500">MFK</span>
+        <span class="font-semibold text-gray-500">Tom Ford</span>
+        <span class="font-semibold text-gray-500">Jo Malone</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section class="container mx-auto px-6 py-16" data-reveal>
+    <h2 class="text-2xl font-semibold mb-6 text-center">Collections</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="/products.html?tag=nouveautes" class="group rounded-2xl overflow-hidden border bg-white shadow-sm">
+        <div class="relative aspect-[3/2] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" alt="Nouveautés">
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold">Nouveautés</h3>
+          <p class="text-sm text-gray-600">Les dernières créations sélectionnées.</p>
+        </div>
+      </a>
+      <a href="/products.html?tag=best" class="group rounded-2xl overflow-hidden border bg-white shadow-sm">
+        <div class="relative aspect-[3/2] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" alt="Best-sellers">
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold">Best-sellers</h3>
+          <p class="text-sm text-gray-600">Les favoris de nos clients.</p>
+        </div>
+      </a>
+      <a href="/products.html?tag=decouvertes" class="group rounded-2xl overflow-hidden border bg-white shadow-sm">
+        <div class="relative aspect-[3/2] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200" class="w-full h-full object-cover group-hover:scale-[1.04] transition duration-500" alt="Découvertes">
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold">Découvertes</h3>
+          <p class="text-sm text-gray-600">Des pépites à (re)découvrir.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Nouveautés -->
+  <main class="container mx-auto px-6 py-12" data-reveal>
+    <h2 class="text-2xl font-semibold mb-6 text-center">Nouveautés</h2>
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <template id="skeleton-card">
+        <div class="rounded-2xl border overflow-hidden bg-white shadow-sm">
+          <div class="h-48 bg-shimmer bg-[length:400px_100%] animate-shimmer"></div>
+          <div class="p-4 space-y-2">
+            <div class="h-4 w-2/3 bg-shimmer bg-[length:400px_100%] animate-shimmer rounded"></div>
+            <div class="h-4 w-1/3 bg-shimmer bg-[length:400px_100%] animate-shimmer rounded"></div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </main>
+
+  <!-- Best-sellers : carrousel -->
+  <section class="bg-soft py-16" data-reveal>
+    <div class="container mx-auto px-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold">Best-sellers</h3>
+        <div class="flex gap-2">
+          <button id="bs-prev" class="w-9 h-9 rounded-full border hover:bg-white">‹</button>
+          <button id="bs-next" class="w-9 h-9 rounded-full border hover:bg-white">›</button>
+        </div>
+      </div>
+      <div class="relative">
+        <div id="bs-track" class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2">
+          <!-- cartes injectées -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Livraison mondiale -->
+  <section class="container mx-auto px-6 py-16" data-reveal>
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h3 class="text-2xl font-semibold mb-3">Livraison partout dans le monde</h3>
+        <p class="text-gray-600 mb-4">
+          Nous expédions vers plus de 150 pays avec suivi et assurance. Sélectionnez votre adresse
+          et découvrez des frais calculés automatiquement au checkout.
+        </p>
+        <ul class="space-y-2 text-gray-700">
+          <li>🌍 Suivi international en temps réel</li>
+          <li>🔒 Emballage sécurisé & scellé</li>
+          <li>⚡ Traitement en 24-48h</li>
+        </ul>
+      </div>
+
+      <div class="relative aspect-square max-w-sm mx-auto">
+        <!-- Globe SVG animé -->
+        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#c7d2fe"/>
+              <stop offset="100%" stop-color="#4f46e5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="80" fill="url(#g1)" opacity="0.25"/>
+          <g class="origin-center animate-spinSlow">
+            <ellipse cx="100" cy="100" rx="75" ry="30" fill="none" stroke="#93c5fd" stroke-width="1"/>
+            <ellipse cx="100" cy="100" rx="75" ry="50" fill="none" stroke="#93c5fd" stroke-width="1"/>
+            <ellipse cx="100" cy="100" rx="75" ry="70" fill="none" stroke="#93c5fd" stroke-width="1"/>
+            <circle cx="100" cy="100" r="75" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+          </g>
+          <g class="animate-float">
+            <circle cx="60" cy="80" r="3" fill="#4f46e5"/>
+            <circle cx="140" cy="120" r="3" fill="#4f46e5"/>
+            <circle cx="110" cy="60" r="3" fill="#4f46e5"/>
+          </g>
+        </svg>
+        <div class="absolute -bottom-3 inset-x-0 text-center text-sm text-gray-500">Expédition mondiale • Suivi • Assurance</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section class="bg-white py-16" data-reveal>
+    <div class="container mx-auto px-6">
+      <h3 class="text-xl font-semibold mb-6 text-center">Ils nous recommandent</h3>
+      <div id="t-slider" class="relative max-w-3xl mx-auto overflow-hidden">
+        <div id="t-track" class="flex w-full">
+          <!-- slides injectées -->
+        </div>
+        <div class="flex gap-2 justify-center mt-4">
+          <button class="t-dot w-2.5 h-2.5 rounded-full bg-gray-300"></button>
+          <button class="t-dot w-2.5 h-2.5 rounded-full bg-gray-300"></button>
+          <button class="t-dot w-2.5 h-2.5 rounded-full bg-gray-300"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- FAQ -->
+  <section class="bg-soft py-16" data-reveal>
+    <div class="container mx-auto px-6 max-w-3xl">
+      <h3 class="text-xl font-semibold mb-6 text-center">FAQ</h3>
+      <details class="bg-white border rounded-xl p-4 mb-3">
+        <summary class="cursor-pointer font-medium">Quels sont les délais de livraison ?</summary>
+        <p class="text-gray-600 mt-2">24-48h préparation, puis 3-7 jours ouvrés selon votre pays et transporteur.</p>
+      </details>
+      <details class="bg-white border rounded-xl p-4 mb-3">
+        <summary class="cursor-pointer font-medium">Puis-je retourner un produit ?</summary>
+        <p class="text-gray-600 mt-2">Retour sous 14 jours si le produit est scellé et non ouvert.</p>
+      </details>
+      <details class="bg-white border rounded-xl p-4">
+        <summary class="cursor-pointer font-medium">Comment suivre mon colis ?</summary>
+        <p class="text-gray-600 mt-2">Un lien de suivi est envoyé par e-mail dès l’expédition.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-white py-14" data-reveal>
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-xl font-semibold mb-2">Recevez nos nouveautés</h3>
+      <p class="text-gray-600 mb-4">Promos, lancements et conseils parfumés.</p>
+      <form class="max-w-md mx-auto flex gap-2">
+        <input type="email" placeholder="Votre e-mail"
+               class="flex-1 px-4 py-2 rounded-lg border focus:outline-none focus:ring focus:ring-brand/30">
+        <button class="px-4 py-2 rounded-lg bg-brand text-white hover:bg-indigo-700 transition">S’abonner</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Drawer Panier -->
+  <aside id="cart-drawer" class="fixed top-0 right-0 w-80 max-w-full bg-white h-full shadow-2xl translate-x-full transition-transform duration-500 ease-in-out"
+         aria-hidden="true">
+    <div class="flex items-center justify-between p-4 border-b">
+      <strong>Votre panier</strong>
+      <button id="close-drawer" class="text-sm text-gray-500 hover:text-brand">Fermer</button>
+    </div>
+    <div class="p-4 overflow-y-auto" id="drawer-items"></div>
+    <div class="border-t p-4 space-y-3">
+      <div class="text-lg">Total: <span id="drawer-total" class="font-semibold">€0.00</span></div>
+      <a class="block text-center bg-brand text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+         href="/checkout.html">Passer au paiement</a>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t mt-10 text-gray-500">
+    © Maison d'essence — 2025
+  </footer>
+
+  <!-- JS global -->
+  <script src="/static/app.js"></script>
+
+  <!-- Page JS -->
+  <script>
+  (function(){
+    const grid = document.getElementById('products-grid');
+    const bsTrack = document.getElementById('bs-track');
+    const fmt = n => "€" + Number(n||0).toFixed(2);
+
+    // Skeletons
+    const skel = document.getElementById('skeleton-card').content;
+    for(let i=0;i<6;i++) grid.appendChild(skel.cloneNode(true));
+
+    // Normalise URL d'image (support /media/…)
+    function normalizeImg(p){
+      const cand = p.image_url || p.image || p.cover || p.thumbnail || p.photo || p.picture;
+      if(!cand) return "https://via.placeholder.com/600x400?text=Parfum";
+      if(/^https?:\/\//i.test(cand)) return cand;
+      if(cand.startsWith("//")) return window.location.protocol + cand;
+      if(cand.startsWith("/")) return window.location.origin + cand;
+      return cand;
+    }
+
+    async function fetchProducts(){
+      try{
+        const r = await fetch('/api/products/');
+        if(!r.ok) throw new Error('API produits');
+        return await r.json();
+      }catch(e){
+        console.error(e);
+        return [];
+      }
+    }
+
+    function productCard(p){
+      const img = normalizeImg(p);
+      return `
+        <article class="group rounded-2xl overflow-hidden bg-white border hover:shadow-md transition">
+          <a href="/product.html?id=${p.id}">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="${img}" alt="${p.name||''}"
+                   class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+                   onerror="this.src='https://via.placeholder.com/600x400?text=Parfum'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            </div>
+          </a>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <h4 class="font-semibold line-clamp-1">${p.name||'Parfum'}</h4>
+              <div class="font-extrabold text-brand">${fmt(p.price)}</div>
+            </div>
+            <button data-add='${p.id}' class="mt-3 w-full border rounded-lg py-2 hover:bg-gray-50 active:scale-[.99] transition">
+              Ajouter au panier
+            </button>
+          </div>
+        </article>`;
+    }
+
+    function productCardMini(p){
+      const img = normalizeImg(p);
+      return `
+        <div class="min-w-[220px] snap-start rounded-2xl bg-white border shadow-sm overflow-hidden">
+          <a href="/product.html?id=${p.id}">
+            <img src="${img}" alt="${p.name||''}" class="w-full h-40 object-cover"
+                 onerror="this.src='https://via.placeholder.com/400x400?text=Parfum'">
+          </a>
+          <div class="p-3">
+            <div class="font-semibold line-clamp-1">${p.name||'Parfum'}</div>
+            <div class="text-sm text-gray-500 mb-2">${fmt(p.price)}</div>
+            <button data-add='${p.id}' class="w-full border rounded-lg py-1.5 hover:bg-gray-50">Ajouter</button>
+          </div>
+        </div>`;
+    }
+
+    function wireAddToCart(container){
+      container.addEventListener('click', (e)=>{
+        const btn = e.target.closest('button[data-add]');
+        if(!btn) return;
+        const id = Number(btn.getAttribute('data-add'));
+        if(window.addToCart){ window.addToCart(id, 1); }
+        else {
+          fetchProducts().then(ps=>{
+            const p = ps.find(x=> Number(x.id)===id);
+            if(!p) return;
+            const KEY="md_cart";
+            let cart = [];
+            try{ cart = JSON.parse(localStorage.getItem(KEY))||[]; }catch{}
+            const ex = cart.find(x=> x.id===id);
+            if(ex) ex.qty = (Number(ex.qty)||1)+1;
+            else cart.push({id:p.id, name:p.name, price:p.price, image:normalizeImg(p), qty:1});
+            localStorage.setItem(KEY, JSON.stringify(cart));
+            btn.classList.add('ring-2','ring-brand/40');
+            setTimeout(()=>btn.classList.remove('ring-2','ring-brand/40'),400);
+            if(window.updateCartCount) window.updateCartCount();
+            const badge = document.getElementById('cart-count');
+            badge.classList.add('animate-ping'); setTimeout(()=>badge.classList.remove('animate-ping'),300);
+          });
+        }
+      });
+    }
+
+    // Init data
+    fetchProducts().then(products=>{
+      // Grille
+      if(products.length){
+        grid.innerHTML = products.slice(0,6).map(productCard).join('');
+      } else {
+        grid.innerHTML = '<p class="text-center text-gray-500 col-span-full">Aucun produit.</p>';
+      }
+      wireAddToCart(grid);
+
+      // Best-sellers
+      const best = (products || []).slice(0,10);
+      document.getElementById('bs-track').innerHTML = best.map(productCardMini).join('');
+      wireAddToCart(bsTrack);
+
+      // Auto défilement
+      let auto = setInterval(()=> bsTrack.scrollBy({left:240, behavior:'smooth'}), 2500);
+      document.getElementById('bs-prev').onclick = ()=> bsTrack.scrollBy({left:-240, behavior:'smooth'});
+      document.getElementById('bs-next').onclick = ()=> bsTrack.scrollBy({left: 240, behavior:'smooth'});
+      bsTrack.addEventListener('mouseenter', ()=> clearInterval(auto));
+      bsTrack.addEventListener('mouseleave', ()=> auto = setInterval(()=> bsTrack.scrollBy({left:240, behavior:'smooth'}), 2500));
+    });
+
+    // Témoignages (slider corrigé)
+    const testimonials = [
+      { q: "Des senteurs superbes, livraison rapide. Je recommande !", a: "Bintou D." },
+      { q: "Packaging premium et service client au top.", a: "Fadel K." },
+      { q: "Excellent rapport qualité/prix, je reviendrai.", a: "Marie A." }
+    ];
+    const tTrack = document.getElementById('t-track');
+    tTrack.innerHTML = testimonials.map(t=>`
+      <div class="min-w-full flex-shrink-0 p-6">
+        <figure class="text-center max-w-2xl mx-auto">
+          <blockquote class="text-lg md:text-xl text-gray-700">“${t.q}”</blockquote>
+          <figcaption class="mt-3 text-sm text-gray-500">— ${t.a}</figcaption>
+        </figure>
+      </div>
+    `).join('');
+    const dots = Array.from(document.querySelectorAll('.t-dot'));
+    let ti=0;
+    function showT(i){
+      tTrack.style.transform = `translateX(-${i*100}%)`;
+      tTrack.style.transition = 'transform .5s ease';
+      dots.forEach((d,k)=> d.className = 't-dot w-2.5 h-2.5 rounded-full ' + (k===i?'bg-brand':'bg-gray-300'));
+    }
+    showT(0);
+    let tAuto = setInterval(()=>{ ti=(ti+1)%testimonials.length; showT(ti); }, 3200);
+    dots.forEach((d,k)=> d.onclick=()=>{ ti=k; showT(ti); clearInterval(tAuto); });
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){ ent.target.classList.add('animate-fadeInUp'); io.unobserve(ent.target); }
+      });
+    },{threshold:.12});
+    revealEls.forEach(el=> io.observe(el));
+  })();
+  </script>
+</body>
+</html>

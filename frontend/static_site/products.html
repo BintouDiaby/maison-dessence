@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Produits — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#4F46E5", soft: "#EEF2FF" },
+          keyframes: {
+            fadeInUp: { "0%": { opacity: 0, transform: "translateY(20px)" }, "100%": { opacity: 1, transform: "translateY(0)" } },
+            float: { "0%":{transform:"translateY(0)"}, "50%":{transform:"translateY(-8px)"}, "100%":{transform:"translateY(0)"} },
+            sway: { "0%":{transform:"translateX(0) rotate(0deg)"}, "50%":{transform:"translateX(6px) rotate(2deg)"}, "100%":{transform:"translateX(0) rotate(0deg)"} },
+            petal: { "0%":{transform:"translate(0,0) rotate(0)", opacity:1}, "100%":{transform:"translate(var(--dx,40px), var(--dy,120px)) rotate(240deg)", opacity:0} },
+            butterfly: { "0%":{transform:"translate(0,0) scale(1)"}, "50%":{transform:"translate(6px,-10px) scale(1.03)"}, "100%":{transform:"translate(0,0) scale(1)"} }
+          },
+          animation: {
+            fadeInUp: "fadeInUp .8s ease-out both",
+            float: "float 4.5s ease-in-out infinite",
+            sway: "sway 5s ease-in-out infinite",
+            petal: "petal 1.8s ease-out forwards",
+            butterfly: "butterfly 2.4s ease-in-out infinite"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Petites décorations florales en coins */
+    .floral-corner {
+      position: absolute; pointer-events: none; opacity: .25; filter: blur(.2px);
+    }
+    .petal {
+      position: absolute; width: 10px; height: 14px; border-radius: 60% 60% 60% 60%;
+      background: linear-gradient(180deg, #fce7f3, #f9a8d4);
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+      will-change: transform, opacity;
+      animation: petal 1.8s ease-out forwards;
+    }
+    .butterfly {
+      position: absolute; width: 20px; height: 16px; pointer-events: none;
+    }
+    .butterfly:before, .butterfly:after{
+      content:""; position:absolute; width: 12px; height: 16px; background:#f472b6; opacity:.9;
+      border-radius: 12px 12px 0 12px; transform-origin: right center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .butterfly:after{
+      left:8px; transform-origin: left center; border-radius: 12px 12px 12px 0; background:#fb7185;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800 relative overflow-x-hidden">
+  <!-- Papillons décor (générés dynamiquement) -->
+  <div id="butterflies"></div>
+
+  <!-- Fleurs en coin -->
+  <svg class="floral-corner top-0 left-0 w-40 md:w-56 animate-sway" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="#c4b5fd" stroke-width="2">
+      <path d="M10,180 C40,140 60,120 100,110" />
+      <path d="M30,190 C70,150 90,140 130,130" />
+    </g>
+    <g fill="#fbcfe8" opacity=".9">
+      <circle cx="96" cy="108" r="6"/><circle cx="116" cy="122" r="5"/>
+      <circle cx="78" cy="118" r="4"/><circle cx="140" cy="132" r="6"/>
+    </g>
+  </svg>
+  <svg class="floral-corner bottom-0 right-0 w-44 md:w-64 animate-sway" style="animation-delay:1s" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="#a5b4fc" stroke-width="2">
+      <path d="M190,20 C150,60 130,80 100,90" />
+      <path d="M170,10 C130,50 100,70 70,80" />
+    </g>
+    <g fill="#bfdbfe" opacity=".9">
+      <circle cx="104" cy="92" r="6"/><circle cx="84" cy="82" r="5"/>
+      <circle cx="122" cy="78" r="4"/><circle cx="60" cy="70" r="6"/>
+    </g>
+  </svg>
+
+  <!-- Navbar -->
+  <header class="container header sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm transition-all">
+    <div class="brand font-semibold text-lg">Maison d'essence</div>
+    <nav class="nav flex items-center gap-4">
+      <a class="transition-colors duration-300 hover:text-indigo-600" href="/">Accueil</a>
+      <a class="transition-colors duration-300 hover:text-indigo-600" href="/about.html">À propos</a>
+      <a class="transition-colors duration-300 hover:text-indigo-600" href="/login.html">Se connecter</a>
+
+      <form id="product-search-form" class="inline-block ml-3 hidden md:block">
+        <input id="product-search-input" type="search" placeholder="Recherche…" aria-label="Recherche"
+          class="px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </form>
+
+      <button id="open-cart"
+        class="cart-btn transition-transform hover:scale-105 hover:text-indigo-600 flex items-center gap-1">
+        Panier <span id="cart-count" class="cart-count bg-indigo-600 text-white rounded-full px-2 py-0.5">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Bandeau haut (filtre/tri) -->
+  
+    </div>
+
+    <!-- Barre utilitaires -->
+    
+
+  <!-- Section Produits -->
+  <main class="container section py-10">
+    <!-- Skeletons pendant chargement (si ton app.js n’en a pas) -->
+    <div id="skeletons" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0">
+      <template id="skeleton-card">
+        <div class="rounded-2xl border overflow-hidden bg-white shadow-sm animate-fadeInUp">
+          <div class="h-44 bg-[linear-gradient(90deg,#f3f4f6_25%,#e5e7eb_37%,#f3f4f6_63%)] bg-[length:400px_100%] animate-[shimmer_1.2s_linear_infinite]"></div>
+          <div class="p-4 space-y-2">
+            <div class="h-4 w-2/3 bg-gray-100 rounded"></div>
+            <div class="h-4 w-1/3 bg-gray-100 rounded"></div>
+            <div class="h-8 w-full bg-gray-100 rounded mt-2"></div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <div id="products-grid"
+      class="grid reveal gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0">
+      <!-- Rempli dynamiquement par app.js -->
+    </div>
+
+    <!-- Pagination simple (facultatif si app.js gère la pagination) -->
+    <div id="pager" class="flex items-center justify-center gap-3 mt-8">
+      <button id="prev-page" class="px-4 py-2 rounded-lg border hover:bg-gray-50">Précédent</button>
+      <button id="next-page" class="px-4 py-2 rounded-lg border hover:bg-gray-50">Suivant</button>
+    </div>
+  </main>
+
+  <!-- Drawer Panier -->
+  <aside id="cart-drawer"
+    class="drawer fixed top-0 right-0 w-80 max-w-full bg-white h-full shadow-2xl transform translate-x-full transition-transform duration-500 ease-in-out"
+    aria-hidden="true">
+    <div class="head flex items-center justify-between p-4 border-b">
+      <strong class="text-lg font-medium">Votre panier</strong>
+      <button id="close-drawer"
+        class="drawer-close text-sm text-gray-500 hover:text-indigo-600 transition-colors">Fermer</button>
+    </div>
+    <div class="items p-4 overflow-y-auto" id="drawer-items"></div>
+    <div class="checkout-row border-t p-4 space-y-3">
+      <div class="total text-lg">Total: <span id="drawer-total" class="font-semibold">€0.00</span></div>
+      <div>
+        <a class="btn btn-primary w-full text-center block hover:scale-[1.02] transition-transform"
+          href="/checkout.html">Passer au paiement</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="container footer text-center py-6 border-t mt-10 text-gray-500">
+    © Maison d'essence — 2025
+  </footer>
+
+  <!-- Script principal -->
+  <script src="/static/app.js"></script>
+
+  <!-- Ornement & UX page -->
+  <script>
+    (function () {
+      // -------- Animations "reveal on scroll" ----------
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0', 'animate-fadeInUp');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      reveals.forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-700');
+        obs.observe(el);
+      });
+
+      // --------- Skeletons auto (si le grid n'est pas vite peuplé) ----------
+      const skelWrap = document.getElementById('skeletons');
+      const skelTpl = document.getElementById('skeleton-card');
+      for (let i = 0; i < 8; i++) skelWrap.appendChild(skelTpl.content.cloneNode(true));
+      // masquage quand app.js remplit les produits (petit filet de sécurité)
+      const grid = document.getElementById('products-grid');
+      const hideSkeletons = () => skelWrap.style.display = 'none';
+      const mo = new MutationObserver(hideSkeletons);
+      mo.observe(grid, { childList: true });
+      setTimeout(hideSkeletons, 3000); // au cas où
+
+      // --------- Tri côté front (si app.js ne le gère pas) ----------
+      const sortSelect = document.getElementById('sort-select');
+      sortSelect.addEventListener('change', () => {
+        // Déclenche une recherche via l'input (si ton app.js écoute)
+        const q = document.getElementById('product-search-input');
+        if (q) q.dispatchEvent(new Event('input', { bubbles: true }));
+        // Sinon: on force un simple rechargement (ton app.js relira l’API)
+        else location.reload();
+      });
+
+      // --------- Effet "pétales" quand on ajoute au panier ----------
+      function spawnPetals(x, y, parent = document.body) {
+        for (let i = 0; i < 12; i++) {
+          const p = document.createElement('div');
+          p.className = 'petal';
+          const dx = (Math.random() * 160 - 80) + 'px';
+          const dy = (80 + Math.random() * 140) + 'px';
+          p.style.setProperty('--dx', dx);
+          p.style.setProperty('--dy', dy);
+          p.style.left = (x - 5) + 'px';
+          p.style.top = (y - 10) + 'px';
+          p.style.transform = `rotate(${Math.random()*60-30}deg)`;
+          parent.appendChild(p);
+          setTimeout(() => p.remove(), 2000);
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const label = (btn.textContent || '').toLowerCase();
+        if (label.includes('ajouter')) {
+          const r = btn.getBoundingClientRect();
+          spawnPetals(r.left + r.width / 2, r.top + window.scrollY);
+        }
+      });
+
+      // --------- Papillons décoratifs (bougent doucement) ----------
+      const butterflies = document.getElementById('butterflies');
+      function addButterfly() {
+        const b = document.createElement('div');
+        b.className = 'butterfly animate-butterfly';
+        const top = 80 + Math.random() * 300;
+        const left = Math.random() * (window.innerWidth - 60) + 20;
+        b.style.top = top + 'px';
+        b.style.left = left + 'px';
+        b.style.opacity = .75;
+        butterflies.appendChild(b);
+        setTimeout(() => b.remove(), 14000);
+      }
+      // quelques papillons initiaux + ajout périodique
+      for (let i = 0; i < 3; i++) setTimeout(addButterfly, i * 1200);
+      setInterval(addButterfly, 7000);
+
+      // --------- Pagination (si tu veux hooker ton app.js) ----------
+      const prevBtn = document.getElementById('prev-page');
+      const nextBtn = document.getElementById('next-page');
+      prevBtn.addEventListener('click', () => {
+        // Laisse ton app.js intercepter/implémenter (sinon, fallback : location avec page--)
+        const url = new URL(location.href);
+        const page = Math.max(1, Number(url.searchParams.get('page')||1) - 1);
+        url.searchParams.set('page', page);
+        location.href = url.toString();
+      });
+      nextBtn.addEventListener('click', () => {
+        const url = new URL(location.href);
+        const page = Math.max(1, Number(url.searchParams.get('page')||1) + 1);
+        url.searchParams.set('page', page);
+        location.href = url.toString();
+      });
+    })();
+  </script>
+</body>
+</html>

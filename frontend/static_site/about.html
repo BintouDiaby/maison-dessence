@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>À propos — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {} } }
+  </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+  <header class="sticky top-0 bg-white/80 backdrop-blur-sm shadow-sm z-40">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <div class="brand text-xl font-semibold">Maison d'essence</div>
+      <nav class="flex items-center gap-6 text-gray-700">
+        <a href="/" class="hover:text-indigo-600">Accueil</a>
+        <a href="/products.html" class="hover:text-indigo-600">Produits</a>
+        <a href="/login.html" class="hover:text-indigo-600">Se connecter</a>
+        <button id="open-cart" class="ml-2 bg-indigo-600 text-white px-3 py-1 rounded-md">Panier <span id="cart-count" class="ml-2 bg-white text-indigo-600 rounded-full px-2">0</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-12">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl font-extrabold mb-4">Une maison de parfums, faite avec soin</h1>
+        <p class="text-gray-600 mb-6">Depuis notre création, nous choisissons des ingrédients rares et travaillons avec des artisans parfumeurs pour créer des fragrances uniques. Notre approche : qualité, transparence et respect des matières.</p>
+        <p class="mb-6"><a href="/products.html" class="inline-block bg-indigo-600 text-white px-5 py-3 rounded-lg hover:bg-indigo-700">Découvrir nos parfums</a></p>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-lg flex items-center justify-center bg-white">
+        <!-- Photo de parfum : remplacez le src par l'URL de votre produit ou une image locale dans /static/ -->
+        <div class="relative w-full h-72">
+          <img id="about-perfume-img" src="https://i.pinimg.com/736x/97/ee/75/97ee7569013bbb03e0364c2ac19253cd.jpg" alt="Photo parfum" class="w-full h-full object-cover" />
+          <div class="absolute left-4 bottom-4 bg-white/90 px-3 py-2 rounded-md shadow-md">
+            <div class="text-sm font-semibold">Sol de Janeiro</div>
+            <a href="/products.html" class="text-xs text-indigo-600">Voir le produit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valeurs / features -->
+    <section class="mt-12 grid sm:grid-cols-3 gap-6">
+      <div class="p-6 border rounded-lg text-center">
+        <h3 class="font-semibold mb-2">Artisanat</h3>
+        <p class="text-sm text-gray-600">Formules pensées et assemblées par des parfumeurs indépendants.</p>
+      </div>
+      <div class="p-6 border rounded-lg text-center">
+        <h3 class="font-semibold mb-2">Ingrédients</h3>
+        <p class="text-sm text-gray-600">Matières premières sélectionnées pour leur qualité et leur provenance.</p>
+      </div>
+      <div class="p-6 border rounded-lg text-center">
+        <h3 class="font-semibold mb-2">Durabilité</h3>
+        <p class="text-sm text-gray-600">Emballages sobres et réponses durables pour limiter notre empreinte.</p>
+      </div>
+    </section>
+
+    <!-- Team / contact -->
+    <section class="mt-12 bg-gray-50 p-6 rounded-lg">
+      <div class="md:flex md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-bold">Notre équipe</h2>
+          <p class="text-gray-600">Nous sommes une petite équipe dédiée à la création et au partage de parfums d'exception.</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="/contact.html" class="text-indigo-600 font-medium">Contactez-nous</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 text-gray-500 border-t">© Maison d'essence — 2025</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>

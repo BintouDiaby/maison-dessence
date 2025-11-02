@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Demo Recommender</title>
+  <style>
+    body{font-family:Segoe UI,Arial;margin:24px}
+    input,button{font-size:1rem;padding:6px}
+    .card{border:1px solid #ddd;padding:12px;margin:8px 0}
+  </style>
+</head>
+<body>
+  <h1>Demo Recommender (TF-IDF)</h1>
+  <p>Product id: <input id="pid" value="1" size="3" /> <button id="go">Get similar</button></p>
+  <div id="result"></div>
+
+  <script>
+    async function fetchSimilar(pid){
+      const res = await fetch(`/api/recommender/products/${pid}/?k=5`);
+      if(!res.ok){
+        document.getElementById('result').innerText = `Erreur: ${res.status}`;
+        return;
+      }
+      const data = await res.json();
+      const list = data.similar || [];
+      const container = document.getElementById('result');
+      if(list.length===0){ container.innerHTML = '<p>Aucune recommandation trouvée.</p>'; return }
+      container.innerHTML = '';
+      list.forEach(p=>{
+        const el = document.createElement('div'); el.className='card';
+        el.innerHTML = `<strong>${p.name}</strong> <div>${p.description || ''}</div><div><em>tags: ${ (p.tags||[]).join(', ') }</em></div>`;
+        container.appendChild(el);
+      })
+    }
+    document.getElementById('go').addEventListener('click', ()=>fetchSimilar(document.getElementById('pid').value));
+    // auto-run
+    fetchSimilar(document.getElementById('pid').value);
+  </script>
+</body>
+</html>

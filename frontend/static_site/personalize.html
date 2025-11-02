@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personnalise ton parfum — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script>window.BACKEND_URL = 'http://127.0.0.1:8000';</script>
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">Maison d'essence</div>
+    <nav class="nav">
+      <a href="/">Accueil</a>
+      <a href="/products.html">Produits</a>
+      <a href="/personalize.html">Personnaliser</a>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <h2>Discussion avec notre assistant parfum</h2>
+    <p class="small muted">Connecte-toi pour démarrer une session et obtenir une formule personnalisée.</p>
+
+    <div id="personalize-root">
+      <div id="chat-box" style="max-width:900px;margin:18px 0;">
+        <div id="messages" style="background:#fff;border-radius:12px;padding:12px;min-height:220px;max-height:560px;overflow:auto;box-shadow:var(--card-shadow);"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="personalize-input" type="text" placeholder="Décris tes goûts, ex: j'aime la vanille et la rose, quelque chose de doux" style="flex:1" />
+            <button id="personalize-send" class="btn btn-primary">Envoyer</button>
+            <button id="personalize-finalize" class="btn btn-secondary">Finaliser</button>
+          </div>
+          <div id="personalize-example" style="background:#fff7ed;border-left:4px solid #ffd89b;padding:10px;border-radius:8px;color:#333;font-size:14px;">
+            <div style="margin-bottom:6px"><strong>Exemple (copier/coller pour obtenir une recette) :</strong></div>
+            <div style="font-family:monospace;background:#fff;padding:8px;border-radius:6px;color:#111;">Compose‑moi une formule avec <em>vanille</em> en tête, <em>jasmin</em> au cœur, <em>ambre</em> en base; intensité moyenne; budget 50€.</div>
+            <div style="margin-top:8px"><button id="personalize-example-use" class="btn">Utiliser cet exemple</button> <button id="personalize-example-send" class="btn btn-primary">Utiliser et envoyer</button></div>
+          </div>
+        </div>
+        <div id="suggested-recipe" style="margin-top:12px;display:none;background:#fff;padding:12px;border-radius:10px;box-shadow:var(--card-shadow);"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container footer">© Maison d'essence</footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

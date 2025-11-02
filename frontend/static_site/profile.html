@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon compte — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: "#4F46E5",
+            soft: "#EEF2FF",
+          },
+          animation: {
+            fadeIn: "fadeIn 0.8s ease-out both",
+            slideIn: "slideIn 0.4s ease-out both"
+          },
+          keyframes: {
+            fadeIn: { "0%": { opacity: 0, transform: "translateY(10px)" }, "100%": { opacity: 1, transform: "translateY(0)" } },
+            slideIn: { "0%": { opacity: 0, transform: "translateY(-10px)" }, "100%": { opacity: 1, transform: "translateY(0)" } }
+          }
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-gradient-to-b from-white to-soft min-h-screen flex flex-col text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="text-2xl font-semibold text-brand">Maison d'essence</div>
+      <nav class="flex items-center gap-5 text-gray-700 font-medium">
+        <a href="/products.html" class="hover:text-brand transition">Produits</a>
+        <a href="/about.html" class="hover:text-brand transition">À propos</a>
+        <a href="/login.html" class="hover:text-brand transition">Se connecter</a>
+        <button id="open-cart" class="relative hover:scale-105 transition">
+          🛒
+          <span id="cart-count" class="absolute -top-2 -right-2 text-xs bg-brand text-white rounded-full px-2">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1 container mx-auto px-6 py-10 animate-fadeIn">
+    <div id="profile-root">
+      <div id="profile-loading" class="text-center py-12 text-gray-500">Chargement...</div>
+
+      <section id="dashboard" class="hidden">
+        <div class="flex flex-col md:flex-row gap-8">
+
+          <!-- Sidebar -->
+          <aside class="md:w-1/3 bg-white rounded-2xl shadow-md p-6 text-center">
+            <div id="avatar" class="mx-auto w-24 h-24 rounded-full bg-soft flex items-center justify-center text-3xl font-semibold text-brand mb-4">👤</div>
+            <h2 id="user-name" class="text-xl font-semibold"></h2>
+            <p id="user-email" class="text-gray-500 text-sm"></p>
+
+            <button id="logout-btn" class="mt-4 text-sm text-brand hover:underline">Se déconnecter</button>
+
+            <hr class="my-6" />
+
+            <div class="text-left text-sm text-gray-600">
+              <p class="mb-2 font-medium">💎 Statistiques</p>
+              <p>Produits consultés : <span id="stat-viewed" class="font-semibold">0</span></p>
+              <p>Achats récents : <span id="stat-orders" class="font-semibold">0</span></p>
+            </div>
+          </aside>
+
+          <!-- Contenu principal -->
+          <div class="flex-1 space-y-8">
+
+            <!-- Profil -->
+            <div class="bg-white rounded-2xl shadow-md p-6">
+              <h3 class="text-lg font-semibold mb-4 text-brand">Informations du profil</h3>
+              <form id="profile-form" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium mb-1">Prénom</label>
+                  <input id="first_name" type="text" class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1">Nom</label>
+                  <input id="last_name" type="text" class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1">Préférences (JSON)</label>
+                  <textarea id="preferences" rows="4" class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand"></textarea>
+                </div>
+
+                <div class="flex gap-4">
+                  <button id="save-profile" class="bg-brand text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">Enregistrer</button>
+                  <button id="show-password" class="bg-gray-100 px-5 py-2 rounded-lg hover:bg-gray-200 transition">Modifier le mot de passe</button>
+                </div>
+
+                <p id="profile-feedback" class="text-sm mt-2 text-red-600"></p>
+              </form>
+            </div>
+
+            <!-- Mot de passe (caché par défaut) -->
+            <div id="password-section" class="bg-white rounded-2xl shadow-md p-6 hidden animate-slideIn">
+              <h3 class="text-lg font-semibold mb-4 text-brand">Changer le mot de passe</h3>
+              <div class="space-y-3">
+                <input id="new-password" type="password" placeholder="Nouveau mot de passe"
+                       class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+                <input id="new-password-confirm" type="password" placeholder="Confirmer"
+                       class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+
+                <div class="flex gap-3">
+                  <button id="apply-password" class="bg-brand text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">Appliquer</button>
+                  <button id="cancel-password" class="bg-gray-100 px-5 py-2 rounded-lg hover:bg-gray-200 transition">Annuler</button>
+                </div>
+
+                <p id="pw-feedback" class="text-sm text-red-600"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-gray-500 border-t mt-10">© Maison d'essence — 2025</footer>
+
+  <script>
+    (function(){
+      const token = localStorage.getItem('md_access_token');
+      const dash = document.getElementById('dashboard');
+      const loading = document.getElementById('profile-loading');
+      const feedback = document.getElementById('profile-feedback');
+      const pwfb = document.getElementById('pw-feedback');
+      const pwSection = document.getElementById('password-section');
+      const btnShowPw = document.getElementById('show-password');
+      const btnCancelPw = document.getElementById('cancel-password');
+
+      if(!token){
+        loading.textContent = "Non connecté. Redirection...";
+        setTimeout(()=>window.location.href='/login.html',800);
+        return;
+      }
+
+      async function loadProfile(){
+        try{
+          const res = await fetch('/api/auth/profile/', { headers: { 'Authorization': 'Bearer '+token } });
+          if(!res.ok){ loading.textContent = "Session expirée."; setTimeout(()=>window.location.href='/login.html',800); return; }
+          const j = await res.json();
+
+          loading.style.display = 'none';
+          dash.classList.remove('hidden');
+
+          document.getElementById('user-name').textContent = j.first_name + " " + (j.last_name || "");
+          document.getElementById('user-email').textContent = j.email;
+          document.getElementById('avatar').textContent = j.first_name ? j.first_name[0].toUpperCase() : "👤";
+          document.getElementById('first_name').value = j.first_name || "";
+          document.getElementById('last_name').value = j.last_name || "";
+          document.getElementById('preferences').value = JSON.stringify(j.preferences || {}, null, 2);
+        }catch(err){
+          console.error(err);
+          loading.textContent = "Erreur réseau.";
+        }
+      }
+      loadProfile();
+
+      // Sauvegarde profil
+      document.getElementById('save-profile').addEventListener('click', async (e)=>{
+        e.preventDefault();
+        try{
+          const prefsText = document.getElementById('preferences').value.trim();
+          const body = {
+            first_name: document.getElementById('first_name').value,
+            last_name: document.getElementById('last_name').value,
+          };
+          if(prefsText){ body.preferences = JSON.parse(prefsText); }
+
+          const res = await fetch('/api/auth/profile/', {
+            method: 'PUT',
+            headers: { 'Content-Type':'application/json', 'Authorization': 'Bearer '+token },
+            body: JSON.stringify(body)
+          });
+          if(res.ok){
+            feedback.style.color = '#0f766e';
+            feedback.textContent = 'Profil mis à jour ✔';
+            setTimeout(()=>feedback.textContent='',2500);
+          } else feedback.textContent = 'Erreur de mise à jour.';
+        }catch(err){
+          feedback.textContent = 'Erreur réseau.';
+        }
+      });
+
+      // Montrer / cacher la section mot de passe
+      btnShowPw.addEventListener('click', (e)=>{ e.preventDefault(); pwSection.classList.remove('hidden'); pwSection.scrollIntoView({behavior:'smooth'}); });
+      btnCancelPw.addEventListener('click', (e)=>{ e.preventDefault(); pwSection.classList.add('hidden'); });
+
+      // Appliquer changement mot de passe
+      document.getElementById('apply-password').addEventListener('click', async (e)=>{
+        e.preventDefault();
+        const np = document.getElementById('new-password').value;
+        const cp = document.getElementById('new-password-confirm').value;
+        if(np.length<8){ pwfb.textContent='Mot de passe trop court'; return; }
+        if(np!==cp){ pwfb.textContent='Les mots de passe ne correspondent pas'; return; }
+        try{
+          const res = await fetch('/api/auth/change-password/', {
+            method: 'POST',
+            headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+token },
+            body: JSON.stringify({ old_password: prompt('Entrez votre ancien mot de passe :'), new_password: np })
+          });
+          if(res.ok){ pwfb.style.color='#0f766e'; pwfb.textContent='Mot de passe changé ✔'; pwSection.classList.add('hidden'); }
+          else pwfb.textContent='Erreur de changement.';
+        }catch(err){ pwfb.textContent='Erreur réseau'; }
+      });
+
+      document.getElementById('logout-btn').addEventListener('click', ()=>{
+        localStorage.removeItem('md_access_token');
+        window.location.href='/login.html';
+      });
+    })();
+  </script>
+</body>
+</html>

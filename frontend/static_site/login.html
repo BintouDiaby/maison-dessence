@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Connexion — Maison d'essence</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "#4F46E5", soft: "#EEF2FF" },
+          keyframes: {
+            fadeInUp: { "0%": { opacity: 0, transform: "translateY(12px)" },
+                        "100%": { opacity: 1, transform: "translateY(0)" } }
+          },
+          animation: { fadeInUp: "fadeInUp .6s ease-out both" }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-gradient-to-b from-white to-soft min-h-screen flex flex-col text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="text-2xl font-semibold text-brand">Maison d'essence</div>
+      <nav class="flex items-center gap-5 text-gray-700 font-medium">
+        <a href="/" class="hover:text-brand transition">Accueil</a>
+        <a href="/products.html" class="hover:text-brand transition">Produits</a>
+        <a href="/signup.html" class="hover:text-brand transition">S'inscrire</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-6 py-10 flex-1">
+    <h1 class="text-2xl font-semibold mb-6">Se connecter</h1>
+
+    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-md p-6 animate-fadeInUp">
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Adresse email</label>
+          <input name="email" type="email" required
+                 class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Mot de passe</label>
+          <input name="password" type="password" required
+                 class="w-full rounded-lg border-gray-300 focus:border-brand focus:ring-brand" />
+        </div>
+
+        <button type="submit"
+                class="bg-brand text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition active:scale-[.98] w-full">
+          Connexion
+        </button>
+
+        <p class="text-sm text-gray-600 mt-3 text-center">
+          Vous n'avez pas de compte ? 
+          <a href="/signup.html" class="text-brand hover:underline">S'inscrire</a>
+        </p>
+
+        <p id="login-feedback" class="text-sm mt-3 text-center"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-gray-500 border-t mt-10">© Maison d'essence</footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed top-4 right-4 z-50 hidden"></div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('login-form');
+      const fb = document.getElementById('login-feedback');
+      const toast = document.getElementById('toast');
+
+      function showToast(text, ok=true) {
+        toast.innerHTML = `
+          <div class="animate-fadeInUp rounded-lg shadow-lg px-4 py-3 ${ok ? 'bg-emerald-600' : 'bg-rose-600'} text-white">
+            ${text}
+          </div>`;
+        toast.classList.remove('hidden');
+        setTimeout(()=> toast.classList.add('hidden'), 2200);
+      }
+
+      function setMsg(text, ok=false) {
+        fb.textContent = text;
+        fb.className = 'text-sm mt-2 text-center ' + (ok ? 'text-emerald-700' : 'text-rose-700');
+      }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+
+        const fd = new FormData(form);
+        const email = fd.get('email').trim();
+        const password = fd.get('password').trim();
+        if(!email || !password){ setMsg("Email et mot de passe requis"); return; }
+
+        setMsg("Connexion en cours…", true);
+
+        try{
+          const res = await fetch('/api/auth/token/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email, password })
+          });
+          const data = await res.json().catch(()=> ({}));
+
+          if(!res.ok){
+            const err = data.detail || "Identifiants invalides";
+            setMsg(err, false);
+            showToast("❌ " + err, false);
+            return;
+          }
+
+          // Sauvegarder le token
+          localStorage.setItem('md_access_token', data.access);
+          localStorage.setItem('md_refresh_token', data.refresh);
+
+          setMsg("Connexion réussie ✔", true);
+          showToast("Bienvenue !", true);
+
+          // Redirection vers profil
+          setTimeout(()=> window.location.href = "/", 500);
+        }catch(err){
+          console.error(err);
+          setMsg("Erreur réseau", false);
+          showToast("Erreur réseau ⚠️", false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

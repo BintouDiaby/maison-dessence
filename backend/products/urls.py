@@ -15,4 +15,10 @@ urlpatterns = [
 
     # Upload fichier image
     path('products/<int:pk>/upload-image/', views.product_upload_image, name='product_upload_image'),
+    # Likes / wishlist
+    path('products/<int:pk>/like/', views.product_like_toggle, name='product_like_toggle'),
+    path('products/<int:pk>/wishlist/', views.product_wishlist_toggle, name='product_wishlist_toggle'),
+    path('me/wishlist/', views.my_wishlist, name='my_wishlist'),
+    # Admin import endpoint (staff only)
+    path('admin/import-products/', views.admin_import_products, name='admin_import_products'),
 ]

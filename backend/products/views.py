@@ -1,5 +1,8 @@
 # backend/products/views.py
 from django.http import JsonResponse, Http404
+from django.shortcuts import get_object_or_404
+from django.contrib.admin.views.decorators import staff_member_required
+from django.views.decorators.http import require_http_methods
 from django.views.decorators.http import require_GET, require_http_methods
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
@@ -43,9 +46,23 @@ def _load_products_from_file():
     except Exception:
         return []
 
-def product_to_dict(p) -> dict:
+def product_to_dict(p, user=None) -> dict:
     # p peut être une instance de modèle ou un dict (fallback JSON)
     if HAS_MODEL and hasattr(p, 'id'):
+        likes_count = p.likes.count() if hasattr(p, 'likes') else 0
+        wishlist_count = p.wishlisted_by.count() if hasattr(p, 'wishlisted_by') else 0
+        is_liked = False
+        is_in_wishlist = False
+        if user and user.is_authenticated:
+            try:
+                is_liked = p.likes.filter(id=user.id).exists()
+            except Exception:
+                is_liked = False
+            try:
+                is_in_wishlist = p.wishlisted_by.filter(id=user.id).exists()
+            except Exception:
+                is_in_wishlist = False
+
         return {
             'id': p.id,
             'name': p.name,
@@ -57,8 +74,13 @@ def product_to_dict(p) -> dict:
             'image_url': (getattr(p, 'image', None).url if getattr(p, 'image', None) and getattr(p, 'image', None).name else getattr(p, 'image_url', None)),
             'tags': getattr(p, 'tags', []) or [],
             'owner': getattr(p.owner, 'username', None) if hasattr(p, 'owner') and p.owner else None,
+            'likes_count': likes_count,
+            'wishlist_count': wishlist_count,
+            'is_liked': is_liked,
+            'is_in_wishlist': is_in_wishlist,
         }
     else:
+        # Fallback JSON: no counts or flags available
         return {
             'id': p.get('id'),
             'name': p.get('name'),
@@ -70,6 +92,10 @@ def product_to_dict(p) -> dict:
             'image_url': p.get('image_url'),
             'tags': p.get('tags', []),
             'owner': p.get('owner', None),
+            'likes_count': 0,
+            'wishlist_count': 0,
+            'is_liked': False,
+            'is_in_wishlist': False,
         }
 
 @api_view(["GET"])
@@ -81,7 +107,7 @@ def products_list(request):
     if not has_params:
         if HAS_MODEL:
             qs = Product.objects.all()
-            data = [product_to_dict(p) for p in qs]
+            data = [product_to_dict(p, request.user) for p in qs]
         else:
             data = _load_products_from_file()
         return Response(data, status=200)
@@ -112,7 +138,7 @@ def products_list(request):
         total = qs.count()
         start = (page - 1) * page_size
         end = start + page_size
-        data = [product_to_dict(p) for p in qs.order_by('id')[start:end]]
+        data = [product_to_dict(p, request.user) for p in qs.order_by('id')[start:end]]
     else:
         data = _load_products_from_file()
         if q:
@@ -137,7 +163,7 @@ def product_detail(request, pk: int):
             p = Product.objects.get(pk=pk)
         except Product.DoesNotExist:
             raise Http404('Product not found')
-        return JsonResponse(product_to_dict(p))
+        return JsonResponse(product_to_dict(p, request.user))
     else:
         products = _load_products_from_file()
         for prod in products:
@@ -166,8 +192,8 @@ def product_similar(request, pk: int):
             scored.append((score, c))
 
         scored.sort(key=lambda x: x[0], reverse=True)
-        top = [product_to_dict(p) for score, p in scored[:5]]
-        return JsonResponse({'product': product_to_dict(base), 'similar': top})
+        top = [product_to_dict(p, request.user) for score, p in scored[:5]]
+        return JsonResponse({'product': product_to_dict(base, request.user), 'similar': top})
     else:
         products = _load_products_from_file()
         base = None
@@ -188,8 +214,8 @@ def product_similar(request, pk: int):
             scored.append((score, prod))
 
         scored.sort(key=lambda x: x[0], reverse=True)
-        top = [product_to_dict(p) for score, p in scored[:5]]
-        return JsonResponse({'product': product_to_dict(base), 'similar': top})
+        top = [product_to_dict(p, request.user) for score, p in scored[:5]]
+        return JsonResponse({'product': product_to_dict(base, request.user), 'similar': top})
 
 # --- Nouveaux endpoints protégés (vendeurs uniquement) ---
 
@@ -314,6 +340,116 @@ def product_delete(request, pk: int):
 
     p.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# --- Likes / Wishlist endpoints (authenticated users only) ---
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def product_like_toggle(request, pk: int):
+    """Toggle a like for the current user on product pk.
+    Returns JSON: {'liked': bool, 'likes_count': int}
+    """
+    if not HAS_MODEL:
+        return Response({'detail': 'Model Product indisponible (fallback JSON).'}, status=503)
+    prod = get_object_or_404(Product, pk=pk)
+    user = request.user
+    liked = prod.likes.filter(id=user.id).exists()
+    if liked:
+        prod.likes.remove(user)
+        liked = False
+    else:
+        prod.likes.add(user)
+        liked = True
+    return Response({'liked': liked, 'likes_count': prod.likes.count()}, status=200)
+
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def product_wishlist_toggle(request, pk: int):
+    """Toggle wishlist membership for current user on product pk.
+    Returns JSON: {'in_wishlist': bool, 'wishlist_count': int}
+    """
+    if not HAS_MODEL:
+        return Response({'detail': 'Model Product indisponible (fallback JSON).'}, status=503)
+    prod = get_object_or_404(Product, pk=pk)
+    user = request.user
+    in_list = prod.wishlisted_by.filter(id=user.id).exists()
+    if in_list:
+        prod.wishlisted_by.remove(user)
+        in_list = False
+    else:
+        prod.wishlisted_by.add(user)
+        in_list = True
+    return Response({'in_wishlist': in_list, 'wishlist_count': prod.wishlisted_by.count()}, status=200)
+
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def my_wishlist(request):
+    """Return the authenticated user's wishlist (list of product dicts)."""
+    if not HAS_MODEL:
+        return Response({'detail': 'Model Product indisponible (fallback JSON).'}, status=503)
+    user = request.user
+    qs = Product.objects.filter(wishlisted_by=user).order_by('id')
+    data = [product_to_dict(p, user=user) for p in qs]
+    return Response({'results': data, 'count': qs.count()}, status=200)
+
+
+# --- Admin import endpoint ---
+@staff_member_required
+@require_http_methods(["GET", "POST"])
+def admin_import_products(request):
+    """Admin-only view to import products from the JSON fallback into the DB.
+    Non-destructive: skips products that already exist (case-insensitive name match).
+    Accessible via Django admin session (staff users).
+    """
+    import os, json
+    from decimal import Decimal
+
+    data_file = os.path.join(os.path.dirname(__file__), 'data', 'products.json')
+    created = 0
+    skipped = 0
+    if not os.path.exists(data_file):
+        return JsonResponse({'detail': 'products.json not found', 'path': data_file}, status=404)
+
+    try:
+        with open(data_file, 'r', encoding='utf-8') as f:
+            items = json.load(f)
+    except Exception as e:
+        return JsonResponse({'detail': 'error reading products.json', 'error': str(e)}, status=500)
+
+    for item in items:
+        name = (item.get('name') or '').strip()
+        if not name:
+            skipped += 1
+            continue
+        if Product.objects.filter(name__iexact=name).exists():
+            skipped += 1
+            continue
+        price = item.get('price')
+        try:
+            price = Decimal(str(price)) if price is not None else None
+        except Exception:
+            price = None
+
+        p = Product(
+            owner=None,
+            name=name,
+            description=item.get('description') or '',
+            price=price or Decimal('0.00'),
+            stock=int(item.get('stock') or 0),
+            family=item.get('family') or '',
+            concentration=item.get('concentration') or '',
+            image_url=item.get('image_url') or '',
+            tags=item.get('tags') or []
+        )
+        p.save()
+        created += 1
+
+    return JsonResponse({'created': created, 'skipped': skipped})
 
 # backend/products/views.py
 from rest_framework.decorators import api_view, permission_classes, parser_classes

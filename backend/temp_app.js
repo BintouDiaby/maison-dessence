@@ -1,12 +1,12 @@
-/* =========================
-   Maison d’essence — app.js
+﻿/* =========================
+   Maison dâessence â app.js
    ========================= */
 
 /* ---------- Config ---------- */
 const BACKEND_URL = window.BACKEND_URL || 'http://127.0.0.1:8000';
 const CART_KEY = 'md_cart_v1';
 
-// Endpoints centralisés
+// Endpoints centralisÃ©s
 const API = {
   // Produits publics
   products:        BACKEND_URL + '/api/products/',
@@ -66,7 +66,7 @@ function showToast(msg, timeout=2200){
 function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(_){ return []; } }
 function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); renderCartCount(); renderDrawerItems(); }
 function addToCart(product, qty=1){
-  // Bloquer l'ajout au panier pour les visiteurs non connectés
+  // Bloquer l'ajout au panier pour les visiteurs non connectÃ©s
   const token = localStorage.getItem('md_access_token');
   if(!token){
     showToast('Connectez-vous pour ajouter au panier');
@@ -78,7 +78,7 @@ function addToCart(product, qty=1){
   const i = cart.findIndex(x=>x.id===product.id);
   if(i>=0) cart[i].qty += qty; else cart.push({id:product.id, name:product.name, price:product.price, qty});
   saveCart(cart);
-  showToast(`${product.name} ajouté au panier`);
+  showToast(`${product.name} ajoutÃ© au panier`);
 }
 function clearCart(){ saveCart([]); }
 function cartTotal(){ return loadCart().reduce((s,i)=> s + (Number(i.price)||0)*i.qty, 0); }
@@ -89,16 +89,16 @@ function renderDrawerItems(){
   root.innerHTML='';
   if(!cart.length){
     root.innerHTML='<div style="padding:18px;color:#666">Votre panier est vide.</div>';
-    const t=qs('#drawer-total'); if(t) t.textContent='€0.00';
+    const t=qs('#drawer-total'); if(t) t.textContent='â¬0.00';
     return;
   }
   cart.forEach(it=>{
     const row=document.createElement('div');
     row.style.display='flex'; row.style.justifyContent='space-between'; row.style.padding='8px 12px';
-    row.innerHTML = `<div>${escapeHtml(it.name)} x${it.qty}</div><div>€${(Number(it.price||0)*it.qty).toFixed(2)}</div>`;
+    row.innerHTML = `<div>${escapeHtml(it.name)} x${it.qty}</div><div>â¬${(Number(it.price||0)*it.qty).toFixed(2)}</div>`;
     root.appendChild(row);
   });
-  const t=qs('#drawer-total'); if(t) t.textContent='€'+cartTotal().toFixed(2);
+  const t=qs('#drawer-total'); if(t) t.textContent='â¬'+cartTotal().toFixed(2);
 }
 function bindCartDrawer(){
   const open=qs('#open-cart'), close=qs('#close-drawer'), drawer=qs('#cart-drawer');
@@ -123,19 +123,19 @@ async function toggleLike(productId, onSuccess){
     if(!res.ok){ showToast('Erreur'); return; }
     const j = await res.json();
     if(onSuccess) onSuccess(j);
-  }catch(e){ showToast('Erreur réseau'); }
+  }catch(e){ showToast('Erreur rÃ©seau'); }
 }
 
 async function toggleWishlist(productId, onSuccess){
   const token = getAuthToken();
-  if(!token){ showToast('Connectez-vous pour ajouter à la wishlist'); setTimeout(()=> window.location.href='/login.html',600); return; }
+  if(!token){ showToast('Connectez-vous pour ajouter Ã  la wishlist'); setTimeout(()=> window.location.href='/login.html',600); return; }
   try{
     const res = await fetch(BACKEND_URL + `/api/products/${productId}/wishlist/`, { method:'POST', headers: authHeaders() });
     if(!res.ok){ showToast('Erreur'); return; }
     const j = await res.json();
     if(onSuccess) onSuccess(j);
-    showToast(j.in_wishlist ? 'Ajouté à la wishlist' : 'Retiré de la wishlist');
-  }catch(e){ showToast('Erreur réseau'); }
+    showToast(j.in_wishlist ? 'AjoutÃ© Ã  la wishlist' : 'RetirÃ© de la wishlist');
+  }catch(e){ showToast('Erreur rÃ©seau'); }
 }
 
 function enhanceCardWithActions(cardEl, product){
@@ -147,13 +147,13 @@ function enhanceCardWithActions(cardEl, product){
   actions.style.display = 'flex'; actions.style.gap='8px'; actions.style.marginTop='8px';
   const likeBtn = document.createElement('button');
   likeBtn.className='btn-like'; likeBtn.title='J\'aime';
-  likeBtn.innerHTML = `<span class="like-icon">${product.is_liked? '♥':'♡'}</span> <span class="like-count">${product.likes_count||0}</span>`;
-  likeBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await toggleLike(product.id, (res)=>{ likeBtn.querySelector('.like-icon').textContent = res.liked? '♥':'♡'; likeBtn.querySelector('.like-count').textContent = res.likes_count; showToast(res.liked ? 'Vous aimez ce produit' : 'Like retiré'); }); });
+  likeBtn.innerHTML = `<span class="like-icon">${product.is_liked? 'â¥':'â¡'}</span> <span class="like-count">${product.likes_count||0}</span>`;
+  likeBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await toggleLike(product.id, (res)=>{ likeBtn.querySelector('.like-icon').textContent = res.liked? 'â¥':'â¡'; likeBtn.querySelector('.like-count').textContent = res.likes_count; showToast(res.liked ? 'Vous aimez ce produit' : 'Like retirÃ©'); }); });
 
   const wishBtn = document.createElement('button');
   wishBtn.className='btn-wish'; wishBtn.title='Wishlist';
-  wishBtn.innerHTML = `<span class="wish-icon">${product.is_in_wishlist? '★':'☆'}</span> <span class="wish-count">${product.wishlist_count||0}</span>`;
-  wishBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await toggleWishlist(product.id, (res)=>{ wishBtn.querySelector('.wish-icon').textContent = res.in_wishlist? '★':'☆'; wishBtn.querySelector('.wish-count').textContent = res.wishlist_count; }); });
+  wishBtn.innerHTML = `<span class="wish-icon">${product.is_in_wishlist? 'â':'â'}</span> <span class="wish-count">${product.wishlist_count||0}</span>`;
+  wishBtn.addEventListener('click', async (e)=>{ e.stopPropagation(); await toggleWishlist(product.id, (res)=>{ wishBtn.querySelector('.wish-icon').textContent = res.in_wishlist? 'â':'â'; wishBtn.querySelector('.wish-count').textContent = res.wishlist_count; }); });
 
   actions.appendChild(likeBtn); actions.appendChild(wishBtn);
   const body = cardEl.querySelector('.body');
@@ -182,7 +182,7 @@ async function renderIndex(){
         <div class="title">${escapeHtml(p.name)}</div>
         <div class="meta">${escapeHtml(p.family||'')}</div>
         <div class="row">
-          <div class="price">€${p.price}</div>
+          <div class="price">â¬${p.price}</div>
           <div>
             <a class="btn" href="/product.html?id=${p.id}">Voir</a>
             <button class="btn btn-primary" data-add="${p.id}">Ajouter</button>
@@ -221,7 +221,7 @@ async function renderProducts(q){
         <div class="title">${escapeHtml(p.name)}</div>
         <div class="meta">${escapeHtml(p.family||'')}</div>
         <div class="row">
-          <div class="price">€${p.price}</div>
+          <div class="price">â¬${p.price}</div>
           <div>
             <a class="btn" href="/product.html?id=${p.id}">Voir</a>
             <button class="btn btn-primary" data-add="${p.id}">Ajouter</button>
@@ -247,29 +247,29 @@ async function renderProductPage(){
   const p = await r.json();
 
   const nameEl = qs('#p-name');
-  // afficher en premier le nom du produit, puis afficher le vendeur/boutique séparément
+  // afficher en premier le nom du produit, puis afficher le vendeur/boutique sÃ©parÃ©ment
   if(nameEl) nameEl.textContent = p.name || '';
   const sellerEl = qs('#p-seller'); if(sellerEl) sellerEl.textContent = p.owner || '';
   const shopEl = qs('#p-shop'); if(shopEl) shopEl.textContent = p.owner_shop || '';
-  const priceEl = qs('#p-price'); if(priceEl) priceEl.textContent = '€'+p.price;
+  const priceEl = qs('#p-price'); if(priceEl) priceEl.textContent = 'â¬'+p.price;
   const descEl = qs('#p-desc'); if(descEl) descEl.textContent = p.description || '';
   const imgEl = qs('#p-img'); if(imgEl) imgEl.src = p.image_url || '/static/images/placeholder_900x600.svg';
   const fam = qs('#p-family'); if(fam) fam.textContent = p.family || '';
-  // afficher vendeur / boutique si fournis par l'API (déjà assignés plus haut)
+  // afficher vendeur / boutique si fournis par l'API (dÃ©jÃ  assignÃ©s plus haut)
 
   const addBtn = qs('#add-single'); if(addBtn) addBtn.addEventListener('click', ()=> addToCart(p,1));
 
   // Like / Wishlist buttons on product page
   const likeIcon = qs('#p-like-icon'); const likeCount = qs('#p-like-count');
   const wishIcon = qs('#p-wishlist-icon'); const wishCount = qs('#p-wishlist-count');
-  if(likeIcon) likeIcon.textContent = p.is_liked ? '♥' : '♡';
+  if(likeIcon) likeIcon.textContent = p.is_liked ? 'â¥' : 'â¡';
   if(likeCount) likeCount.textContent = (p.likes_count || 0);
-  if(wishIcon) wishIcon.textContent = p.is_in_wishlist ? '★' : '☆';
+  if(wishIcon) wishIcon.textContent = p.is_in_wishlist ? 'â' : 'â';
   if(wishCount) wishCount.textContent = (p.wishlist_count || 0);
 
   const likeBtn = qs('#p-like-btn'); if(likeBtn) likeBtn.addEventListener('click', async ()=>{
     await toggleLike(p.id, (res)=>{
-      if(likeIcon) likeIcon.textContent = res.liked ? '♥' : '♡';
+      if(likeIcon) likeIcon.textContent = res.liked ? 'â¥' : 'â¡';
       if(likeCount) likeCount.textContent = res.likes_count;
       // update local p
       p.is_liked = res.liked; p.likes_count = res.likes_count;
@@ -278,7 +278,7 @@ async function renderProductPage(){
 
   const wishBtn = qs('#p-wishlist-btn'); if(wishBtn) wishBtn.addEventListener('click', async ()=>{
     await toggleWishlist(p.id, (res)=>{
-      if(wishIcon) wishIcon.textContent = res.in_wishlist ? '★' : '☆';
+      if(wishIcon) wishIcon.textContent = res.in_wishlist ? 'â' : 'â';
       if(wishCount) wishCount.textContent = res.wishlist_count;
       p.is_in_wishlist = res.in_wishlist; p.wishlist_count = res.wishlist_count;
     });
@@ -311,7 +311,7 @@ async function renderProductPage(){
           <div class="title">${escapeHtml(s.name)}</div>
           <div class="meta">${escapeHtml(s.family||'')}</div>
           <div class="row">
-            <div class="price">€${s.price}</div>
+            <div class="price">â¬${s.price}</div>
             <div>
               <a class="btn" href="/product.html?id=${s.id}">Voir</a>
               <button class="btn btn-primary" data-add="${s.id}">Ajouter</button>
@@ -358,14 +358,14 @@ async function updateAuthLink(){
   try{
     const pres = await fetch('/api/auth/profile/', { headers: { 'Authorization': 'Bearer ' + token } });
     if(pres.ok) profile = await pres.json();
-  }catch(_){} // on ignore l'erreur — le profil est optionnel pour l’UI
+  }catch(_){} // on ignore l'erreur â le profil est optionnel pour lâUI
 
   let vendor = { is_vendor: false };
   try{
     const vres = await fetch('/api/vendors/me/', { headers: { 'Authorization': 'Bearer ' + token } });
     if(vres.ok) vendor = await vres.json();
   }catch(e){
-    // Si on ne peut pas lire vendors/me, on réinitialise (token sûrement invalide)
+    // Si on ne peut pas lire vendors/me, on rÃ©initialise (token sÃ»rement invalide)
     localStorage.removeItem('md_access_token');
     localStorage.removeItem('md_refresh_token');
     const newLink = loginLink.cloneNode(true);
@@ -375,7 +375,7 @@ async function updateAuthLink(){
     return;
   }
 
-  // Masquer le lien "Devenir vendeur" si l'utilisateur est déjà vendeur
+  // Masquer le lien "Devenir vendeur" si l'utilisateur est dÃ©jÃ  vendeur
   try{
     const becomeLink = nav.querySelector('a[href="/signup.html?role=vendor"]');
     if(becomeLink){
@@ -384,16 +384,16 @@ async function updateAuthLink(){
     }
   }catch(_){ }
 
-  // Remplacer par "Se déconnecter"
+  // Remplacer par "Se dÃ©connecter"
   const logoutLink = loginLink.cloneNode(true);
-  logoutLink.textContent = 'Se déconnecter';
+  logoutLink.textContent = 'Se dÃ©connecter';
   logoutLink.setAttribute('href', '#');
   logoutLink.setAttribute('data-account-link', 'true');
   logoutLink.addEventListener('click', (ev)=>{
     ev.preventDefault();
     localStorage.removeItem('md_access_token');
     localStorage.removeItem('md_refresh_token');
-    if(typeof showToast === 'function') showToast('Déconnecté');
+    if(typeof showToast === 'function') showToast('DÃ©connectÃ©');
     setTimeout(()=> window.location.href = '/', 300);
   });
   loginLink.parentNode.replaceChild(logoutLink, loginLink);
@@ -439,35 +439,35 @@ function bindLogin(){
 
     try{
       const res = await fetch(API.token, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      if(!res.ok){ alert('Échec connexion'); return; }
+      if(!res.ok){ alert('Ãchec connexion'); return; }
       const data = await res.json();
       localStorage.setItem('md_access_token', data.access);
       localStorage.setItem('md_refresh_token', data.refresh);
 
       await updateAuthLink();
-  // Si une intention de devenir vendeur était en attente (signup), tenter l'upgrade
+  // Si une intention de devenir vendeur Ã©tait en attente (signup), tenter l'upgrade
   try{ await upgradeToVendorIfPending(data.access); }catch(e){}
 
-      // si vendeur → rediriger dashboard
+      // si vendeur â rediriger dashboard
       try{
         const vm = await fetch(API.meVendor, { headers:{ Authorization:'Bearer '+data.access }});
-        if(vm.ok){ const j = await vm.json(); if(j.is_vendor){ showToast('Connecté (vendeur)'); location.href='/vendor_dashboard.html'; return; } }
+        if(vm.ok){ const j = await vm.json(); if(j.is_vendor){ showToast('ConnectÃ© (vendeur)'); location.href='/vendor_dashboard.html'; return; } }
       }catch(_){}
 
-      showToast('Connecté');
+      showToast('ConnectÃ©');
       location.href = '/';
-    }catch(_){ alert('Erreur réseau'); }
+    }catch(_){ alert('Erreur rÃ©seau'); }
   });
 }
 
 
 async function upgradeToVendorIfPending(token) {
-  // essaie de récupérer l’intention vendeur
+  // essaie de rÃ©cupÃ©rer lâintention vendeur
   let pending = null;
   try { pending = JSON.parse(sessionStorage.getItem('pending_vendor') || 'null'); } catch(_) {}
   if (!pending) return;
 
-  // vérifie que la personne connectée correspond au même email
+  // vÃ©rifie que la personne connectÃ©e correspond au mÃªme email
   try {
     const pres = await fetch('/api/auth/profile/', { headers: { 'Authorization': 'Bearer ' + token } });
     if (!pres.ok) return;
@@ -476,7 +476,7 @@ async function upgradeToVendorIfPending(token) {
     if (!sameUser) return;
   } catch(_) { return; }
 
-  // tente l’endpoint officiel si présent
+  // tente lâendpoint officiel si prÃ©sent
   let ok = false;
   try {
     console.log('upgradeToVendorIfPending: calling /api/vendors/upgrade/ with', pending);
@@ -490,7 +490,7 @@ async function upgradeToVendorIfPending(token) {
     ok = r1.ok;
   } catch(_) {}
 
-  // fallback si upgrade/ n’existe pas chez toi : on tente /vendors/me/ en POST
+  // fallback si upgrade/ nâexiste pas chez toi : on tente /vendors/me/ en POST
   if (!ok) {
     try {
       console.log('upgradeToVendorIfPending: fallback calling POST /api/vendors/me/');
@@ -529,7 +529,7 @@ function bindSignup(){
     try{
       const res = await fetch(API.register, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
       if(res.ok){
-        showToast('Compte créé — connexion en cours...');
+        showToast('Compte crÃ©Ã© â connexion en cours...');
         try{
           const lr = await fetch(API.token, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email:data.email, password:data.password }) });
           if(lr.ok){
@@ -537,19 +537,19 @@ function bindSignup(){
             localStorage.setItem('md_access_token', d.access);
             localStorage.setItem('md_refresh_token', d.refresh);
             await updateAuthLink();
-            showToast('Connecté');
+            showToast('ConnectÃ©');
             setTimeout(()=> location.href='/profile.html', 600);
             return;
           }
         }catch(_){}
-        if(feedback) feedback.innerHTML = `Compte créé. Si la connexion auto échoue, utilisez <a href="/login.html">Se connecter</a>`;
+        if(feedback) feedback.innerHTML = `Compte crÃ©Ã©. Si la connexion auto Ã©choue, utilisez <a href="/login.html">Se connecter</a>`;
         return;
       }
       const j = await res.json().catch(()=>null);
-      const msg = j?.detail || (j? JSON.stringify(j): 'Erreur création');
+      const msg = j?.detail || (j? JSON.stringify(j): 'Erreur crÃ©ation');
       if(feedback) feedback.textContent = msg;
       showToast(msg || 'Erreur');
-    }catch(_){ showToast('Erreur réseau'); if(feedback) feedback.textContent='Erreur réseau'; }
+    }catch(_){ showToast('Erreur rÃ©seau'); if(feedback) feedback.textContent='Erreur rÃ©seau'; }
   });
 }
 
@@ -592,7 +592,7 @@ function bindCheckout(){
 
       if(selected==='cinetpay'){
         const r = await fetch(API.cinetpayCreate, { method:'POST', headers:{ 'Content-Type':'application/json', ...auth }, body: JSON.stringify({ items, buyer }) });
-        if(!r.ok){ showToast('Impossible d’initier CinetPay'); btn.disabled=false; btn.textContent='Payer'; return; }
+        if(!r.ok){ showToast('Impossible dâinitier CinetPay'); btn.disabled=false; btn.textContent='Payer'; return; }
         const j = await r.json();
         if(j.payment_url){ location.href = j.payment_url; return; }
         showToast('Erreur CinetPay'); btn.disabled=false; btn.textContent='Payer'; return;
@@ -608,8 +608,8 @@ function bindCheckout(){
         if(m){ exp_month=+m[1]; exp_year=+m[2]; if(exp_year<100) exp_year += 2000; }
         const payload = { method:'card', card:{ number: cardNumber.replace(/\s+/g,''), exp_month, exp_year, cvc: cardCvc, name: cardName } };
         const r = await fetch(API.payMock, { method:'POST', headers:{ 'Content-Type':'application/json', ...auth }, body: JSON.stringify(payload) });
-        if(r.ok){ const jm = await r.json(); if(jm.ok){ showToast('Paiement simulé accepté'); clearCart(); setTimeout(()=>location.href='/',800); return; } }
-        showToast('Paiement échoué (démo)'); btn.disabled=false; btn.textContent='Payer'; return;
+        if(r.ok){ const jm = await r.json(); if(jm.ok){ showToast('Paiement simulÃ© acceptÃ©'); clearCart(); setTimeout(()=>location.href='/',800); return; } }
+        showToast('Paiement Ã©chouÃ© (dÃ©mo)'); btn.disabled=false; btn.textContent='Payer'; return;
       }
 
       // Stripe
@@ -621,11 +621,11 @@ function bindCheckout(){
       if(!stripe || !card) await initStripe();
       if(stripe && card){
         const result = await stripe.confirmCardPayment(clientSecret, { payment_method: { card, billing_details:{ name: buyer.name||undefined, email: buyer.email||undefined } } });
-        if(result.error){ qs('#card-errors') && (qs('#card-errors').textContent = result.error.message || 'Erreur paiement'); showToast('Paiement échoué'); btn.disabled=false; btn.textContent='Payer'; return; }
-        if(result.paymentIntent?.status==='succeeded'){ showToast('Paiement réussi'); clearCart(); setTimeout(()=>location.href='/',800); return; }
-        showToast('État: '+(result.paymentIntent?.status||'inconnu')); btn.disabled=false; btn.textContent='Payer'; return;
+        if(result.error){ qs('#card-errors') && (qs('#card-errors').textContent = result.error.message || 'Erreur paiement'); showToast('Paiement Ã©chouÃ©'); btn.disabled=false; btn.textContent='Payer'; return; }
+        if(result.paymentIntent?.status==='succeeded'){ showToast('Paiement rÃ©ussi'); clearCart(); setTimeout(()=>location.href='/',800); return; }
+        showToast('Ãtat: '+(result.paymentIntent?.status||'inconnu')); btn.disabled=false; btn.textContent='Payer'; return;
       }
-    }catch(_){ showToast('Erreur réseau'); btn.disabled=false; btn.textContent='Payer'; }
+    }catch(_){ showToast('Erreur rÃ©seau'); btn.disabled=false; btn.textContent='Payer'; }
   });
 
   qsa('input[name=payment_method]').forEach(r=> r.addEventListener('change', updatePaymentUI));
@@ -638,17 +638,17 @@ function renderCheckoutPage(){
   const cart = loadCart();
   if(!cart || cart.length === 0){
     if(itemsContainer) itemsContainer.innerHTML = '<div class="muted">Votre panier est vide.</div>';
-    if(totalEl) totalEl.textContent = '€0.00';
+    if(totalEl) totalEl.textContent = 'â¬0.00';
     return;
   }
   itemsContainer.innerHTML = '';
   cart.forEach(it => {
     const row = document.createElement('div');
     row.style.display='flex'; row.style.justifyContent='space-between'; row.style.marginBottom='8px';
-    row.innerHTML = `<div>${escapeHtml(it.name)} x${it.qty}</div><div>€${(Number(it.price||0)*it.qty).toFixed(2)}</div>`;
+    row.innerHTML = `<div>${escapeHtml(it.name)} x${it.qty}</div><div>â¬${(Number(it.price||0)*it.qty).toFixed(2)}</div>`;
     itemsContainer.appendChild(row);
   });
-  if(totalEl) totalEl.textContent = '€' + cart.reduce((s,i)=> s + (Number(i.price||0)* (Number(i.qty)||0)), 0).toFixed(2);
+  if(totalEl) totalEl.textContent = 'â¬' + cart.reduce((s,i)=> s + (Number(i.price||0)* (Number(i.qty)||0)), 0).toFixed(2);
 }
 
 /* ---------- Pages simples ---------- */
@@ -656,7 +656,7 @@ function renderCartPage(){
   const container = qs('#cart-items'); if(!container) return;
   const cart = loadCart();
   container.innerHTML='';
-  if(!cart.length){ container.innerHTML='<div style="padding:18px;color:#666">Votre panier est vide.</div>'; qs('#cart-total')&&(qs('#cart-total').textContent='€0.00'); return; }
+  if(!cart.length){ container.innerHTML='<div style="padding:18px;color:#666">Votre panier est vide.</div>'; qs('#cart-total')&&(qs('#cart-total').textContent='â¬0.00'); return; }
   cart.forEach(it=>{
     const row = document.createElement('div');
     row.className='cart-row';
@@ -664,17 +664,17 @@ function renderCartPage(){
     row.innerHTML = `
       <div style="flex:1 1 300px">
         <div style="font-weight:700">${escapeHtml(it.name)}</div>
-        <div class="small muted">€${Number(it.price||0).toFixed(2)}</div>
+        <div class="small muted">â¬${Number(it.price||0).toFixed(2)}</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
-        <button class="btn" data-decr="${it.id}">−</button>
+        <button class="btn" data-decr="${it.id}">â</button>
         <div style="min-width:28px;text-align:center">${it.qty}</div>
         <button class="btn" data-incr="${it.id}">+</button>
         <button class="btn btn-ghost" data-remove="${it.id}">Supprimer</button>
       </div>`;
     container.appendChild(row);
   });
-  qs('#cart-total')&&(qs('#cart-total').textContent='€'+cartTotal().toFixed(2));
+  qs('#cart-total')&&(qs('#cart-total').textContent='â¬'+cartTotal().toFixed(2));
   qsa('[data-incr]').forEach(b=> b.addEventListener('click', ()=>{ const id=+b.dataset.incr; const c=loadCart(); const it=c.find(x=>x.id===id); if(it){ it.qty++; saveCart(c); renderCartPage(); }}));
   qsa('[data-decr]').forEach(b=> b.addEventListener('click', ()=>{ const id=+b.dataset.decr; const c=loadCart(); const it=c.find(x=>x.id===id); if(it){ it.qty=Math.max(1,it.qty-1); saveCart(c); renderCartPage(); }}));
   qsa('[data-remove]').forEach(b=> b.addEventListener('click', ()=>{ const id=+b.dataset.remove; const c=loadCart().filter(x=>x.id!==id); saveCart(c); renderCartPage(); }));
@@ -686,14 +686,14 @@ function authHeaders(json=true){ const h={ Authorization:'Bearer '+token() }; if
 
 async function guardVendorPage(){
   const t = token();
-  if(!t){ showToast('Connecte-toi pour accéder au dashboard vendeur'); setTimeout(()=>location.href='/login.html',600); return false; }
+  if(!t){ showToast('Connecte-toi pour accÃ©der au dashboard vendeur'); setTimeout(()=>location.href='/login.html',600); return false; }
   try{
     const r = await fetch(API.meVendor, { headers:{ Authorization:'Bearer '+t } });
     if(!r.ok) throw 0;
     const j = await r.json();
-    if(!j.is_vendor){ showToast('Ton compte n’est pas vendeur'); setTimeout(()=>location.href='/',800); return false; }
+    if(!j.is_vendor){ showToast('Ton compte nâest pas vendeur'); setTimeout(()=>location.href='/',800); return false; }
     return true;
-  }catch(_){ showToast('Session invalide — reconnecte-toi'); setTimeout(()=>location.href='/login.html',600); return false; }
+  }catch(_){ showToast('Session invalide â reconnecte-toi'); setTimeout(()=>location.href='/login.html',600); return false; }
 }
 
 async function vendorLoadMe(){
@@ -702,9 +702,9 @@ async function vendorLoadMe(){
     if(!r.ok) return null;
     const me = await r.json();
     const line = qs('#me_line'); const shop = qs('#shop_name'); const st = qs('#vendor_status');
-    line && (line.textContent = `@${me.username} — ${me.shop_name || 'Sans boutique'}`);
+    line && (line.textContent = `@${me.username} â ${me.shop_name || 'Sans boutique'}`);
     shop && (shop.value = me.shop_name || '');
-    st && (st.value = me.is_vendor ? 'Vendeur activé' : 'Non vendeur');
+    st && (st.value = me.is_vendor ? 'Vendeur activÃ©' : 'Non vendeur');
     return me;
   }catch(_){ return null; }
 }
@@ -725,13 +725,13 @@ function vendorRenderRows(rows){
     tr.innerHTML = `
       <td><img class="thumb" src="${p.image_url || '/static/images/placeholder_64.svg'}" alt=""></td>
       <td>${escapeHtml(p.name||'')}</td>
-      <td>€${Number(p.price||0).toFixed(2)}</td>
+      <td>â¬${Number(p.price||0).toFixed(2)}</td>
       <td>${p.stock ?? 0}</td>
       <td>${escapeHtml(p.family||'')}</td>
       <td>${escapeHtml(p.concentration||'')}</td>
       <td>${(p.tags||[]).join(', ')}</td>
       <td class="row-actions">
-        <button class="btn" data-ed="${p.id}">Éditer</button>
+        <button class="btn" data-ed="${p.id}">Ãditer</button>
         <button class="btn btn-danger" data-del="${p.id}">Suppr.</button>
       </td>`;
     tb.appendChild(tr);
@@ -759,7 +759,7 @@ async function vendorCreate(){
   if(!payload.name){ showToast('Nom requis'); return; }
 
   const r = await fetch(API.createProduct, { method:'POST', headers: authHeaders(true), body: JSON.stringify(payload) });
-  if(!r.ok){ console.warn(await r.text()); showToast('Création échouée'); return; }
+  if(!r.ok){ console.warn(await r.text()); showToast('CrÃ©ation Ã©chouÃ©e'); return; }
   const created = await r.json();
   const id = created.id;
 
@@ -768,10 +768,10 @@ async function vendorCreate(){
     const fd = new FormData();
     fd.append('image', file);
     const up = await fetch(API.uploadImage(id), { method:'POST', headers:{ Authorization:'Bearer '+token() }, body: fd });
-    if(!up.ok){ console.warn(await up.text()); showToast('Image non téléversée'); }
+    if(!up.ok){ console.warn(await up.text()); showToast('Image non tÃ©lÃ©versÃ©e'); }
   }
 
-  showToast('Produit créé');
+  showToast('Produit crÃ©Ã©');
   ['new_name','new_price','new_stock','new_family','new_concentration','new_image_url','new_description','new_tags'].forEach(id=>{ const el=qs('#'+id); if(el) el.value=''; });
   const fi = qs('#new_image_file'); if(fi) fi.value='';
   vendorReload();
@@ -792,7 +792,7 @@ async function vendorOpenEdit(id){
     qs('#edit_tags').value = (p.tags||[]).join(', ');
     qs('#edit_description').value = p.description || '';
     qs('#edit_modal').style.display='flex';
-  }catch(_){ showToast('Ouverture édition échouée'); }
+  }catch(_){ showToast('Ouverture Ã©dition Ã©chouÃ©e'); }
 }
 
 async function vendorSaveEdit(){
@@ -808,27 +808,27 @@ async function vendorSaveEdit(){
     description: qs('#edit_description')?.value.trim(),
   };
   const r = await fetch(API.updateProduct(id), { method:'PATCH', headers: authHeaders(true), body: JSON.stringify(payload) });
-  if(!r.ok){ console.warn(await r.text()); showToast('Sauvegarde échouée'); return; }
+  if(!r.ok){ console.warn(await r.text()); showToast('Sauvegarde Ã©chouÃ©e'); return; }
 
   const file = qs('#edit_image_file')?.files?.[0];
   if(file){
     const fd = new FormData();
     fd.append('image', file);
     const up = await fetch(API.uploadImage(id), { method:'POST', headers:{ Authorization:'Bearer '+token() }, body: fd });
-    if(!up.ok){ console.warn(await up.text()); showToast('Image non téléversée'); }
+    if(!up.ok){ console.warn(await up.text()); showToast('Image non tÃ©lÃ©versÃ©e'); }
   }
 
   qs('#edit_modal').style.display='none';
-  showToast('Modifications enregistrées');
+  showToast('Modifications enregistrÃ©es');
   vendorReload();
 }
 
 async function vendorDel(id){
   if(!confirm('Supprimer ce produit ?')) return;
-  // Utiliser DELETE conformément à l'API REST côté backend
+  // Utiliser DELETE conformÃ©ment Ã  l'API REST cÃ´tÃ© backend
   const r = await fetch(API.deleteProduct(id), { method:'DELETE', headers: authHeaders(false) });
-  if(!r.ok){ console.warn(await r.text()); showToast('Suppression échouée'); return; }
-  showToast('Produit supprimé');
+  if(!r.ok){ console.warn(await r.text()); showToast('Suppression Ã©chouÃ©e'); return; }
+  showToast('Produit supprimÃ©');
   vendorReload();
 }
 
@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // si une intention vendeur reste en session, tenter l'upgrade automatique
   upgradeToVendorIfPending(localStorage.getItem('md_access_token')||'').catch(()=>{});
 
-  // Search bar (si présente)
+  // Search bar (si prÃ©sente)
   const searchForm = qs('#product-search-form');
   const searchInput = qs('#product-search-input');
   if(searchForm && searchInput){
@@ -884,3 +884,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })();
   }
 });
+

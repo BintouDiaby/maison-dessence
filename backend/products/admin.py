@@ -13,7 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
 	readonly_fields = ("image_tag",)
 	list_display_links = ("name",)
 	list_per_page = 50
-	actions = ["action_edit_first_selected"]
+	actions = ["action_edit_first_selected", "import_products_from_json_action"]
 
 	fieldsets = (
 		(None, {
@@ -56,6 +56,57 @@ class ProductAdmin(admin.ModelAdmin):
 		return HttpResponseRedirect(url)
 
 	action_edit_first_selected.short_description = 'Edit first selected product'
+
+	def import_products_from_json_action(self, request, queryset):
+		"""Admin action: import products from products/data/products.json into the DB.
+		This is non-destructive and will skip existing products by case-insensitive name match.
+		You can run it from the products changelist (select any or none) and then choose the action.
+		"""
+		from django.contrib import messages
+		import os, json
+		from decimal import Decimal
+
+		data_file = os.path.join(os.path.dirname(__file__), 'data', 'products.json')
+		if not os.path.exists(data_file):
+			self.message_user(request, f'products.json not found at {data_file}', level=messages.ERROR)
+			return
+
+		created = 0
+		skipped = 0
+		with open(data_file, 'r', encoding='utf-8') as f:
+			items = json.load(f)
+
+		for item in items:
+			name = (item.get('name') or '').strip()
+			if not name:
+				skipped += 1
+				continue
+			if Product.objects.filter(name__iexact=name).exists():
+				skipped += 1
+				continue
+			price = item.get('price')
+			try:
+				price = Decimal(str(price)) if price is not None else None
+			except Exception:
+				price = None
+
+			p = Product(
+				owner=None,
+				name=name,
+				description=item.get('description') or '',
+				price=price or Decimal('0.00'),
+				stock=int(item.get('stock') or 0),
+				family=item.get('family') or '',
+				concentration=item.get('concentration') or '',
+				image_url=item.get('image_url') or '',
+				tags=item.get('tags') or []
+			)
+			p.save()
+			created += 1
+
+		self.message_user(request, f'Import complete. Created: {created} — Skipped: {skipped}', level=messages.INFO)
+
+	import_products_from_json_action.short_description = 'Importer produits depuis products.json'
 
 # If you prefer the older style, you can also do:
 # admin.site.register(Product, ProductAdmin)

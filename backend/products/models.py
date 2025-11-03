@@ -17,6 +17,18 @@ class Product(models.Model):
     image_url = models.CharField(max_length=1024, blank=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     tags = models.JSONField(default=list, blank=True)
+    # Users who liked this product
+    likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='liked_products',
+        blank=True,
+    )
+    # Users who added this product to their wishlist
+    wishlisted_by = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='wishlist_products',
+        blank=True,
+    )
 
     def __str__(self):
         return f"{self.name} ({self.id})"

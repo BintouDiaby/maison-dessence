@@ -201,7 +201,7 @@ async function renderProductPage(){
   const shopEl = qs('#p-shop'); if(shopEl) shopEl.textContent = p.owner_shop || '';
   const priceEl = qs('#p-price'); if(priceEl) priceEl.textContent = '€'+p.price;
   const descEl = qs('#p-desc'); if(descEl) descEl.textContent = p.description || '';
-  const imgEl = qs('#p-img'); if(imgEl) imgEl.src = p.image_url || 'https://via.placeholder.com/900x600';
+  const imgEl = qs('#p-img'); if(imgEl) imgEl.src = p.image_url || '/static/images/placeholder_900x600.svg';
   const fam = qs('#p-family'); if(fam) fam.textContent = p.family || '';
   // afficher vendeur / boutique si fournis par l'API (déjà assignés plus haut)
 
@@ -297,6 +297,15 @@ async function updateAuthLink(){
     return;
   }
 
+  // Masquer le lien "Devenir vendeur" si l'utilisateur est déjà vendeur
+  try{
+    const becomeLink = nav.querySelector('a[href="/signup.html?role=vendor"]');
+    if(becomeLink){
+      if(vendor && vendor.is_vendor) becomeLink.style.display = 'none';
+      else becomeLink.style.display = '';
+    }
+  }catch(_){ }
+
   // Remplacer par "Se déconnecter"
   const logoutLink = loginLink.cloneNode(true);
   logoutLink.textContent = 'Se déconnecter';
@@ -358,6 +367,8 @@ function bindLogin(){
       localStorage.setItem('md_refresh_token', data.refresh);
 
       await updateAuthLink();
+  // Si une intention de devenir vendeur était en attente (signup), tenter l'upgrade
+  try{ await upgradeToVendorIfPending(data.access); }catch(e){}
 
       // si vendeur → rediriger dashboard
       try{
@@ -390,22 +401,28 @@ async function upgradeToVendorIfPending(token) {
   // tente l’endpoint officiel si présent
   let ok = false;
   try {
+    console.log('upgradeToVendorIfPending: calling /api/vendors/upgrade/ with', pending);
     const r1 = await fetch('/api/vendors/upgrade/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
       body: JSON.stringify({ shop_name: pending.shop_name || '', phone: pending.phone || '' })
     });
+    console.log('upgradeToVendorIfPending: /api/vendors/upgrade/ status', r1.status);
+    try{ const j = await r1.clone().json().catch(()=>null); console.log('upgradeToVendorIfPending: /api/vendors/upgrade/ body', j); }catch(_){}
     ok = r1.ok;
   } catch(_) {}
 
   // fallback si upgrade/ n’existe pas chez toi : on tente /vendors/me/ en POST
   if (!ok) {
     try {
+      console.log('upgradeToVendorIfPending: fallback calling POST /api/vendors/me/');
       const r2 = await fetch('/api/vendors/me/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
         body: JSON.stringify({ shop_name: pending.shop_name || '', phone: pending.phone || '' })
       });
+      console.log('upgradeToVendorIfPending: /api/vendors/me/ POST status', r2.status);
+      try{ const j2 = await r2.clone().json().catch(()=>null); console.log('upgradeToVendorIfPending: /api/vendors/me/ POST body', j2); }catch(_){}
       ok = r2.ok;
     } catch(_) {}
   }
@@ -606,10 +623,10 @@ function vendorRenderRows(rows){
   const tb = qs('#prod_tbody'); if(!tb) return;
   tb.innerHTML='';
   if(!rows.length){ tb.innerHTML='<tr><td colspan="8" class="muted">Aucun produit.</td></tr>'; return; }
-  rows.forEach(p=>{
+    rows.forEach(p=>{
     const tr=document.createElement('tr');
     tr.innerHTML = `
-      <td><img class="thumb" src="${p.image_url || 'https://via.placeholder.com/64'}" alt=""></td>
+      <td><img class="thumb" src="${p.image_url || '/static/images/placeholder_64.svg'}" alt=""></td>
       <td>${escapeHtml(p.name||'')}</td>
       <td>€${Number(p.price||0).toFixed(2)}</td>
       <td>${p.stock ?? 0}</td>
@@ -729,6 +746,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Auth
   bindLogin(); bindSignup(); updateAuthLink();
+  // si une intention vendeur reste en session, tenter l'upgrade automatique
+  upgradeToVendorIfPending(localStorage.getItem('md_access_token')||'').catch(()=>{});
 
   // Search bar (si présente)
   const searchForm = qs('#product-search-form');

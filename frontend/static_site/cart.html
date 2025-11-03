@@ -82,7 +82,7 @@
   <!-- gestion du panier -->
   <script>
     (function(){
-      const KEY = "md_cart"; // [{id, name, price, image, qty}]
+  const KEY = "md_cart_v1"; // [{id, name, price, image, qty}]
       const itemsEl = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
       const countBadge = document.getElementById('cart-count');
@@ -92,11 +92,22 @@
       function fmt(n){ return "€" + (Number(n||0)).toFixed(2); }
 
       function readCart(){
-        try { return JSON.parse(localStorage.getItem(KEY)) || []; }
-        catch{ return []; }
+        try {
+          // If the new key is empty but the old legacy key exists, migrate it.
+          const raw = localStorage.getItem(KEY);
+          if(raw) return JSON.parse(raw) || [];
+          // legacy support: try old key 'md_cart'
+          try{
+            const old = localStorage.getItem('md_cart');
+            if(old){ const parsed = JSON.parse(old||'[]'); localStorage.setItem(KEY, JSON.stringify(parsed)); localStorage.removeItem('md_cart'); return parsed; }
+          }catch(_){ }
+          return [];
+        } catch{ return []; }
       }
       function writeCart(arr){
         localStorage.setItem(KEY, JSON.stringify(arr));
+        // keep legacy key for any external pages that might still read it
+        try{ localStorage.setItem('md_cart', JSON.stringify(arr)); }catch(_){ }
         updateBadge(arr);
       }
       function updateBadge(arr){

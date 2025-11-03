@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth.models import User
 
 from .models import Profile, EmailVerificationToken, PasswordResetToken
+from .models import VendorProfile, VENDOR_GROUP_NAME
 
 
 class ProfileInline(admin.StackedInline):
@@ -25,7 +26,7 @@ class PasswordResetTokenAdmin(admin.ModelAdmin):
 
 class UserAdmin(DjangoUserAdmin):
 	inlines = (ProfileInline,)
-	list_display = ('username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_client')
+	list_display = ('username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_client', 'is_vendor')
 	list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
 	actions = ['activate_users', 'deactivate_users']
 
@@ -51,8 +52,25 @@ class UserAdmin(DjangoUserAdmin):
 	is_client.boolean = True
 	is_client.short_description = 'Client'
 
+	def is_vendor(self, obj):
+		"""Return True if the user is member of the 'vendor' group."""
+		try:
+			return obj.groups.filter(name=VENDOR_GROUP_NAME).exists()
+		except Exception:
+			return False
+
+	is_vendor.boolean = True
+	is_vendor.short_description = 'Vendeur'
+
 
 # Re-register User admin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+
+@admin.register(VendorProfile)
+class VendorProfileAdmin(admin.ModelAdmin):
+	list_display = ('user', 'shop_name', 'verified')
+	search_fields = ('user__username', 'user__email', 'shop_name')
+	list_filter = ('verified',)
 

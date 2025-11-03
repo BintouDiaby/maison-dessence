@@ -14,6 +14,8 @@ from .views import (
     ImpersonateUserView,
     vendor_me,          # GET (et on va te donner un upgrade dédié juste après)
     vendor_upgrade,     # NEW: POST pour passer vendeur
+    # endpoint to create a Django session from JWT for admin access
+    
 )
 
 urlpatterns = [

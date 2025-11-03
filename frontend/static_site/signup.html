@@ -138,6 +138,18 @@
         });
       });
 
+      // Pré-sélectionner l'option Vendeur si ?role=vendor est présent dans l'URL
+      try{
+        const params = new URLSearchParams(location.search);
+        if(params.get('role') === 'vendor'){
+          const vendRadio = document.querySelector('input[name="role"][value="vendor"]');
+          if(vendRadio){ vendRadio.checked = true; }
+          vendorFields.classList.remove('hidden');
+          const shopName = params.get('shop_name');
+          if(shopName){ const s = document.querySelector('input[name="shop_name"]'); if(s) s.value = shopName; }
+        }
+      }catch(_){ }
+
       function showToast(text, ok=true) {
         toast.innerHTML = `
           <div class="animate-fadeInUp rounded-lg shadow-lg px-4 py-3 ${ok ? 'bg-emerald-600' : 'bg-rose-600'} text-white">
@@ -166,8 +178,9 @@
         if (!email || !password) { setMsg("Email et mot de passe requis."); return; }
         if (password.length < 8) { setMsg("Mot de passe trop court (min 8 caractères)."); return; }
 
-        // IMPORTANT : on force username=email pour rester cohérent
-        const payload = { email, password, first_name, last_name, username: email };
+  // IMPORTANT : on force username=email pour rester cohérent
+  const payload = { email, password, first_name, last_name, username: email,
+        is_vendor: role === 'vendor', shop_name };
 
         setMsg("Création du compte…", true);
 

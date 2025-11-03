@@ -43,6 +43,7 @@
       <nav class="flex items-center gap-4">
         <a class="hover:text-brand transition" href="/products.html">Produits</a>
         <a class="hover:text-brand transition" href="/about.html">À propos</a>
+        <a class="hover:text-brand transition" href="/signup.html?role=vendor">Devenir vendeur</a>
         <!-- Dans <header><nav> ... -->
         <a id="auth-link" href="/login.html">Se connecter</a>
 
@@ -308,7 +309,7 @@
     // Normalise URL d'image (support /media/…)
     function normalizeImg(p){
       const cand = p.image_url || p.image || p.cover || p.thumbnail || p.photo || p.picture;
-      if(!cand) return "https://via.placeholder.com/600x400?text=Parfum";
+  if(!cand) return "/static/images/placeholder_600x400.svg";
       if(/^https?:\/\//i.test(cand)) return cand;
       if(cand.startsWith("//")) return window.location.protocol + cand;
       if(cand.startsWith("/")) return window.location.origin + cand;
@@ -332,9 +333,9 @@
         <article class="group rounded-2xl overflow-hidden bg-white border hover:shadow-md transition">
           <a href="/product.html?id=${p.id}">
             <div class="relative aspect-[4/3] overflow-hidden">
-              <img src="${img}" alt="${p.name||''}"
-                   class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
-                   onerror="this.src='https://via.placeholder.com/600x400?text=Parfum'">
+        <img src="${img}" alt="${p.name||''}"
+          class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500"
+          onerror="this.src='/static/images/placeholder_600x400.svg'">
               <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
             </div>
           </a>
@@ -355,8 +356,8 @@
       return `
         <div class="min-w-[220px] snap-start rounded-2xl bg-white border shadow-sm overflow-hidden">
           <a href="/product.html?id=${p.id}">
-            <img src="${img}" alt="${p.name||''}" class="w-full h-40 object-cover"
-                 onerror="this.src='https://via.placeholder.com/400x400?text=Parfum'">
+      <img src="${img}" alt="${p.name||''}" class="w-full h-40 object-cover"
+        onerror="this.src='/static/images/placeholder_400x400.svg'">
           </a>
           <div class="p-3">
             <div class="font-semibold line-clamp-1">${p.name||'Parfum'}</div>
@@ -371,25 +372,48 @@
         const btn = e.target.closest('button[data-add]');
         if(!btn) return;
         const id = Number(btn.getAttribute('data-add'));
-        if(window.addToCart){ window.addToCart(id, 1); }
-        else {
+
+        // Bloquer l'ajout pour les visiteurs non connectés
+        const token = localStorage.getItem('md_access_token');
+        if(!token){
+          // Utilise alert ici car showToast peut ne pas être initialisé au moment où ce script
+          // s'exécute. On redirige ensuite vers la page de connexion.
+          alert('Connectez-vous pour ajouter au panier');
+          setTimeout(()=> window.location.href = '/login.html', 500);
+          return;
+        }
+
+        // Si la fonction centrale addToCart existe, l'utiliser en lui passant l'objet produit
+        if(window.addToCart){
           fetchProducts().then(ps=>{
             const p = ps.find(x=> Number(x.id)===id);
-            if(!p) return;
-            const KEY="md_cart";
-            let cart = [];
-            try{ cart = JSON.parse(localStorage.getItem(KEY))||[]; }catch{}
-            const ex = cart.find(x=> x.id===id);
-            if(ex) ex.qty = (Number(ex.qty)||1)+1;
-            else cart.push({id:p.id, name:p.name, price:p.price, image:normalizeImg(p), qty:1});
-            localStorage.setItem(KEY, JSON.stringify(cart));
-            btn.classList.add('ring-2','ring-brand/40');
-            setTimeout(()=>btn.classList.remove('ring-2','ring-brand/40'),400);
-            if(window.updateCartCount) window.updateCartCount();
-            const badge = document.getElementById('cart-count');
-            badge.classList.add('animate-ping'); setTimeout(()=>badge.classList.remove('animate-ping'),300);
+            if(p) window.addToCart(p, 1);
           });
+          return;
         }
+
+        // Fallback local si addToCart central absente : stockage dans la même clé que l'app principale
+        fetchProducts().then(ps=>{
+          const p = ps.find(x=> Number(x.id)===id);
+          if(!p) return;
+          const KEY="md_cart_v1"; // harmonisé avec app.js
+          const OLD_KEY="md_cart";
+          let cart = [];
+          try{ cart = JSON.parse(localStorage.getItem(KEY))||[]; }catch{}
+          // si ancienne clé présente, migrer doucement
+          if((!cart || !cart.length) && localStorage.getItem(OLD_KEY)){
+            try{ const old = JSON.parse(localStorage.getItem(OLD_KEY))||[]; if(old && old.length){ cart = old; localStorage.setItem(KEY, JSON.stringify(cart)); localStorage.removeItem(OLD_KEY); } }catch{}
+          }
+          const ex = cart.find(x=> x.id===id);
+          if(ex) ex.qty = (Number(ex.qty)||1)+1;
+          else cart.push({id:p.id, name:p.name, price:p.price, image:normalizeImg(p), qty:1});
+          localStorage.setItem(KEY, JSON.stringify(cart));
+          btn.classList.add('ring-2','ring-brand/40');
+          setTimeout(()=>btn.classList.remove('ring-2','ring-brand/40'),400);
+          if(window.updateCartCount) window.updateCartCount();
+          const badge = document.getElementById('cart-count');
+          if(badge){ badge.classList.add('animate-ping'); setTimeout(()=>badge.classList.remove('animate-ping'),300); }
+        });
       });
     }
 

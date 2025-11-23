@@ -16,7 +16,7 @@ class CartIntegrationTests(TestCase):
 		CartItem.objects.create(cart=cart, product_id=2, quantity=1, unit_price='3.50')
 
 		total = cart.total()
-		# 2*5.00 + 1*3.50 = 13.50
+		
 		self.assertEqual(str(total), '13.50')
 
 		items = cart.items_list()

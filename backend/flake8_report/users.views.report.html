@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: users\views.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="users.views.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               users\views.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  4
+               </span>
+               <strong>F401:</strong> 'django.shortcuts.get_object_or_404' imported but unused
+               
+                  (and 3 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'django.shortcuts.get_object_or_404' imported but unused:</p>
+               
+               <a href="users.views.source.html#l6">
+                  <tt><i>6</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_object_or_404</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'uuid.uuid4' imported but unused:</p>
+               
+               <a href="users.views.source.html#l10">
+                  <tt><i>10</i> <span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">uuid4</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'.models.Profile' imported but unused:</p>
+               
+               <a href="users.views.source.html#l15">
+                  <tt><i>15</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmailVerificationToken</span><span class="p">,</span> <span class="n">PasswordResetToken</span><span class="p">,</span> <span class="n">Profile</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'rest_framework.permissions.IsAdminUser' imported but unused:</p>
+               
+               <a href="users.views.source.html#l17">
+                  <tt><i>17</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAdminUser</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F811">
+               <span class="count sev-1">
+                  3
+               </span>
+               <strong>F811:</strong> redefinition of unused 'IsAuthenticated' from line 3
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Redefinition of unused 'IsAuthenticated' from line 3:</p>
+               
+               <a href="users.views.source.html#l16">
+                  <tt><i>16</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'IsAuthenticated' from line 16:</p>
+               
+               <a href="users.views.source.html#l21">
+                  <tt><i>21</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'Group' from line 5:</p>
+               
+               <a href="users.views.source.html#l235">
+                  <tt><i>235</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W191">
+               <span class="count sev-2">
+                  140
+               </span>
+               <strong>W191:</strong> indentation contains tabs
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.views.source.html#l28">
+                  <tt><i>28</i> <span class="w">	</span><span class="sd">&quot;&quot;&quot;Allow authenticated users to change their password.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l30">
+                  <tt><i>30</i> <span class="sd">	Request: POST { &quot;old_password&quot;: &quot;..&quot;, &quot;new_password&quot;: &quot;..&quot; }</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l31">
+                  <tt><i>31</i> <span class="sd">	&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l32">
+                  <tt><i>32</i> 	<span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l34">
+                  <tt><i>34</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l35">
+                  <tt><i>35</i> 		<span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l36">
+                  <tt><i>36</i> 		<span class="n">old</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;old_password&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l37">
+                  <tt><i>37</i> 		<span class="n">new</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;new_password&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l38">
+                  <tt><i>38</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">new</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l39">
+                  <tt><i>39</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;new_password is required and must be at least 8 chars&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l40">
+                  <tt><i>40</i> 		<span class="c1"># If old password provided, verify it. If not provided, refuse for security.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l41">
+                  <tt><i>41</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">old</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l42">
+                  <tt><i>42</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;old_password is required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l43">
+                  <tt><i>43</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">old</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l44">
+                  <tt><i>44</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;old password incorrect&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l45">
+                  <tt><i>45</i> 		<span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">new</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l46">
+                  <tt><i>46</i> 		<span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l47">
+                  <tt><i>47</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;password_changed&#39;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l51">
+                  <tt><i>51</i> 	<span class="n">serializer_class</span> <span class="o">=</span> <span class="n">RegisterSerializer</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l53">
+                  <tt><i>53</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l54">
+                  <tt><i>54</i> 		<span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_serializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l55">
+                  <tt><i>55</i> 		<span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l56">
+                  <tt><i>56</i> 		<span class="n">user</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l58">
+                  <tt><i>58</i> 		<span class="c1"># Ensure &#39;client&#39; group exists and add user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l59">
+                  <tt><i>59</i> 		<span class="n">group</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;client&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l60">
+                  <tt><i>60</i> 		<span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">group</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l62">
+                  <tt><i>62</i> 		<span class="c1"># Create an email verification token and send the verification link</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l63">
+                  <tt><i>63</i> 		<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l64">
+                  <tt><i>64</i> 			<span class="n">ev</span> <span class="o">=</span> <span class="n">EmailVerificationToken</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l65">
+                  <tt><i>65</i> 			<span class="n">verify_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span><span class="si">}</span><span class="s2">/api/auth/verify-email/?token=</span><span class="si">{</span><span class="n">ev</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l66">
+                  <tt><i>66</i> 			<span class="n">subject</span> <span class="o">=</span> <span class="s1">&#39;Vérifiez votre adresse e-mail pour Maison d</span><span class="se">\&#39;</span><span class="s1">essence&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l67">
+                  <tt><i>67</i> 			<span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bonjour </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">,</span><span class="se">\n\n</span><span class="s2">Merci pour votre inscription. Cliquez sur le lien suivant pour activer votre compte:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">verify_url</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Si vous n&#39;avez pas demandé cette inscription, ignorez ce message.</span><span class="se">\n\n</span><span class="s2">Cordialement,</span><span class="se">\n</span><span class="s2">Maison d&#39;essence&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l68">
+                  <tt><i>68</i> 			<span class="n">from_email</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;DEFAULT_FROM_EMAIL&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l69">
+                  <tt><i>69</i> 			<span class="n">send_mail</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">from_email</span><span class="p">,</span> <span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">],</span> <span class="n">fail_silently</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l70">
+                  <tt><i>70</i> 		<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l71">
+                  <tt><i>71</i> 			<span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Failed to create/send email verification token for user </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l73">
+                  <tt><i>73</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;verification_sent&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l77">
+                  <tt><i>77</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l78">
+                  <tt><i>78</i> 		<span class="n">token</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l79">
+                  <tt><i>79</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l80">
+                  <tt><i>80</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Token required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l81">
+                  <tt><i>81</i> 		<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l82">
+                  <tt><i>82</i> 			<span class="n">ev</span> <span class="o">=</span> <span class="n">EmailVerificationToken</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l83">
+                  <tt><i>83</i> 		<span class="k">except</span> <span class="n">EmailVerificationToken</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l84">
+                  <tt><i>84</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid token&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l85">
+                  <tt><i>85</i> 		<span class="n">ev</span><span class="o">.</span><span class="n">used</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l86">
+                  <tt><i>86</i> 		<span class="n">ev</span><span class="o">.</span><span class="n">verified_at</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l87">
+                  <tt><i>87</i> 		<span class="n">ev</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l88">
+                  <tt><i>88</i> 		<span class="n">user</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l89">
+                  <tt><i>89</i> 		<span class="n">user</span><span class="o">.</span><span class="n">is_active</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l90">
+                  <tt><i>90</i> 		<span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l91">
+                  <tt><i>91</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Email verified&#39;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l95">
+                  <tt><i>95</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l96">
+                  <tt><i>96</i> 		<span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l97">
+                  <tt><i>97</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">email</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l98">
+                  <tt><i>98</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Email required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l99">
+                  <tt><i>99</i> 		<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l100">
+                  <tt><i>100</i> 			<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l101">
+                  <tt><i>101</i> 		<span class="k">except</span> <span class="n">User</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l102">
+                  <tt><i>102</i> 			<span class="c1"># don&#39;t reveal</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l103">
+                  <tt><i>103</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;If the email exists, a reset link was sent.&#39;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l104">
+                  <tt><i>104</i> 		<span class="n">token</span> <span class="o">=</span> <span class="n">PasswordResetToken</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l105">
+                  <tt><i>105</i> 		<span class="n">reset_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span><span class="si">}</span><span class="s2">/api/auth/password-reset/confirm/?token=</span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l106">
+                  <tt><i>106</i> 		<span class="n">send_mail</span><span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l107">
+                  <tt><i>107</i> 			<span class="n">subject</span><span class="o">=</span><span class="s1">&#39;Password reset&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l108">
+                  <tt><i>108</i> 			<span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Use this link to reset your password: </span><span class="si">{</span><span class="n">reset_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l109">
+                  <tt><i>109</i> 			<span class="n">from_email</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l110">
+                  <tt><i>110</i> 			<span class="n">recipient_list</span><span class="o">=</span><span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l111">
+                  <tt><i>111</i> 		<span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l112">
+                  <tt><i>112</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;If the email exists, a reset link was sent.&#39;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l116">
+                  <tt><i>116</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l117">
+                  <tt><i>117</i> 		<span class="n">token</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l118">
+                  <tt><i>118</i> 		<span class="n">new_password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;new_password&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l119">
+                  <tt><i>119</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">token</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">new_password</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l120">
+                  <tt><i>120</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Token and new_password required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l121">
+                  <tt><i>121</i> 		<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l122">
+                  <tt><i>122</i> 			<span class="n">pr</span> <span class="o">=</span> <span class="n">PasswordResetToken</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l123">
+                  <tt><i>123</i> 		<span class="k">except</span> <span class="n">PasswordResetToken</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l124">
+                  <tt><i>124</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid token&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l125">
+                  <tt><i>125</i> 		<span class="n">user</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l126">
+                  <tt><i>126</i> 		<span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">new_password</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l127">
+                  <tt><i>127</i> 		<span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l128">
+                  <tt><i>128</i> 		<span class="n">pr</span><span class="o">.</span><span class="n">used</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l129">
+                  <tt><i>129</i> 		<span class="n">pr</span><span class="o">.</span><span class="n">used_at</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l130">
+                  <tt><i>130</i> 		<span class="n">pr</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l131">
+                  <tt><i>131</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Password updated&#39;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l135">
+                  <tt><i>135</i> 	<span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l137">
+                  <tt><i>137</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l138">
+                  <tt><i>138</i> 		<span class="n">serializer</span> <span class="o">=</span> <span class="n">ProfileSerializer</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l139">
+                  <tt><i>139</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l141">
+                  <tt><i>141</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l142">
+                  <tt><i>142</i> 		<span class="n">serializer</span> <span class="o">=</span> <span class="n">ProfileSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l143">
+                  <tt><i>143</i> 		<span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l144">
+                  <tt><i>144</i> 		<span class="n">user</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l145">
+                  <tt><i>145</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">ProfileSerializer</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l154">
+                  <tt><i>154</i> <span class="w">	</span><span class="sd">&quot;&quot;&quot;Allow a superuser to obtain JWT tokens for another user (impersonation).</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l156">
+                  <tt><i>156</i> <span class="sd">	Security: only `is_superuser` is allowed. The endpoint returns access and</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l157">
+                  <tt><i>157</i> <span class="sd">	refresh tokens for the target user and logs the action. The client is</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l158">
+                  <tt><i>158</i> <span class="sd">	expected to store original admin tokens (if any) before switching.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l159">
+                  <tt><i>159</i> <span class="sd">	&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l160">
+                  <tt><i>160</i> 	<span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l162">
+                  <tt><i>162</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l163">
+                  <tt><i>163</i> 		<span class="c1"># Accept either user id or email or username</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l164">
+                  <tt><i>164</i> 		<span class="n">user_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l165">
+                  <tt><i>165</i> 		<span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l166">
+                  <tt><i>166</i> 		<span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l168">
+                  <tt><i>168</i> 		<span class="n">target</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l169">
+                  <tt><i>169</i> 		<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l170">
+                  <tt><i>170</i> 			<span class="k">if</span> <span class="n">user_id</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l171">
+                  <tt><i>171</i> 				<span class="n">target</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l172">
+                  <tt><i>172</i> 			<span class="k">elif</span> <span class="n">email</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l173">
+                  <tt><i>173</i> 				<span class="n">target</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l174">
+                  <tt><i>174</i> 			<span class="k">elif</span> <span class="n">username</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l175">
+                  <tt><i>175</i> 				<span class="n">target</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l176">
+                  <tt><i>176</i> 			<span class="k">else</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l177">
+                  <tt><i>177</i> 				<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;user_id, email or username required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l178">
+                  <tt><i>178</i> 		<span class="k">except</span> <span class="n">User</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l179">
+                  <tt><i>179</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;User not found&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">404</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l181">
+                  <tt><i>181</i> 		<span class="c1"># Only allow actual superusers to call this endpoint</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l182">
+                  <tt><i>182</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_superuser</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l183">
+                  <tt><i>183</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Only superusers may impersonate other users&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l185">
+                  <tt><i>185</i> 		<span class="c1"># Prevent impersonating other superusers by default</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l186">
+                  <tt><i>186</i> 		<span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">is_superuser</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l187">
+                  <tt><i>187</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Impersonating other superusers is not allowed&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l189">
+                  <tt><i>189</i> 		<span class="c1"># create tokens for target user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l190">
+                  <tt><i>190</i> 		<span class="n">refresh</span> <span class="o">=</span> <span class="n">RefreshToken</span><span class="o">.</span><span class="n">for_user</span><span class="p">(</span><span class="n">target</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l191">
+                  <tt><i>191</i> 		<span class="n">access</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">refresh</span><span class="o">.</span><span class="n">access_token</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l192">
+                  <tt><i>192</i> 		<span class="n">refresh_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">refresh</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l194">
+                  <tt><i>194</i> 		<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;User </span><span class="si">%s</span><span class="s1"> (id=</span><span class="si">%s</span><span class="s1">) impersonated user </span><span class="si">%s</span><span class="s1"> (id=</span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l196">
+                  <tt><i>196</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l197">
+                  <tt><i>197</i> 			<span class="s1">&#39;access&#39;</span><span class="p">:</span> <span class="n">access</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l198">
+                  <tt><i>198</i> 			<span class="s1">&#39;refresh&#39;</span><span class="p">:</span> <span class="n">refresh_str</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l199">
+                  <tt><i>199</i> 			<span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">{</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l200">
+                  <tt><i>200</i> 				<span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">id</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l201">
+                  <tt><i>201</i> 				<span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">username</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l202">
+                  <tt><i>202</i> 				<span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">email</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l203">
+                  <tt><i>203</i> 				<span class="s1">&#39;is_staff&#39;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">is_staff</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l204">
+                  <tt><i>204</i> 				<span class="s1">&#39;is_superuser&#39;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">is_superuser</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l205">
+                  <tt><i>205</i> 			<span class="p">}</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l206">
+                  <tt><i>206</i> 		<span class="p">})</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E101">
+               <span class="count sev-2">
+                  37
+               </span>
+               <strong>E101:</strong> indentation contains mixed spaces and tabs
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.views.source.html#l149">
+                  <tt><i>149</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Issue JWT tokens using email+password or username+password.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l150">
+                  <tt><i>150</i>     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">EmailTokenObtainPairSerializer</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l215">
+                  <tt><i>215</i>     <span class="n">is_vendor</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l216">
+                  <tt><i>216</i>     <span class="n">shop_name</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l217">
+                  <tt><i>217</i>     <span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l218">
+                  <tt><i>218</i>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;vendor_profile&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">vendor_profile</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l219">
+                  <tt><i>219</i>             <span class="n">shop_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">vendor_profile</span><span class="o">.</span><span class="n">shop_name</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l220">
+                  <tt><i>220</i>     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l221">
+                  <tt><i>221</i>         <span class="k">pass</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l223">
+                  <tt><i>223</i>     <span class="k">return</span> <span class="n">Response</span><span class="p">({</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l224">
+                  <tt><i>224</i>         <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l225">
+                  <tt><i>225</i>         <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l226">
+                  <tt><i>226</i>         <span class="s2">&quot;is_vendor&quot;</span><span class="p">:</span> <span class="n">is_vendor</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l227">
+                  <tt><i>227</i>         <span class="s2">&quot;shop_name&quot;</span><span class="p">:</span> <span class="n">shop_name</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l228">
+                  <tt><i>228</i>         <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l229">
+                  <tt><i>229</i>     <span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l242">
+                  <tt><i>242</i>     <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l243">
+                  <tt><i>243</i>     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l244">
+                  <tt><i>244</i>     <span class="n">shop_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shop_name&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l245">
+                  <tt><i>245</i>     <span class="n">phone</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l247">
+                  <tt><i>247</i>     <span class="n">vp</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">VendorProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l248">
+                  <tt><i>248</i>         <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l249">
+                  <tt><i>249</i>         <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shop_name&#39;</span><span class="p">:</span> <span class="n">shop_name</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="n">phone</span><span class="p">}</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">VendorProfile</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;shop_name&#39;</span><span class="p">:</span> <span class="n">shop_name</span><span class="p">}</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l250">
+                  <tt><i>250</i>     <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l251">
+                  <tt><i>251</i>     <span class="k">if</span> <span class="ow">not</span> <span class="n">created</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l252">
+                  <tt><i>252</i>         <span class="k">if</span> <span class="n">shop_name</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l253">
+                  <tt><i>253</i>             <span class="n">vp</span><span class="o">.</span><span class="n">shop_name</span> <span class="o">=</span> <span class="n">shop_name</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l254">
+                  <tt><i>254</i>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">phone</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l255">
+                  <tt><i>255</i>             <span class="n">vp</span><span class="o">.</span><span class="n">phone</span> <span class="o">=</span> <span class="n">phone</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l256">
+                  <tt><i>256</i>         <span class="n">vp</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l258">
+                  <tt><i>258</i>     <span class="n">grp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;vendor&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l259">
+                  <tt><i>259</i>     <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">grp</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l261">
+                  <tt><i>261</i>     <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l262">
+                  <tt><i>262</i>         <span class="s1">&#39;ok&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l263">
+                  <tt><i>263</i>         <span class="s1">&#39;is_vendor&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l264">
+                  <tt><i>264</i>         <span class="s1">&#39;shop_name&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="s1">&#39;shop_name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l265">
+                  <tt><i>265</i>     <span class="p">})</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  18
+               </span>
+               <strong>E501:</strong> line too long (90 > 79 characters)
+               
+                  (and 14 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l20">
+                  <tt><i>20</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l39">
+                  <tt><i>39</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;new_password is required and must be at least 8 chars&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l65">
+                  <tt><i>65</i> 			<span class="n">verify_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span><span class="si">}</span><span class="s2">/api/auth/verify-email/?token=</span><span class="si">{</span><span class="n">ev</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (248 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l67">
+                  <tt><i>67</i> 			<span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bonjour </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">,</span><span class="se">\n\n</span><span class="s2">Merci pour votre inscription. Cliquez sur le lien suivant pour activer votre compte:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">verify_url</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Si vous n&#39;avez pas demandé cette inscription, ignorez ce message.</span><span class="se">\n\n</span><span class="s2">Cordialement,</span><span class="se">\n</span><span class="s2">Maison d&#39;essence&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l71">
+                  <tt><i>71</i> 			<span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Failed to create/send email verification token for user </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (124 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l73">
+                  <tt><i>73</i> 		<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;verification_sent&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l80">
+                  <tt><i>80</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Token required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l84">
+                  <tt><i>84</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid token&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l98">
+                  <tt><i>98</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Email required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (109 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l105">
+                  <tt><i>105</i> 		<span class="n">reset_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span><span class="si">}</span><span class="s2">/api/auth/password-reset/confirm/?token=</span><span class="si">{</span><span class="n">token</span><span class="o">.</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l120">
+                  <tt><i>120</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Token and new_password required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l124">
+                  <tt><i>124</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid token&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l177">
+                  <tt><i>177</i> 				<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;user_id, email or username required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l183">
+                  <tt><i>183</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Only superusers may impersonate other users&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l187">
+                  <tt><i>187</i> 			<span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Impersonating other superusers is not allowed&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (129 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l194">
+                  <tt><i>194</i> 		<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;User </span><span class="si">%s</span><span class="s1"> (id=</span><span class="si">%s</span><span class="s1">) impersonated user </span><span class="si">%s</span><span class="s1"> (id=</span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l218">
+                  <tt><i>218</i>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;vendor_profile&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">vendor_profile</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (122 > 79 characters):</p>
+               
+               <a href="users.views.source.html#l249">
+                  <tt><i>249</i>         <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shop_name&#39;</span><span class="p">:</span> <span class="n">shop_name</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="n">phone</span><span class="p">}</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">VendorProfile</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;shop_name&#39;</span><span class="p">:</span> <span class="n">shop_name</span><span class="p">}</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  5
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.views.source.html#l232">
+                  <tt><i>232</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l233">
+                  <tt><i>233</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l234">
+                  <tt><i>234</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonResponse</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l235">
+                  <tt><i>235</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l237">
+                  <tt><i>237</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">VendorProfile</span>  <span class="c1"># adapte le nom si nécessaire</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.views.source.html#l211">
+                  <tt><i>211</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.views.source.html#l239">
+                  <tt><i>239</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E305">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E305:</strong> expected 2 blank lines after class or function definition, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.views.source.html#l232">
+                  <tt><i>232</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

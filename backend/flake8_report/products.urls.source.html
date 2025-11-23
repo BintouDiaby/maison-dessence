@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>products\urls.py - flake8 annotated source</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <h1>
+            <a href="products.urls.report.html">
+               <img src="back.svg" alt="&#x2B05;">
+               products\urls.py source
+            </a>
+         </h1>
+
+         <div id="doc">
+            <div id="l1"
+               class="code sev- "><tt><i>1</i> <span class="c1"># backend/products/urls.py</span></tt>
+            </div>
+            <div id="l2"
+               class="code sev- "><tt><i>2</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span></tt>
+            </div>
+            <div id="l3"
+               class="code sev- "><tt><i>3</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">views</span></tt>
+            </div>
+            <div id="l4"
+               class="code sev- "><tt><i>4</i> &nbsp;</tt>
+            </div>
+            <div id="l5"
+               class="code sev- "><tt><i>5</i> <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span></tt>
+            </div>
+            <div id="l6"
+               class="code sev- "><tt><i>6</i>     <span class="c1"># Public</span></tt>
+            </div>
+            <div id="l7"
+               class="code sev- "><tt><i>7</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">products_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;products-list&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l8"
+               class="code sev- "><tt><i>8</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_detail</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product-detail&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l9"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (86 > 79 characters)</li>
+               
+               </ul><tt><i>9</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/similar/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_similar</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product-similar&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l10"
+               class="code sev- "><tt><i>10</i> &nbsp;</tt>
+            </div>
+            <div id="l11"
+               class="code sev- "><tt><i>11</i>     <span class="c1"># CRUD vendeur (pas de &#39;api/&#39; ici)</span></tt>
+            </div>
+            <div id="l12"
+               class="code sev- "><tt><i>12</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/create/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_create&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l13"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (83 > 79 characters)</li>
+               
+               </ul><tt><i>13</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/update/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_update</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_update&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l14"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (83 > 79 characters)</li>
+               
+               </ul><tt><i>14</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/delete/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_delete</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_delete&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l15"
+               class="code sev- "><tt><i>15</i> &nbsp;</tt>
+            </div>
+            <div id="l16"
+               class="code sev- "><tt><i>16</i>     <span class="c1"># Upload fichier image</span></tt>
+            </div>
+            <div id="l17"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (101 > 79 characters)</li>
+               
+               </ul><tt><i>17</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/upload-image/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_upload_image</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_upload_image&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l18"
+               class="code sev- "><tt><i>18</i>     <span class="c1"># Likes / wishlist</span></tt>
+            </div>
+            <div id="l19"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (91 > 79 characters)</li>
+               
+               </ul><tt><i>19</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/like/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_like_toggle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_like_toggle&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l20"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (103 > 79 characters)</li>
+               
+               </ul><tt><i>20</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;products/&lt;int:pk&gt;/wishlist/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">product_wishlist_toggle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;product_wishlist_toggle&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l21"
+               class="code sev- "><tt><i>21</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;me/wishlist/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">my_wishlist</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_wishlist&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l22"
+               class="code sev- "><tt><i>22</i>     <span class="c1"># Admin import endpoint (staff only)</span></tt>
+            </div>
+            <div id="l23"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (94 > 79 characters)</li>
+               
+               </ul><tt><i>23</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/import-products/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">admin_import_products</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin_import_products&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l24"
+               class="code sev- "><tt><i>24</i> <span class="p">]</span></tt>
+            </div>
+            
+         </div>
+      </div>
+   </body>
+</html>

@@ -36,7 +36,7 @@ class RecommenderTests(TestCase):
         """Vérifier que le recommender peut être entraîné sans erreur."""
         try:
             result = train()
-            # Si ça ne plante pas, c'est bon
+            
             self.assertTrue(True)
             self.assertIsInstance(result, dict)
             self.assertIn('n_products', result)

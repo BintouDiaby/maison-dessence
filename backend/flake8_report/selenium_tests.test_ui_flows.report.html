@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: selenium_tests\test_ui_flows.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="selenium_tests.test_ui_flows.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               selenium_tests\test_ui_flows.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  38
+               </span>
+               <strong>E501:</strong> line too long (87 > 79 characters)
+               
+                  (and 24 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l9">
+                  <tt><i>9</i> <span class="kn">from</span><span class="w"> </span><span class="nn">selenium.common.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaleElementReferenceException</span><span class="p">,</span> <span class="n">TimeoutException</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l39">
+                  <tt><i>39</i> <span class="sd">      $env:SELENIUM_HEADLESS=&#39;0&#39;; python manage.py test selenium_tests.test_ui_flows.UISmokeFlows</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l57">
+                  <tt><i>57</i>         <span class="c1"># increase timeouts to reduce renderer/timeout flakiness on slower CI/dev machines</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (116 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l73">
+                  <tt><i>73</i>         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;flowuser&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;flowuser@example.com&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;flowpass&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (113 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l75">
+                  <tt><i>75</i>         <span class="n">vendor</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;flowvendor&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;vendor@example.com&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;vendpass&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (141 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l91">
+                  <tt><i>91</i>             <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_cdp_cmd</span><span class="p">(</span><span class="s2">&quot;Page.addScriptToEvaluateOnNewDocument&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;window.BACKEND_URL=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="si">}</span><span class="s2">&#39;;&quot;</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l99">
+                  <tt><i>99</i>             <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.localStorage.clear(); sessionStorage.clear();&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l107">
+                  <tt><i>107</i>         <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">email</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l114">
+                  <tt><i>114</i>         <span class="n">d</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;form#signup-form button[type=&quot;submit&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l115">
+                  <tt><i>115</i>         <span class="c1"># after signup the page redirects to login with ?just_signed=1 (JS sets timeout)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l133">
+                  <tt><i>133</i>                 <span class="c1"># create with username equal to email to match frontends that send</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l136">
+                  <tt><i>136</i>                 <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l140">
+                  <tt><i>140</i>                 <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;Signup did not redirect or show feedback, and fallback creation failed&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l145">
+                  <tt><i>145</i>         <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)))</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">email</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l147">
+                  <tt><i>147</i>         <span class="n">d</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;form#login-form button[type=&quot;submit&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l151">
+                  <tt><i>151</i>             <span class="n">token</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return window.localStorage.getItem(&#39;md_access_token&#39;);&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l156">
+                  <tt><i>156</i>             <span class="c1"># Try a robust server-side fallback: ensure the user exists and create JWT tokens</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (115 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l162">
+                  <tt><i>162</i>                     <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l169">
+                  <tt><i>169</i>                     <span class="c1"># inject tokens directly into localStorage and reload to pick up auth state</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (162 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l170">
+                  <tt><i>170</i>                     <span class="n">d</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.localStorage.setItem(&#39;md_access_token&#39;, &#39;</span><span class="si">{</span><span class="n">access</span><span class="si">}</span><span class="s2">&#39;); window.localStorage.setItem(&#39;md_refresh_token&#39;, &#39;</span><span class="si">{</span><span class="n">refresh</span><span class="si">}</span><span class="s2">&#39;);&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l173">
+                  <tt><i>173</i>                     <span class="c1"># final fallback: capture UI feedback and fail with diagnostics</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l180">
+                  <tt><i>180</i>                     <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Login failed/no token; feedback=</span><span class="si">{</span><span class="n">fb</span><span class="si">}</span><span class="s1">; url=</span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">current_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l183">
+                  <tt><i>183</i>                 <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Login failed and fallback creation failed; url=</span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">current_url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l191">
+                  <tt><i>191</i>             <span class="k">if</span> <span class="ow">not</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email__iexact</span><span class="o">=</span><span class="s1">&#39;flowsignup@example.com&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (149 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l192">
+                  <tt><i>192</i>                 <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;flowsignup@example.com&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;flowsignup@example.com&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;flowsignup123&#39;</span><span class="p">,</span> <span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (140 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l200">
+                  <tt><i>200</i>         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.localStorage.removeItem(&#39;md_access_token&#39;); window.localStorage.removeItem(&#39;md_refresh_token&#39;);&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l203">
+                  <tt><i>203</i>         <span class="n">auth_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;auth-link&#39;</span><span class="p">)))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l210">
+                  <tt><i>210</i>         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;/product.html?id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l215">
+                  <tt><i>215</i>                     <span class="n">el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="n">selector</span><span class="p">)))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l232">
+                  <tt><i>232</i>                 <span class="n">buttons</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;button[data-add]&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l247">
+                  <tt><i>247</i>         <span class="c1"># wait until the cart is actually stored in localStorage or cart-count updates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l251">
+                  <tt><i>251</i>                 <span class="n">cart_json</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return window.localStorage.getItem(&#39;md_cart_v1&#39;);&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l281">
+                  <tt><i>281</i>             <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;cart-page&#39;</span><span class="p">)))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l283">
+                  <tt><i>283</i>             <span class="c1"># Dump browser console and localStorage to help diagnose renderer hang</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (100 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l289">
+                  <tt><i>289</i>                 <span class="n">ls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;return JSON.stringify(window.localStorage || </span><span class="si">{}</span><span class="s2">);&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l296">
+                  <tt><i>296</i>                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fn_base</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.console.log&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l299">
+                  <tt><i>299</i>                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fn_base</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.localstorage.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (162 > 79 characters):</p>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l308">
+                  <tt><i>308</i>             <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="k">lambda</span> <span class="n">drv</span><span class="p">:</span> <span class="n">drv</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;cart-items&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">drv</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;cart-total&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;€0.00&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E306">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E306:</strong> expected 1 blank line before a nested definition, found 0
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l212">
+                  <tt><i>212</i>         <span class="k">def</span><span class="w"> </span><span class="nf">click_safe</span><span class="p">(</span><span class="n">selector</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="selenium_tests.test_ui_flows.source.html#l230">
+                  <tt><i>230</i>         <span class="k">def</span><span class="w"> </span><span class="nf">try_click_add</span><span class="p">(</span><span class="n">driver</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

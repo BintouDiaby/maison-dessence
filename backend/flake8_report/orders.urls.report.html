@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: orders\urls.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="orders.urls.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               orders\urls.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F401:</strong> '.views.CreateCinetPayTransactionView' imported but unused
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.urls.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CreateCinetpayPaymentView</span><span class="p">,</span> <span class="n">CreateCinetPayTransactionView</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  8
+               </span>
+               <strong>E501:</strong> line too long (95 > 79 characters)
+               
+                  (and 6 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (95 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l3">
+                  <tt><i>3</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CartView</span><span class="p">,</span> <span class="n">AddCartItemView</span><span class="p">,</span> <span class="n">RemoveCartItemView</span><span class="p">,</span> <span class="n">CheckoutView</span><span class="p">,</span> <span class="n">PaymentMockView</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l4">
+                  <tt><i>4</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CreateStripePaymentIntentView</span><span class="p">,</span> <span class="n">StripeWebhookView</span><span class="p">,</span> <span class="n">StripeConfigView</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CreateCinetpayPaymentView</span><span class="p">,</span> <span class="n">CreateCinetPayTransactionView</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (120 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l19">
+                  <tt><i>19</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;stripe/create-payment-intent/&#39;</span><span class="p">,</span> <span class="n">CreateStripePaymentIntentView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stripe-create-payment-intent&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l21">
+                  <tt><i>21</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;stripe/webhook/&#39;</span><span class="p">,</span> <span class="n">StripeWebhookView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stripe-webhook&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l22">
+                  <tt><i>22</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/create/&#39;</span><span class="p">,</span> <span class="n">CreateCinetpayPaymentView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-create&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l23">
+                  <tt><i>23</i>         <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/confirm/&#39;</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-confirm&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="orders.urls.source.html#l24">
+                  <tt><i>24</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/webhook/&#39;</span><span class="p">,</span> <span class="n">CinetPayWebhookView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-webhook&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E131">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E131:</strong> continuation line unaligned for hanging indent
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.urls.source.html#l23">
+                  <tt><i>23</i>         <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/confirm/&#39;</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-confirm&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

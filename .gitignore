@@ -2,3 +2,9 @@
 # node
 node_modules/
 
+.venv/
+ven/
+env/
+docs/
+README.md
+**/README.md

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: products\admin.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="products.admin.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               products\admin.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="W191">
+               <span class="count sev-2">
+                  87
+               </span>
+               <strong>W191:</strong> indentation contains tabs
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="products.admin.source.html#l8">
+                  <tt><i>8</i> <span class="w">	</span><span class="sd">&quot;&quot;&quot;Admin for Product: show image preview and allow editing/uploading images.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l9">
+                  <tt><i>9</i> 	<span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;image_tag&quot;</span><span class="p">,</span> <span class="s2">&quot;edit_link&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l10">
+                  <tt><i>10</i> 	<span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l11">
+                  <tt><i>11</i> 	<span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;family&quot;</span><span class="p">,)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l12">
+                  <tt><i>12</i> 	<span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;-id&quot;</span><span class="p">,)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l13">
+                  <tt><i>13</i> 	<span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;image_tag&quot;</span><span class="p">,)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l14">
+                  <tt><i>14</i> 	<span class="n">list_display_links</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l15">
+                  <tt><i>15</i> 	<span class="n">list_per_page</span> <span class="o">=</span> <span class="mi">50</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l16">
+                  <tt><i>16</i> 	<span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action_edit_first_selected&quot;</span><span class="p">,</span> <span class="s2">&quot;import_products_from_json_action&quot;</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l18">
+                  <tt><i>18</i> 	<span class="n">fieldsets</span> <span class="o">=</span> <span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l19">
+                  <tt><i>19</i> 		<span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">{</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l20">
+                  <tt><i>20</i> 			<span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="s1">&#39;concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l21">
+                  <tt><i>21</i> 		<span class="p">}),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l22">
+                  <tt><i>22</i> 		<span class="p">(</span><span class="s1">&#39;Image&#39;</span><span class="p">,</span> <span class="p">{</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l23">
+                  <tt><i>23</i> 			<span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;image_url&#39;</span><span class="p">,</span> <span class="s1">&#39;image_tag&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l24">
+                  <tt><i>24</i> 			<span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Upload an image file or set an external image_url. Uploaded image is preferred.&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l25">
+                  <tt><i>25</i> 		<span class="p">}),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l26">
+                  <tt><i>26</i> 	<span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l28">
+                  <tt><i>28</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">image_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l29">
+                  <tt><i>29</i> 		<span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l30">
+                  <tt><i>30</i> 			<span class="k">return</span> <span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;</span><span class="si">{}</span><span class="s1">&quot; style=&quot;height:60px;&quot;/&gt;&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">url</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l31">
+                  <tt><i>31</i> 		<span class="k">if</span> <span class="n">obj</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;image_url&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l32">
+                  <tt><i>32</i> 			<span class="k">return</span> <span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;</span><span class="si">{}</span><span class="s1">&quot; style=&quot;height:60px;&quot;/&gt;&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">image_url</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l33">
+                  <tt><i>33</i> 		<span class="k">return</span> <span class="s2">&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l35">
+                  <tt><i>35</i> 	<span class="n">image_tag</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Image&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l37">
+                  <tt><i>37</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">edit_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l38">
+                  <tt><i>38</i> 		<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l39">
+                  <tt><i>39</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l40">
+                  <tt><i>40</i> 			<span class="k">return</span> <span class="s2">&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l41">
+                  <tt><i>41</i> 		<span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;admin:products_product_change&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pk</span><span class="p">,))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l42">
+                  <tt><i>42</i> 		<span class="k">return</span> <span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;</span><span class="si">{}</span><span class="s1">&quot;&gt;Edit&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l44">
+                  <tt><i>44</i> 	<span class="n">edit_link</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Edit&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l46">
+                  <tt><i>46</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">action_edit_first_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l47">
+                  <tt><i>47</i> <span class="w">		</span><span class="sd">&quot;&quot;&quot;Admin action: redirect to the change page for the first selected product.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l48">
+                  <tt><i>48</i> 		<span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HttpResponseRedirect</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l49">
+                  <tt><i>49</i> 		<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l51">
+                  <tt><i>51</i> 		<span class="n">first</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l52">
+                  <tt><i>52</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">first</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l53">
+                  <tt><i>53</i> 			<span class="bp">self</span><span class="o">.</span><span class="n">message_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;No product selected.&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l54">
+                  <tt><i>54</i> 			<span class="k">return</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l55">
+                  <tt><i>55</i> 		<span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;admin:products_product_change&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">pk</span><span class="p">,))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l56">
+                  <tt><i>56</i> 		<span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l58">
+                  <tt><i>58</i> 	<span class="n">action_edit_first_selected</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Edit first selected product&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l60">
+                  <tt><i>60</i> 	<span class="k">def</span><span class="w"> </span><span class="nf">import_products_from_json_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l61">
+                  <tt><i>61</i> <span class="w">		</span><span class="sd">&quot;&quot;&quot;Admin action: import products from products/data/products.json into the DB.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l62">
+                  <tt><i>62</i> <span class="sd">		This is non-destructive and will skip existing products by case-insensitive name match.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l63">
+                  <tt><i>63</i> <span class="sd">		You can run it from the products changelist (select any or none) and then choose the action.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l64">
+                  <tt><i>64</i> <span class="sd">		&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l65">
+                  <tt><i>65</i> 		<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">messages</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l66">
+                  <tt><i>66</i> 		<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l67">
+                  <tt><i>67</i> 		<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l69">
+                  <tt><i>69</i> 		<span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;products.json&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l70">
+                  <tt><i>70</i> 		<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_file</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l71">
+                  <tt><i>71</i> 			<span class="bp">self</span><span class="o">.</span><span class="n">message_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;products.json not found at </span><span class="si">{</span><span class="n">data_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">messages</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l72">
+                  <tt><i>72</i> 			<span class="k">return</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l74">
+                  <tt><i>74</i> 		<span class="n">created</span> <span class="o">=</span> <span class="mi">0</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l75">
+                  <tt><i>75</i> 		<span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l76">
+                  <tt><i>76</i> 		<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l77">
+                  <tt><i>77</i> 			<span class="n">items</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l79">
+                  <tt><i>79</i> 		<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l80">
+                  <tt><i>80</i> 			<span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l81">
+                  <tt><i>81</i> 			<span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l82">
+                  <tt><i>82</i> 				<span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l83">
+                  <tt><i>83</i> 				<span class="k">continue</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l84">
+                  <tt><i>84</i> 			<span class="k">if</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__iexact</span><span class="o">=</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l85">
+                  <tt><i>85</i> 				<span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l86">
+                  <tt><i>86</i> 				<span class="k">continue</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l87">
+                  <tt><i>87</i> 			<span class="n">price</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l88">
+                  <tt><i>88</i> 			<span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l89">
+                  <tt><i>89</i> 				<span class="n">price</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">price</span><span class="p">))</span> <span class="k">if</span> <span class="n">price</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l90">
+                  <tt><i>90</i> 			<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l91">
+                  <tt><i>91</i> 				<span class="n">price</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l93">
+                  <tt><i>93</i> 			<span class="n">p</span> <span class="o">=</span> <span class="n">Product</span><span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l94">
+                  <tt><i>94</i> 				<span class="n">owner</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l95">
+                  <tt><i>95</i> 				<span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l96">
+                  <tt><i>96</i> 				<span class="n">description</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l97">
+                  <tt><i>97</i> 				<span class="n">price</span><span class="o">=</span><span class="n">price</span> <span class="ow">or</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.00&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l98">
+                  <tt><i>98</i> 				<span class="n">stock</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stock&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l99">
+                  <tt><i>99</i> 				<span class="n">family</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;family&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l100">
+                  <tt><i>100</i> 				<span class="n">concentration</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;concentration&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l101">
+                  <tt><i>101</i> 				<span class="n">image_url</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;image_url&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l102">
+                  <tt><i>102</i> 				<span class="n">tags</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l103">
+                  <tt><i>103</i> 			<span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l104">
+                  <tt><i>104</i> 			<span class="n">p</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l105">
+                  <tt><i>105</i> 			<span class="n">created</span> <span class="o">+=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l107">
+                  <tt><i>107</i> 		<span class="bp">self</span><span class="o">.</span><span class="n">message_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Import complete. Created: </span><span class="si">{</span><span class="n">created</span><span class="si">}</span><span class="s1"> — Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.admin.source.html#l109">
+                  <tt><i>109</i> 	<span class="n">import_products_from_json_action</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Importer produits depuis products.json&#39;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  11
+               </span>
+               <strong>E501:</strong> line too long (80 > 79 characters)
+               
+                  (and 6 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l8">
+                  <tt><i>8</i> <span class="w">	</span><span class="sd">&quot;&quot;&quot;Admin for Product: show image preview and allow editing/uploading images.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l9">
+                  <tt><i>9</i> 	<span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;stock&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;image_tag&quot;</span><span class="p">,</span> <span class="s2">&quot;edit_link&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l20">
+                  <tt><i>20</i> 			<span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="s1">&#39;concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l24">
+                  <tt><i>24</i> 			<span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Upload an image file or set an external image_url. Uploaded image is preferred.&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l47">
+                  <tt><i>47</i> <span class="w">		</span><span class="sd">&quot;&quot;&quot;Admin action: redirect to the change page for the first selected product.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l61">
+                  <tt><i>61</i> <span class="w">		</span><span class="sd">&quot;&quot;&quot;Admin action: import products from products/data/products.json into the DB.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l62">
+                  <tt><i>62</i> <span class="sd">		This is non-destructive and will skip existing products by case-insensitive name match.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l63">
+                  <tt><i>63</i> <span class="sd">		You can run it from the products changelist (select any or none) and then choose the action.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l71">
+                  <tt><i>71</i> 			<span class="bp">self</span><span class="o">.</span><span class="n">message_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;products.json not found at </span><span class="si">{</span><span class="n">data_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">messages</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (110 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l107">
+                  <tt><i>107</i> 		<span class="bp">self</span><span class="o">.</span><span class="n">message_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Import complete. Created: </span><span class="si">{</span><span class="n">created</span><span class="si">}</span><span class="s1"> — Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">messages</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.admin.source.html#l109">
+                  <tt><i>109</i> 	<span class="n">import_products_from_json_action</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Importer produits depuis products.json&#39;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E401">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E401:</strong> multiple imports on one line
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="products.admin.source.html#l66">
+                  <tt><i>66</i> 		<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

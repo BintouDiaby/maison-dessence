@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: orders\views.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="orders.views.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               orders\views.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F401:</strong> 'django.shortcuts.render' imported but unused
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'django.shortcuts.render' imported but unused:</p>
+               
+               <a href="orders.views.source.html#l37">
+                  <tt><i>37</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'decimal.Decimal' imported but unused:</p>
+               
+               <a href="orders.views.source.html#l45">
+                  <tt><i>45</i> <span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F811">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F811:</strong> redefinition of unused 'CreateCinetPayTransactionView' from line 271
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Redefinition of unused 'CreateCinetPayTransactionView' from line 271:</p>
+               
+               <a href="orders.views.source.html#l354">
+                  <tt><i>354</i> <span class="k">class</span><span class="w"> </span><span class="nc">CreateCinetPayTransactionView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'CinetPayConfirmView' from line 275:</p>
+               
+               <a href="orders.views.source.html#l401">
+                  <tt><i>401</i> <span class="k">class</span><span class="w"> </span><span class="nc">CinetPayConfirmView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F841:</strong> local variable 'e' is assigned to but never used
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.views.source.html#l321">
+                  <tt><i>321</i>             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l328">
+                  <tt><i>328</i>             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F541">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F541:</strong> f-string is missing placeholders
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.views.source.html#l386">
+                  <tt><i>386</i>                 <span class="s1">&#39;notify_url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/api/orders/cinetpay/confirm/&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  63
+               </span>
+               <strong>E501:</strong> line too long (101 > 79 characters)
+               
+                  (and 32 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l43">
+                  <tt><i>43</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">CartSerializer</span><span class="p">,</span> <span class="n">AddCartItemSerializer</span><span class="p">,</span> <span class="n">CheckoutSerializer</span><span class="p">,</span> <span class="n">PaymentSerializer</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (148 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l88">
+                  <tt><i>88</i>         <span class="n">ci</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">CartItem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">cart</span><span class="o">=</span><span class="n">cart</span><span class="p">,</span> <span class="n">product_id</span><span class="o">=</span><span class="n">product_id</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="n">quantity</span><span class="p">,</span> <span class="s1">&#39;unit_price&#39;</span><span class="p">:</span> <span class="n">product</span><span class="o">.</span><span class="n">price</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l103">
+                  <tt><i>103</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;product_id required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (109 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l120">
+                  <tt><i>120</i>             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;product_id&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">product_id</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">unit_price</span><span class="p">)})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l124">
+                  <tt><i>124</i>         <span class="c1"># For now we implement a mocked payment flow. If you later want Stripe, we can add it.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (100 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l128">
+                  <tt><i>128</i>             <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;paid&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l131">
+                  <tt><i>131</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;ok&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;order_id&#39;</span><span class="p">:</span> <span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;transaction_id&#39;</span><span class="p">:</span> <span class="n">transaction_id</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l133">
+                  <tt><i>133</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;unsupported payment method&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l137">
+                  <tt><i>137</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Accepts basic payment data and returns a simulated result. DO NOT use in production.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l144">
+                  <tt><i>144</i>         <span class="c1"># very simple simulation: accept if method==mock or card number provided</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l145">
+                  <tt><i>145</i>         <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;mock&#39;</span> <span class="ow">or</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;card&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;card&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l152">
+                  <tt><i>152</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a Stripe PaymentIntent for the current cart and return client_secret.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l153">
+                  <tt><i>153</i> <span class="sd">    Expects authenticated user. Creates an Order with status &#39;pending&#39; and attaches metadata.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (110 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l160">
+                  <tt><i>160</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Stripe not configured&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l166">
+                  <tt><i>166</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cart empty&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (109 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l170">
+                  <tt><i>170</i>             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;product_id&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">product_id</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">unit_price</span><span class="p">)})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l181">
+                  <tt><i>181</i>         <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total_decimal</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;pending&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (127 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l192">
+                  <tt><i>192</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;payment_intent_failed&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l194">
+                  <tt><i>194</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span> <span class="s1">&#39;order_id&#39;</span><span class="p">:</span> <span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l198">
+                  <tt><i>198</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a CinetPay payment and return the payment URL to redirect the user to.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l200">
+                  <tt><i>200</i> <span class="sd">    This implementation calls CinetPay&#39;s checkout API. Configure the following env vars in</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l215">
+                  <tt><i>215</i>             <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cart_items</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (100 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l220">
+                  <tt><i>220</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cart empty or invalid&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l221">
+                  <tt><i>221</i>         <span class="c1"># create order record (so we can return a mock confirm URL if CinetPay isn&#39;t configured)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (112 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l224">
+                  <tt><i>224</i>             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;product_id&#39;</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;qty&#39;</span><span class="p">),</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">))})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (115 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l226">
+                  <tt><i>226</i>         <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l227">
+                  <tt><i>227</i>                                      <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;pending&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (100 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l232">
+                  <tt><i>232</i>         <span class="n">base_url</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;CINETPAY_BASE_URL&#39;</span><span class="p">,</span> <span class="s1">&#39;https://sandbox.cinetpay.com/v2/payment&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l235">
+                  <tt><i>235</i>             <span class="c1"># If CinetPay isn&#39;t configured in this environment return a local mock URL</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l236">
+                  <tt><i>236</i>             <span class="n">mock_url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/api/orders/cinetpay/confirm/?order_id=</span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&amp;status=success&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l243">
+                  <tt><i>243</i>             <span class="s1">&#39;currency&#39;</span><span class="p">:</span> <span class="s1">&#39;XOF&#39;</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;CURRENCY&#39;</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;XOF&#39;</span> <span class="k">else</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l247">
+                  <tt><i>247</i>             <span class="s1">&#39;return_url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/orders/</span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">/confirmation/&quot;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l248">
+                  <tt><i>248</i>             <span class="s1">&#39;notify_url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="s1">&#39;/api/orders/cinetpay/webhook/&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l254">
+                  <tt><i>254</i>             <span class="c1"># CinetPay&#39;s API expects a POST; adapt to their exact contract in production</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l258">
+                  <tt><i>258</i>             <span class="c1"># assume API returns payment_url in data[&#39;data&#39;][&#39;payment_url&#39;] or similar</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l259">
+                  <tt><i>259</i>             <span class="n">payment_url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;payment_url&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;payment_url&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (120 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l261">
+                  <tt><i>261</i>                 <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cinetpay_error&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (129 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l267">
+                  <tt><i>267</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cinetpay_request_failed&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l276">
+                  <tt><i>276</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple confirmation endpoint that CinetPay can redirect to after payment.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l278">
+                  <tt><i>278</i> <span class="sd">    This view is minimal for development: it accepts GET params or POST JSON containing</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l279">
+                  <tt><i>279</i> <span class="sd">    an `order_id` (or transaction_id) and marks the order paid. In production use the</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l285">
+                  <tt><i>285</i>         <span class="n">order_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;order_id&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;transaction_id&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l287">
+                  <tt><i>287</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;order_id required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l294">
+                  <tt><i>294</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;order not found&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_404_NOT_FOUND</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l327">
+                  <tt><i>327</i>                 <span class="n">event</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">Webhook</span><span class="o">.</span><span class="n">construct_event</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">sig_header</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">STRIPE_WEBHOOK_SECRET</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l348">
+                  <tt><i>348</i>                     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Order not found for webhook order_id=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">order_id</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l355">
+                  <tt><i>355</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a CinetPay transaction or return a mock URL for dev if not configured.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l361">
+                  <tt><i>361</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cart empty&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (214 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l365">
+                  <tt><i>365</i>         <span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;product_id&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">product_id</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="n">ci</span><span class="o">.</span><span class="n">quantity</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">unit_price</span><span class="p">)}</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cart</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span> <span class="n">total</span><span class="o">=</span><span class="n">total_decimal</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;pending&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l367">
+                  <tt><i>367</i>         <span class="c1"># If CinetPay not configured, return a mock payment URL which simulates the redirect</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l373">
+                  <tt><i>373</i>             <span class="n">mock_url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/api/orders/cinetpay/confirm/?order_id=</span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&amp;status=success&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l376">
+                  <tt><i>376</i>         <span class="c1"># Real CinetPay integration would go here. For safety we implement a minimal initializer.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (111 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l385">
+                  <tt><i>385</i>                 <span class="s1">&#39;return_url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/api/orders/cinetpay/confirm/?order_id=</span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l386">
+                  <tt><i>386</i>                 <span class="s1">&#39;notify_url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">build_absolute_uri</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/api/orders/cinetpay/confirm/&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (106 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l388">
+                  <tt><i>388</i>             <span class="c1"># NOTE: endpoint URL and parameters may differ; adapt with real CinetPay docs and credentials.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l389">
+                  <tt><i>389</i>             <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://api.cinetpay.com/v1/?/transaction/init&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l392">
+                  <tt><i>392</i>             <span class="n">payment_url</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;payment_url&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;payment_url&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (126 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l394">
+                  <tt><i>394</i>                 <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cinetpay init failed&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (120 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l398">
+                  <tt><i>398</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;cinetpay_error&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_500_INTERNAL_SERVER_ERROR</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l402">
+                  <tt><i>402</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple endpoint to handle CinetPay return/notify and mark order as paid (dev-friendly).&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (102 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l421">
+                  <tt><i>421</i>             <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Payment confirmed for order </span><span class="si">{</span><span class="n">order</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">. You can close this window.&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l441">
+                  <tt><i>441</i>             <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="orders.views.source.html#l449">
+                  <tt><i>449</i>         <span class="n">status_q</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status_payment&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  16
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.views.source.html#l37">
+                  <tt><i>37</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l41">
+                  <tt><i>41</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIView</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l42">
+                  <tt><i>42</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cart</span><span class="p">,</span> <span class="n">CartItem</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l43">
+                  <tt><i>43</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">CartSerializer</span><span class="p">,</span> <span class="n">AddCartItemSerializer</span><span class="p">,</span> <span class="n">CheckoutSerializer</span><span class="p">,</span> <span class="n">PaymentSerializer</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l44">
+                  <tt><i>44</i> <span class="kn">from</span><span class="w"> </span><span class="nn">products.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Product</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l45">
+                  <tt><i>45</i> <span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l46">
+                  <tt><i>46</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l47">
+                  <tt><i>47</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l48">
+                  <tt><i>48</i> <span class="kn">import</span><span class="w"> </span><span class="nn">stripe</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l49">
+                  <tt><i>49</i> <span class="kn">import</span><span class="w"> </span><span class="nn">json</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l50">
+                  <tt><i>50</i> <span class="kn">import</span><span class="w"> </span><span class="nn">time</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l51">
+                  <tt><i>51</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HttpResponse</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l52">
+                  <tt><i>52</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.csrf</span><span class="w"> </span><span class="kn">import</span> <span class="n">csrf_exempt</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l53">
+                  <tt><i>53</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">method_decorator</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l54">
+                  <tt><i>54</i> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="orders.views.source.html#l55">
+                  <tt><i>55</i> <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E305">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E305:</strong> expected 2 blank lines after class or function definition, found 0
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="orders.views.source.html#l37">
+                  <tt><i>37</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

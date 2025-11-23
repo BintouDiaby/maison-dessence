@@ -147,8 +147,8 @@
           row.className = "bg-white rounded-2xl shadow-sm p-4 flex gap-4 items-center animate-fadeInUp";
 
           row.innerHTML = `
-            <img src="${it.image || '/static/img/placeholder.jpg'}" alt="${it.name || ''}"
-                 class="w-20 h-20 object-cover rounded-lg border" onerror="this.src='/static/img/placeholder.jpg'"/>
+            <img src="${it.image || '/static/images/placeholder_400x400.svg'}" alt="${it.name || ''}"
+                 class="w-20 h-20 object-cover rounded-lg border" onerror="this.src='/static/images/placeholder_400x400.svg'"/>
             <div class="flex-1 min-w-0">
               <a href="/product.html?id=${it.id}" class="font-semibold hover:text-brand transition line-clamp-1">${it.name || 'Produit'}</a>
               <div class="text-sm text-gray-500">Prix unitaire : ${fmt(it.price || 0)}</div>

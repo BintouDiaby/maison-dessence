@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: personalization\views.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="personalization.views.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               personalization\views.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F841:</strong> local variable 'e' is assigned to but never used
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="personalization.views.source.html#l211">
+                  <tt><i>211</i>                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="personalization.views.source.html#l254">
+                  <tt><i>254</i>         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  43
+               </span>
+               <strong>E501:</strong> line too long (81 > 79 characters)
+               
+                  (and 26 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l20">
+                  <tt><i>20</i> <span class="c1"># try to import openai if available; if not, we&#39;ll fall back to the internal mock</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l60">
+                  <tt><i>60</i> <span class="sd">    List conversations for the requesting user. Admins (staff) see all conversations.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l73">
+                  <tt><i>73</i>     <span class="c1"># Very small heuristic-based mock that returns an assistant text and optionally a recipe</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (115 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l75">
+                  <tt><i>75</i>     <span class="n">reply</span> <span class="o">=</span> <span class="s2">&quot;Merci — peux‑tu préciser tes notes préférées (ex: floral, vanille, boisé), l&#39;intensité et le budget ?&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (108 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l78">
+                  <tt><i>78</i>     <span class="n">triggers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;crée&#39;</span><span class="p">,</span> <span class="s1">&#39;créer&#39;</span><span class="p">,</span> <span class="s1">&#39;formule&#39;</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="s1">&#39;personnalise&#39;</span><span class="p">,</span> <span class="s1">&#39;compose&#39;</span><span class="p">,</span> <span class="s1">&#39;compose-moi&#39;</span><span class="p">,</span> <span class="s1">&#39;je veux un&#39;</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (140 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l80">
+                  <tt><i>80</i>         <span class="n">reply</span> <span class="o">=</span> <span class="s2">&quot;Voici une proposition de formule personnalisée basée sur vos goûts — vous pouvez la finaliser ou demander des ajustements.&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (110 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l86">
+                  <tt><i>86</i>             <span class="s1">&#39;proportions&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bergamot&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;rose&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;jasmine&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;vanilla&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;amber&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l101">
+                  <tt><i>101</i>                 <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Forbidden&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l105">
+                  <tt><i>105</i>                 <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;conversation id required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l108">
+                  <tt><i>108</i>                 <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Forbidden&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l113">
+                  <tt><i>113</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;text required&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l115">
+                  <tt><i>115</i>         <span class="n">msg</span> <span class="o">=</span> <span class="n">ConversationMessage</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">conversation</span><span class="o">=</span><span class="n">conv</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">role</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l130">
+                  <tt><i>130</i>                     <span class="n">min_interval</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;OPENAI_MIN_INTERVAL_SECS&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l133">
+                  <tt><i>133</i>                     <span class="n">count_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;openai_count_</span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l135">
+                  <tt><i>135</i>                     <span class="k">if</span> <span class="n">last_ts</span> <span class="ow">and</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">last_ts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_interval</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l136">
+                  <tt><i>136</i>                         <span class="n">retry_after</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_interval</span> <span class="o">-</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">last_ts</span><span class="p">)))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (107 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l137">
+                  <tt><i>137</i>                         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;rate_limited&#39;</span><span class="p">,</span> <span class="s1">&#39;retry_after&#39;</span><span class="p">:</span> <span class="n">retry_after</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">429</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l140">
+                  <tt><i>140</i>                         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;daily_quota_exceeded&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">429</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l145">
+                  <tt><i>145</i>                         <span class="s2">&quot;Aide l&#39;utilisateur à composer une formule de parfum personnalisée. &quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (122 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l146">
+                  <tt><i>146</i>                         <span class="s2">&quot;Si l&#39;utilisateur demande explicitement une formule, retourne une réponse naturelle en français. &quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (175 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l147">
+                  <tt><i>147</i>                         <span class="s2">&quot;Si possible, inclus une section JSON délimitée par des accolades contenant les clés: name, top_notes, heart_notes, base_notes, proportions, comments.&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l154">
+                  <tt><i>154</i>                         <span class="n">model</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;OPENAI_MODEL&#39;</span><span class="p">,</span> <span class="s1">&#39;gpt-3.5-turbo&#39;</span><span class="p">),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l159">
+                  <tt><i>159</i>                     <span class="n">assistant_text</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (105 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l163">
+                  <tt><i>163</i>                     <span class="n">usage</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;usage&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s1">&#39;usage&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l165">
+                  <tt><i>165</i>                         <span class="c1"># increment a simple cache-based counter for total calls</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l168">
+                  <tt><i>168</i>                         <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cache_key_calls</span><span class="p">,</span> <span class="n">prev_calls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l170">
+                  <tt><i>170</i>                             <span class="c1"># some SDKs return usage.total_tokens or usage.token counts</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (132 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l171">
+                  <tt><i>171</i>                             <span class="n">total_tokens</span> <span class="o">=</span> <span class="n">usage</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;total_tokens&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">usage</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;completion_tokens&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">usage</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;prompt_tokens&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (105 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l180">
+                  <tt><i>180</i>                                     <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cache_key_tokens</span><span class="p">,</span> <span class="n">prev_t</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_tokens</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (140 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l186">
+                  <tt><i>186</i>                     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;OpenAI call succeeded&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="s1">&#39;elapsed_s&#39;</span><span class="p">:</span> <span class="n">elapsed</span><span class="p">,</span> <span class="s1">&#39;usage&#39;</span><span class="p">:</span> <span class="n">usage</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l209">
+                  <tt><i>209</i>                             <span class="c1"># ignore JSON parse errors and fall back to no recipe</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l212">
+                  <tt><i>212</i>                     <span class="c1"># if the OpenAI call fails for any reason, fall back to mock</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (120 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l219">
+                  <tt><i>219</i>             <span class="n">assistant_msg</span> <span class="o">=</span> <span class="n">ConversationMessage</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">conversation</span><span class="o">=</span><span class="n">conv</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;assistant&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">assistant_text</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l220">
+                  <tt><i>220</i>             <span class="n">response_payload</span><span class="p">[</span><span class="s1">&#39;assistant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ConversationMessageSerializer</span><span class="p">(</span><span class="n">assistant_msg</span><span class="p">)</span><span class="o">.</span><span class="n">data</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l235">
+                  <tt><i>235</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Forbidden&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (149 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l238">
+                  <tt><i>238</i>             <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;No suggested recipe to finalize. Ask the assistant for a recipe first.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (92 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l243">
+                  <tt><i>243</i>         <span class="c1"># Try to send the suggested recipe to the user via email if email backend configured</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (152 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l248">
+                  <tt><i>248</i>                 <span class="n">body</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">%s</span><span class="s1">,</span><span class="se">\n\n</span><span class="s1">Voici la formule personnalisée que nous avons préparée pour vous :</span><span class="se">\n\n</span><span class="si">%s</span><span class="se">\n\n</span><span class="s1">Cordialement,</span><span class="se">\n</span><span class="s1">Maison d</span><span class="se">\&#39;</span><span class="s1">essence&#39;</span> <span class="o">%</span> <span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (143 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l249">
+                  <tt><i>249</i>                     <span class="nb">getattr</span><span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="n">conv</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">conv</span><span class="o">.</span><span class="n">suggested_recipe</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l251">
+                  <tt><i>251</i>                 <span class="n">from_email</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;DEFAULT_FROM_EMAIL&#39;</span><span class="p">,</span> <span class="s1">&#39;webmaster@localhost&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l252">
+                  <tt><i>252</i>                 <span class="c1"># send_mail will use the configured EMAIL_BACKEND (console or SMTP)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l253">
+                  <tt><i>253</i>                 <span class="n">send_mail</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">from_email</span><span class="p">,</span> <span class="p">[</span><span class="n">user_email</span><span class="p">],</span> <span class="n">fail_silently</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="personalization.views.source.html#l255">
+                  <tt><i>255</i>             <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s1">&#39;Failed to send finalized recipe email for conversation </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">conv</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="personalization.views.source.html#l18">
+                  <tt><i>18</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.core.mail</span><span class="w"> </span><span class="kn">import</span> <span class="n">send_mail</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: users\models.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="users.models.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               users\models.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F811">
+               <span class="count sev-1">
+                  3
+               </span>
+               <strong>F811:</strong> redefinition of unused 'post_save' from line 42
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Redefinition of unused 'post_save' from line 42:</p>
+               
+               <a href="users.models.source.html#l46">
+                  <tt><i>46</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span><span class="p">,</span> <span class="n">m2m_changed</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'receiver' from line 43:</p>
+               
+               <a href="users.models.source.html#l47">
+                  <tt><i>47</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'Group' from line 48:</p>
+               
+               <a href="users.models.source.html#l77">
+                  <tt><i>77</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F401:</strong> 'django.utils.timezone' imported but unused
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l3">
+                  <tt><i>3</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E101">
+               <span class="count sev-2">
+                  29
+               </span>
+               <strong>E101:</strong> indentation contains mixed spaces and tabs
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l52">
+                  <tt><i>52</i>     <span class="k">if</span> <span class="n">created</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l53">
+                  <tt><i>53</i>         <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l54">
+                  <tt><i>54</i>         <span class="c1"># ensure client group exists</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l55">
+                  <tt><i>55</i>         <span class="n">client_group</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;client&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l56">
+                  <tt><i>56</i>         <span class="n">instance</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">client_group</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l57">
+                  <tt><i>57</i>         <span class="c1"># s&#39;assurer que le groupe vendor existe (pas d’ajout par défaut)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l58">
+                  <tt><i>58</i>         <span class="n">ensure_vendor_group_exists</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l62">
+                  <tt><i>62</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l63">
+                  <tt><i>63</i> <span class="sd">    Quand on ajoute le groupe &#39;vendor&#39; à un utilisateur, crée le VendorProfile s&#39;il n&#39;existe pas.</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l64">
+                  <tt><i>64</i> <span class="sd">    &quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l65">
+                  <tt><i>65</i>     <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;post_add&quot;</span> <span class="ow">and</span> <span class="n">pk_set</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l66">
+                  <tt><i>66</i>         <span class="k">try</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l67">
+                  <tt><i>67</i>             <span class="n">vendor_group</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l68">
+                  <tt><i>68</i>         <span class="k">except</span> <span class="n">Group</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l69">
+                  <tt><i>69</i>             <span class="k">return</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l70">
+                  <tt><i>70</i>         <span class="k">if</span> <span class="n">vendor_group</span><span class="o">.</span><span class="n">pk</span> <span class="ow">in</span> <span class="n">pk_set</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="s2">&quot;vendor_profile&quot;</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l71">
+                  <tt><i>71</i>             <span class="n">VendorProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l72">
+                  <tt><i>72</i>                 <span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l73">
+                  <tt><i>73</i>                 <span class="n">shop_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Boutique de </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l74">
+                  <tt><i>74</i>             <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l82">
+                  <tt><i>82</i>     <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;vendor_profile&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l83">
+                  <tt><i>83</i>     <span class="n">shop_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l84">
+                  <tt><i>84</i>     <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l85">
+                  <tt><i>85</i>     <span class="n">logo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s2">&quot;vendors/&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l86">
+                  <tt><i>86</i>     <span class="n">verified</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l88">
+                  <tt><i>88</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l89">
+                  <tt><i>89</i>         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shop_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">)&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l93">
+                  <tt><i>93</i>     <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l97">
+                  <tt><i>97</i>     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W191">
+               <span class="count sev-2">
+                  20
+               </span>
+               <strong>W191:</strong> indentation contains tabs
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l8">
+                  <tt><i>8</i> 	<span class="k">return</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l12">
+                  <tt><i>12</i> 	<span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l13">
+                  <tt><i>13</i> 	<span class="n">preferences</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">JSONField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l14">
+                  <tt><i>14</i> 	<span class="n">history</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">JSONField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l16">
+                  <tt><i>16</i> 	<span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l17">
+                  <tt><i>17</i> 		<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Profile(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">)&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l21">
+                  <tt><i>21</i> 	<span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l22">
+                  <tt><i>22</i> 	<span class="n">token</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_generate_token</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l23">
+                  <tt><i>23</i> 	<span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l24">
+                  <tt><i>24</i> 	<span class="n">used</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l25">
+                  <tt><i>25</i> 	<span class="n">verified_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l27">
+                  <tt><i>27</i> 	<span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l28">
+                  <tt><i>28</i> 		<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;EmailVerificationToken(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">, used=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">used</span><span class="si">}</span><span class="s2">)&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l32">
+                  <tt><i>32</i> 	<span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l33">
+                  <tt><i>33</i> 	<span class="n">token</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_generate_token</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l34">
+                  <tt><i>34</i> 	<span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l35">
+                  <tt><i>35</i> 	<span class="n">used</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l36">
+                  <tt><i>36</i> 	<span class="n">used_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l38">
+                  <tt><i>38</i> 	<span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l39">
+                  <tt><i>39</i> 		<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;PasswordResetToken(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">, used=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">used</span><span class="si">}</span><span class="s2">)&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  6
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l42">
+                  <tt><i>42</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l43">
+                  <tt><i>43</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l46">
+                  <tt><i>46</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span><span class="p">,</span> <span class="n">m2m_changed</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l47">
+                  <tt><i>47</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l48">
+                  <tt><i>48</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l77">
+                  <tt><i>77</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  6
+               </span>
+               <strong>E501:</strong> line too long (84 > 79 characters)
+               
+                  (and 5 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l12">
+                  <tt><i>12</i> 	<span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l61">
+                  <tt><i>61</i> <span class="k">def</span><span class="w"> </span><span class="nf">ensure_vendor_profile_on_group_add</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">pk_set</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l63">
+                  <tt><i>63</i> <span class="sd">    Quand on ajoute le groupe &#39;vendor&#39; à un utilisateur, crée le VendorProfile s&#39;il n&#39;existe pas.</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l70">
+                  <tt><i>70</i>         <span class="k">if</span> <span class="n">vendor_group</span><span class="o">.</span><span class="n">pk</span> <span class="ow">in</span> <span class="n">pk_set</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="s2">&quot;vendor_profile&quot;</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l82">
+                  <tt><i>82</i>     <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;vendor_profile&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="users.models.source.html#l97">
+                  <tt><i>97</i>     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l50">
+                  <tt><i>50</i> <span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l60">
+                  <tt><i>60</i> <span class="nd">@receiver</span><span class="p">(</span><span class="n">m2m_changed</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">through</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="users.models.source.html#l81">
+                  <tt><i>81</i> <span class="k">class</span><span class="w"> </span><span class="nc">VendorProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E305">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E305:</strong> expected 2 blank lines after class or function definition, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="users.models.source.html#l77">
+                  <tt><i>77</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Group</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

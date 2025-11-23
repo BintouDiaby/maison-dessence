@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: products\views.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="products.views.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               products\views.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F811">
+               <span class="count sev-1">
+                  12
+               </span>
+               <strong>F811:</strong> redefinition of unused 'require_http_methods' from line 5
+               
+                  (and 11 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Redefinition of unused 'require_http_methods' from line 5:</p>
+               
+               <a href="products.views.source.html#l6">
+                  <tt><i>6</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">require_GET</span><span class="p">,</span> <span class="n">require_http_methods</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'api_view' from line 14:</p>
+               
+               <a href="products.views.source.html#l19">
+                  <tt><i>19</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'authentication_classes' from line 14:</p>
+               
+               <a href="products.views.source.html#l19">
+                  <tt><i>19</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'permission_classes' from line 14:</p>
+               
+               <a href="products.views.source.html#l19">
+                  <tt><i>19</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'Response' from line 16:</p>
+               
+               <a href="products.views.source.html#l21">
+                  <tt><i>21</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'status' from line 17:</p>
+               
+               <a href="products.views.source.html#l22">
+                  <tt><i>22</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">status</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'JWTAuthentication' from line 18:</p>
+               
+               <a href="products.views.source.html#l23">
+                  <tt><i>23</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework_simplejwt.authentication</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTAuthentication</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'user_is_vendor' from line 38:</p>
+               
+               <a href="products.views.source.html#l223">
+                  <tt><i>223</i> <span class="k">def</span><span class="w"> </span><span class="nf">user_is_vendor</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'login_required' from line 7:</p>
+               
+               <a href="products.views.source.html#l495">
+                  <tt><i>495</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'get_object_or_404' from line 3:</p>
+               
+               <a href="products.views.source.html#l497">
+                  <tt><i>497</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_object_or_404</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'JsonResponse' from line 2:</p>
+               
+               <a href="products.views.source.html#l498">
+                  <tt><i>498</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonResponse</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'product_upload_image' from line 463:</p>
+               
+               <a href="products.views.source.html#l506">
+                  <tt><i>506</i> <span class="k">def</span><span class="w"> </span><span class="nf">product_upload_image</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  6
+               </span>
+               <strong>F401:</strong> 'django.core.exceptions.PermissionDenied' imported but unused
+               
+                  (and 5 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'django.core.exceptions.PermissionDenied' imported but unused:</p>
+               
+               <a href="products.views.source.html#l9">
+                  <tt><i>9</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.core.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">PermissionDenied</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'django.conf.settings' imported but unused:</p>
+               
+               <a href="products.views.source.html#l11">
+                  <tt><i>11</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'django.views.decorators.csrf.csrf_exempt' imported but unused:</p>
+               
+               <a href="products.views.source.html#l458">
+                  <tt><i>458</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.csrf</span><span class="w"> </span><span class="kn">import</span> <span class="n">csrf_exempt</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'django.views.decorators.http.require_POST' imported but unused:</p>
+               
+               <a href="products.views.source.html#l494">
+                  <tt><i>494</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">require_POST</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'django.contrib.auth.decorators.login_required' imported but unused:</p>
+               
+               <a href="products.views.source.html#l495">
+                  <tt><i>495</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'django.utils.decorators.method_decorator' imported but unused:</p>
+               
+               <a href="products.views.source.html#l496">
+                  <tt><i>496</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">method_decorator</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  38
+               </span>
+               <strong>E501:</strong> line too long (90 > 79 characters)
+               
+                  (and 24 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l14">
+                  <tt><i>14</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (90 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l19">
+                  <tt><i>19</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l39">
+                  <tt><i>39</i>     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l53">
+                  <tt><i>53</i>         <span class="n">wishlist_count</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">wishlisted_by</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;wishlisted_by&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l70">
+                  <tt><i>70</i>             <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">price</span><span class="p">)</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (156 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l74">
+                  <tt><i>74</i>             <span class="s1">&#39;image_url&#39;</span><span class="p">:</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">url</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;image_url&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (101 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l76">
+                  <tt><i>76</i>             <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">owner</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span><span class="o">.</span><span class="n">owner</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l102">
+                  <tt><i>102</i> <span class="nd">@authentication_classes</span><span class="p">([</span><span class="n">JWTAuthentication</span><span class="p">])</span>   <span class="c1"># JWT lu si présent (sinon user=Anonymous)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (91 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l106">
+                  <tt><i>106</i>     <span class="n">has_params</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="s1">&#39;page_size&#39;</span><span class="p">,</span> <span class="s1">&#39;mine&#39;</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l122">
+                  <tt><i>122</i>         <span class="n">page_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page_size&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">))))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l141">
+                  <tt><i>141</i>         <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">product_to_dict</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">qs</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (104 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l158">
+                  <tt><i>158</i>     <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">total</span><span class="p">,</span> <span class="s1">&#39;page&#39;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span> <span class="s1">&#39;page_size&#39;</span><span class="p">:</span> <span class="n">page_size</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l179">
+                  <tt><i>179</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Retourne les 5 produits les plus proches par similarité nom+description.&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l196">
+                  <tt><i>196</i>         <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="n">product_to_dict</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">),</span> <span class="s1">&#39;similar&#39;</span><span class="p">:</span> <span class="n">top</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l207">
+                  <tt><i>207</i>         <span class="n">base_text</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l212">
+                  <tt><i>212</i>             <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="n">prod</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\n</span><span class="s2"> &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="n">prod</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l218">
+                  <tt><i>218</i>         <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="n">product_to_dict</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">),</span> <span class="s1">&#39;similar&#39;</span><span class="p">:</span> <span class="n">top</span><span class="p">})</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l224">
+                  <tt><i>224</i>     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">user</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">VENDOR_GROUP_NAME</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (115 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l231">
+                  <tt><i>231</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON). Création désactivée.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (119 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l234">
+                  <tt><i>234</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s2">&quot;Seuls les vendeurs peuvent créer des produits.&quot;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (114 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l284">
+                  <tt><i>284</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON). Edition désactivée.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (122 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l291">
+                  <tt><i>291</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s2">&quot;Vous ne pouvez modifier que vos propres produits.&quot;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l295">
+                  <tt><i>295</i>     <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span> <span class="s1">&#39;concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;image_url&#39;</span><span class="p">]:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (118 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l332">
+                  <tt><i>332</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON). Suppression désactivée.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (123 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l339">
+                  <tt><i>339</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s2">&quot;Vous ne pouvez supprimer que vos propres produits.&quot;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l354">
+                  <tt><i>354</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON).&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l364">
+                  <tt><i>364</i>     <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;liked&#39;</span><span class="p">:</span> <span class="n">liked</span><span class="p">,</span> <span class="s1">&#39;likes_count&#39;</span><span class="p">:</span> <span class="n">prod</span><span class="o">.</span><span class="n">likes</span><span class="o">.</span><span class="n">count</span><span class="p">()},</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l375">
+                  <tt><i>375</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON).&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (103 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l385">
+                  <tt><i>385</i>     <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;in_wishlist&#39;</span><span class="p">:</span> <span class="n">in_list</span><span class="p">,</span> <span class="s1">&#39;wishlist_count&#39;</span><span class="p">:</span> <span class="n">prod</span><span class="o">.</span><span class="n">wishlisted_by</span><span class="o">.</span><span class="n">count</span><span class="p">()},</span> <span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (94 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l394">
+                  <tt><i>394</i>         <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;Model Product indisponible (fallback JSON).&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (85 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l406">
+                  <tt><i>406</i> <span class="sd">    Non-destructive: skips products that already exist (case-insensitive name match).</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l412">
+                  <tt><i>412</i>     <span class="n">data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;products.json&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l416">
+                  <tt><i>416</i>         <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;products.json not found&#39;</span><span class="p">,</span> <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">data_file</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">404</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (99 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l422">
+                  <tt><i>422</i>         <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;detail&#39;</span><span class="p">:</span> <span class="s1">&#39;error reading products.json&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span> <span class="n">status</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l455">
+                  <tt><i>455</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">parser_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (89 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l477">
+                  <tt><i>477</i>     <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;owner_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">!=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_superuser</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l500">
+                  <tt><i>500</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">parser_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (88 > 79 characters):</p>
+               
+               <a href="products.views.source.html#l525">
+                  <tt><i>525</i>     <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">product_to_dict</span>  <span class="c1"># si dans ce fichier, pas besoin de cette import</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  12
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="products.views.source.html#l455">
+                  <tt><i>455</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">parser_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l456">
+                  <tt><i>456</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l457">
+                  <tt><i>457</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiPartParser</span><span class="p">,</span> <span class="n">FormParser</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l458">
+                  <tt><i>458</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.csrf</span><span class="w"> </span><span class="kn">import</span> <span class="n">csrf_exempt</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l494">
+                  <tt><i>494</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">require_POST</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l495">
+                  <tt><i>495</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l496">
+                  <tt><i>496</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">method_decorator</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l497">
+                  <tt><i>497</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_object_or_404</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l498">
+                  <tt><i>498</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonResponse</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l499">
+                  <tt><i>499</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l500">
+                  <tt><i>500</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">parser_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l501">
+                  <tt><i>501</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiPartParser</span><span class="p">,</span> <span class="n">FormParser</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  11
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l35">
+                  <tt><i>35</i> <span class="k">def</span><span class="w"> </span><span class="nf">ensure_vendor_group_exists</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l38">
+                  <tt><i>38</i> <span class="k">def</span><span class="w"> </span><span class="nf">user_is_vendor</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l41">
+                  <tt><i>41</i> <span class="k">def</span><span class="w"> </span><span class="nf">_load_products_from_file</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l49">
+                  <tt><i>49</i> <span class="k">def</span><span class="w"> </span><span class="nf">product_to_dict</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l101">
+                  <tt><i>101</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 0:</p>
+               
+               <a href="products.views.source.html#l159">
+                  <tt><i>159</i> <span class="nd">@require_GET</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l174">
+                  <tt><i>174</i> <span class="k">def</span><span class="w"> </span><span class="nf">_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l177">
+                  <tt><i>177</i> <span class="nd">@require_GET</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l226">
+                  <tt><i>226</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l460">
+                  <tt><i>460</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="products.views.source.html#l503">
+                  <tt><i>503</i> <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E305">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E305:</strong> expected 2 blank lines after class or function definition, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="products.views.source.html#l455">
+                  <tt><i>455</i> <span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">parser_classes</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="products.views.source.html#l494">
+                  <tt><i>494</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">require_POST</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E401">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E401:</strong> multiple imports on one line
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="products.views.source.html#l409">
+                  <tt><i>409</i>     <span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

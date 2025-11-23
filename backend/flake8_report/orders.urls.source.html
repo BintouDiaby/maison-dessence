@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>orders\urls.py - flake8 annotated source</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <h1>
+            <a href="orders.urls.report.html">
+               <img src="back.svg" alt="&#x2B05;">
+               orders\urls.py source
+            </a>
+         </h1>
+
+         <div id="doc">
+            <div id="l1"
+               class="code sev- "><tt><i>1</i> <span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span></tt>
+            </div>
+            <div id="l2"
+               class="code sev- "><tt><i>2</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderCreateView</span><span class="p">,</span> <span class="n">OrderListView</span><span class="p">,</span> <span class="n">OrderDetailView</span></tt>
+            </div>
+            <div id="l3"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (95 > 79 characters)</li>
+               
+               </ul><tt><i>3</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CartView</span><span class="p">,</span> <span class="n">AddCartItemView</span><span class="p">,</span> <span class="n">RemoveCartItemView</span><span class="p">,</span> <span class="n">CheckoutView</span><span class="p">,</span> <span class="n">PaymentMockView</span></tt>
+            </div>
+            <div id="l4"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (85 > 79 characters)</li>
+               
+               </ul><tt><i>4</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CreateStripePaymentIntentView</span><span class="p">,</span> <span class="n">StripeWebhookView</span><span class="p">,</span> <span class="n">StripeConfigView</span></tt>
+            </div>
+            <div id="l5"
+               class="code sev-1  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-1">
+                        F401
+                     </span>
+                     '.views.CreateCinetPayTransactionView' imported but unused</li>
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (96 > 79 characters)</li>
+               
+               </ul><tt><i>5</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CreateCinetpayPaymentView</span><span class="p">,</span> <span class="n">CreateCinetPayTransactionView</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span></tt>
+            </div>
+            <div id="l6"
+               class="code sev- "><tt><i>6</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">CinetPayWebhookView</span></tt>
+            </div>
+            <div id="l7"
+               class="code sev- "><tt><i>7</i> &nbsp;</tt>
+            </div>
+            <div id="l8"
+               class="code sev- "><tt><i>8</i> <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span></tt>
+            </div>
+            <div id="l9"
+               class="code sev- "><tt><i>9</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;orders/&#39;</span><span class="p">,</span> <span class="n">OrderListView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;orders-list&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l10"
+               class="code sev- "><tt><i>10</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;orders/create/&#39;</span><span class="p">,</span> <span class="n">OrderCreateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;orders-create&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l11"
+               class="code sev- "><tt><i>11</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;orders/&lt;int:pk&gt;/&#39;</span><span class="p">,</span> <span class="n">OrderDetailView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;orders-detail&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l12"
+               class="code sev- "><tt><i>12</i>     <span class="c1"># Cart and checkout</span></tt>
+            </div>
+            <div id="l13"
+               class="code sev- "><tt><i>13</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cart/&#39;</span><span class="p">,</span> <span class="n">CartView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cart-detail&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l14"
+               class="code sev- "><tt><i>14</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cart/add/&#39;</span><span class="p">,</span> <span class="n">AddCartItemView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cart-add&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l15"
+               class="code sev- "><tt><i>15</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cart/remove/&#39;</span><span class="p">,</span> <span class="n">RemoveCartItemView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cart-remove&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l16"
+               class="code sev- "><tt><i>16</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;checkout/&#39;</span><span class="p">,</span> <span class="n">CheckoutView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;checkout&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l17"
+               class="code sev- "><tt><i>17</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;pay/mock/&#39;</span><span class="p">,</span> <span class="n">PaymentMockView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pay-mock&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l18"
+               class="code sev- "><tt><i>18</i>     <span class="c1"># Stripe</span></tt>
+            </div>
+            <div id="l19"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (120 > 79 characters)</li>
+               
+               </ul><tt><i>19</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;stripe/create-payment-intent/&#39;</span><span class="p">,</span> <span class="n">CreateStripePaymentIntentView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stripe-create-payment-intent&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l20"
+               class="code sev- "><tt><i>20</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;stripe/config/&#39;</span><span class="p">,</span> <span class="n">StripeConfigView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stripe-config&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l21"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (80 > 79 characters)</li>
+               
+               </ul><tt><i>21</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;stripe/webhook/&#39;</span><span class="p">,</span> <span class="n">StripeWebhookView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stripe-webhook&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l22"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (90 > 79 characters)</li>
+               
+               </ul><tt><i>22</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/create/&#39;</span><span class="p">,</span> <span class="n">CreateCinetpayPaymentView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-create&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l23"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E131
+                     </span>
+                     Continuation line unaligned for hanging indent</li>
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (90 > 79 characters)</li>
+               
+               </ul><tt><i>23</i>         <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/confirm/&#39;</span><span class="p">,</span> <span class="n">CinetPayConfirmView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-confirm&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l24"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (86 > 79 characters)</li>
+               
+               </ul><tt><i>24</i>     <span class="n">path</span><span class="p">(</span><span class="s1">&#39;cinetpay/webhook/&#39;</span><span class="p">,</span> <span class="n">CinetPayWebhookView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cinetpay-webhook&#39;</span><span class="p">),</span></tt>
+            </div>
+            <div id="l25"
+               class="code sev- "><tt><i>25</i> <span class="p">]</span></tt>
+            </div>
+            
+         </div>
+      </div>
+   </body>
+</html>
